@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Printer, AlertCircle } from 'lucide-react';
-import { ALL_TOOLS } from '../data/cyberCafeData';
+import { CYBER_CAFE_TOOLS } from '../data/cyberCafeData';
 import { getTemplate } from '../data/applicationTemplates';
 import { SEOHead } from '../components/SEOHead';
 
@@ -11,7 +11,7 @@ interface CyberCafeAppBuilderPageProps {
 
 export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = ({ onNavigate, currentPath }) => {
   const toolId = currentPath.split('/workspace/application/')[1];
-  const tool = ALL_TOOLS.find(t => t.id === toolId);
+  const tool = CYBER_CAFE_TOOLS.find(t => t.id === toolId);
   
   const template = tool ? getTemplate(tool.id) : null;
 
@@ -48,9 +48,9 @@ export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = (
   return (
     <div className="w-full bg-slate-50 dark:bg-slate-700 min-h-screen pb-12">
       <SEOHead 
-        title={`${tool.title} | Cyber Cafe Hub | Shahnawaz Computer Center`}
-        description={tool.description}
-        keywords={`Apply online, ${tool.title}, Shahnawaz Computer Center, Cyber cafe form`}
+        title={`${tool.name} | Cyber Cafe Hub | Shahnawaz Computer Center`}
+        description={'Free online tool'}
+        keywords={`Apply online, ${tool.name}, Shahnawaz Computer Center, Cyber cafe form`}
         canonicalUrl={window.location.origin + currentPath}
       />
       {/* Hide header and controls when printing */}
@@ -68,7 +68,7 @@ export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = (
               <div>
                 <h1 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
                   <tool.icon className="w-6 h-6 text-indigo-400" />
-                  {tool.title}
+                  {tool.name}
                 </h1>
                 <p className="text-indigo-200 text-sm mt-0.5 font-medium">
                   दस्तावेज़ में जानकारी भरें और Print करें

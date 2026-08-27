@@ -1,272 +1,165 @@
 import React, { useState, useMemo } from 'react';
-import { 
-  Search, ArrowLeft, Terminal, LayoutGrid, FileText, ChevronRight
-} from 'lucide-react';
-import { 
-  ALL_TOOLS, 
-  CYBER_CAFE_CATEGORIES, 
-  APPLICATION_SUBCATEGORIES, 
-  CategoryType, 
-  ToolItem 
-} from '../data/cyberCafeData';
+import { Search, ArrowLeft, LayoutGrid, FileText, ChevronRight, X } from 'lucide-react';
+import { CYBER_CAFE_CATEGORIES, CYBER_CAFE_TOOLS, CategoryId, ToolItem } from '../data/cyberCafeData';
 import { SEOHead } from '../components/SEOHead';
 
-interface CyberCafeHubPageProps {
-  onNavigate: (path: string) => void;
-  currentPath: string;
-}
 
-export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, currentPath }) => {
-  const [searchQuery, setSearchQuery] = useState('');
+interface CyberCafeHubPageProps { onNavigate: (path: string) => void; currentPath?: string; }
+export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate }) => {
   
-  const quickTools = ALL_TOOLS.filter(t => t.isQuickTool);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<CategoryId | 'ALL'>('ALL');
 
-  const handleToolClick = (tool: ToolItem) => {
-    if (tool.toolType === 'application_form') {
-      onNavigate(`/workspace/application/${tool.id}`);
-    } else {
-      onNavigate(`/workspace/tool/${tool.id}`);
-    }
-  };
-
-  const getToolsByCategory = (categoryId: CategoryType) => {
-    return ALL_TOOLS.filter(tool => tool.category === categoryId);
-  };
-
-  const getAppsBySubcategory = (subcategoryId: string) => {
-    return ALL_TOOLS.filter(tool => tool.category === 'APPLICATION_CENTER' && tool.subCategory === subcategoryId);
-  };
+  const filteredTools = useMemo(() => {
+    return CYBER_CAFE_TOOLS.filter(tool => {
+      const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory = selectedCategory === 'ALL' || tool.categoryId === selectedCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchQuery, selectedCategory]);
 
   return (
-    <div className="w-full bg-[#f8fafc] min-h-screen pb-16 print:hidden font-sans">
+    <div className="w-full bg-slate-50 dark:bg-slate-900 min-h-screen">
       <SEOHead 
-        title="Cyber Cafe Workspace Hub | Shahnawaz Computer Center"
-        description="Comprehensive toolkit for Cyber Cafe owners and operators. Online form filling applications, essential portals, format builders, and workflow automation."
-        keywords="Cyber cafe tools, CSC VLE hub, Online form builder, Admit card print, Photo resizer for forms, Shahnawaz Computer Center"
-        canonicalUrl={window.location.origin + '/workspace'}
+        title="Cyber Cafe Tools - Shahnawaz Computer Center" 
+        description="All-in-one tools for cyber cafe owners. Photo resize, PDF tools, Document makers, and more."
       />
-      {/* Premium Hero Header */}
-      <div className="bg-[#0f172a] text-white pt-10 pb-16 px-4 border-b border-slate-800 shadow-xl relative overflow-hidden">
-        {/* Abstract background shapes */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[100px] transform translate-x-1/3 -translate-y-1/4 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[80px] transform -translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
-        
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="flex flex-col gap-8 text-center">
-            <div className="flex justify-center mb-2">
-               <button 
-                  onClick={() => onNavigate('/')}
-                  className="px-4 py-2 bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 backdrop-blur-md border border-white/10 rounded-full text-slate-300 transition-colors flex items-center gap-2 text-sm font-medium"
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  Back to Main Site
-                </button>
-            </div>
-            
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 rounded-full text-xs font-bold uppercase tracking-widest mx-auto mb-2">
-                <Terminal className="w-4 h-4" /> Professional Dashboard
-              </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight">
-                CYBER CAFE
-              </h1>
-              <p className="text-slate-400 text-lg sm:text-xl font-medium max-w-2xl mx-auto">
-                साइबर कैफे के रोज़मर्रा के सभी जरूरी टूल और आवेदन एक ही जगह
+      
+      {/* Header */}
+      <div className="bg-[#0B2545] text-white py-8 px-4 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -mr-10 -mt-10"></div>
+        <div className="max-w-7xl mx-auto flex flex-col gap-4 relative z-10">
+          <button 
+            onClick={() => onNavigate('/')}
+            className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors text-sm font-bold w-fit"
+          >
+            <ArrowLeft className="w-4 h-4" /> Back to Home
+          </button>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tight mb-2">Cyber Cafe Tools</h1>
+              <p className="text-slate-300 text-sm max-w-xl">
+                A complete suite of free, client-side tools designed for fast daily operations. 
+                All files process directly in your browser.
               </p>
             </div>
             
-            {/* Massive Search Bar */}
-            <div className="relative max-w-3xl mx-auto w-full mt-4">
-              <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-slate-400" />
+            <div className="relative w-full md:w-96 shrink-0">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
               <input 
-                type="text" 
-                placeholder="टूल या आवेदन खोजें… (उदा. Photo Resize, जाति प्रमाणपत्र)" 
+                type="text"
+                placeholder="Search tools (e.g., Photo Resize, Merge PDF)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white dark:bg-slate-800/10 backdrop-blur-xl border border-white/20 text-white rounded-2xl pl-14 pr-6 py-5 focus:outline-none focus:ring-4 focus:ring-indigo-500/40 focus:border-indigo-400 font-medium placeholder:text-slate-400 text-lg transition-all shadow-2xl"
+                className="w-full bg-slate-800/50 border border-slate-700 rounded-xl py-3 pl-10 pr-10 text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-all shadow-inner text-sm font-medium"
               />
+              {searchQuery && (
+                <button 
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 -mt-8 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
         
-        {/* Quick Tools Ribbon */}
-        {!searchQuery && (
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 sm:p-6 shadow-xl shadow-slate-200/50 border border-slate-200 dark:border-slate-700 mb-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 overflow-hidden">
-            <div className="flex-shrink-0 text-center sm:text-left">
-              <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Frequently Used</h3>
-              <p className="text-lg font-black text-slate-800 dark:text-slate-100">Quick Tools</p>
-            </div>
-            <div className="h-10 w-px bg-slate-200 hidden sm:block"></div>
-            <div className="flex overflow-x-auto gap-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:pb-0 hide-scrollbar w-full">
-              {quickTools.map(tool => {
-                const Icon = tool.icon;
-                return (
-                  <button
-                    key={`ribbon-${tool.id}`}
-                    onClick={() => handleToolClick(tool)}
-                    className="flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-700 hover:bg-indigo-50 border border-slate-200 dark:border-slate-700 hover:border-indigo-200 text-slate-700 dark:text-slate-200 hover:text-indigo-700 rounded-xl font-bold text-sm transition-colors group"
-                  >
-                    <Icon className="w-4 h-4 text-slate-400 group-hover:text-indigo-500" />
-                    {tool.title}
-                  </button>
-                )
-              })}
+        {/* Categories Sidebar */}
+        <div className="lg:w-64 shrink-0">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-2 shadow-sm sticky top-24">
+            <h3 className="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider px-3 py-2 mb-1">
+              Categories
+            </h3>
+            <div className="flex flex-col gap-1">
+              <button
+                onClick={() => setSelectedCategory('ALL')}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold transition-colors ${
+                  selectedCategory === 'ALL' 
+                    ? 'bg-[#990000] text-white shadow-sm' 
+                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
+                }`}
+              >
+                <LayoutGrid className="w-4 h-4" />
+                <span>All Tools</span>
+              </button>
+              {CYBER_CAFE_CATEGORIES.map(cat => (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-bold transition-colors ${
+                    selectedCategory === cat.id 
+                      ? 'bg-[#990000] text-white shadow-sm' 
+                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <cat.icon className="w-4 h-4" />
+                    <span>{cat.name}</span>
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
-        )}
+        </div>
 
-        {/* Content Area */}
-        <div className="space-y-12">
-          
-          {searchQuery ? (
-             <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200 dark:border-slate-700">
-               <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-6 flex items-center gap-3">
-                  <Search className="w-6 h-6 text-indigo-500" />
-                  Search Results for "{searchQuery}"
-               </h2>
-               
-               {(() => {
-                 const q = searchQuery.toLowerCase();
-                 const filtered = ALL_TOOLS.filter(tool => 
-                   tool.title.toLowerCase().includes(q) || 
-                   tool.description.toLowerCase().includes(q)
-                 );
-
-                 if (filtered.length === 0) {
-                    return (
-                      <div className="py-12 text-center text-slate-500 dark:text-slate-400">
-                        <FileText className="w-16 h-16 text-slate-200 mx-auto mb-4" />
-                        <p className="text-xl font-bold text-slate-700 dark:text-slate-200">कोई परिणाम नहीं मिला</p>
-                        <p className="text-sm mt-1">कृपया कोई अन्य शब्द खोजें।</p>
-                      </div>
-                    );
-                 }
-
-                 return (
-                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                      {filtered.map(tool => <ToolCard key={tool.id} tool={tool} onClick={() => handleToolClick(tool)} />)}
-                   </div>
-                 )
-               })()}
-             </div>
+        {/* Tools Grid */}
+        <div className="flex-1">
+          {filteredTools.length === 0 ? (
+            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-12 text-center shadow-sm">
+              <Search className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-4" />
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">No tools found</h3>
+              <p className="text-slate-500 dark:text-slate-400">Try adjusting your search or category filter.</p>
+              <button 
+                onClick={() => { setSearchQuery(''); setSelectedCategory('ALL'); }}
+                className="mt-4 px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg font-bold text-sm transition-colors"
+              >
+                Clear Filters
+              </button>
+            </div>
           ) : (
-            // Category Rendering
-            <>
-              {CYBER_CAFE_CATEGORIES.map(category => {
-                // Application Center has a custom layout
-                if (category.id === 'APPLICATION_CENTER') {
-                  return (
-                    <div key={category.id} className="bg-white dark:bg-slate-800 rounded-[2rem] p-6 sm:p-10 shadow-xl shadow-blue-900/5 border border-slate-200 dark:border-slate-700 overflow-hidden relative">
-                       <div className="absolute top-0 right-0 p-10 opacity-[0.03] pointer-events-none">
-                         <category.icon className="w-64 h-64" />
-                       </div>
-                       
-                       <div className="relative z-10 mb-10 text-center sm:text-left">
-                         <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-                           {category.label.replace(/^\d+\.\s*/, '')}
-                         </h2>
-                         <p className="text-slate-500 dark:text-slate-400 font-medium mt-2 text-lg">
-                           सभी जरूरी आवेदन और प्रार्थना पत्र एक ही जगह। जानकारी भरें → Preview → PDF बनाएं → Print
-                         </p>
-                       </div>
-
-                       <div className="space-y-10 relative z-10">
-                         {APPLICATION_SUBCATEGORIES.map(sub => {
-                           const subApps = getAppsBySubcategory(sub.id);
-                           if(subApps.length === 0) return null;
-                           
-                           return (
-                             <div key={sub.id} className="pt-6 border-t border-slate-100 dark:border-slate-700 first:border-0 first:pt-0">
-                               <h3 className="text-xl font-black text-slate-800 dark:text-slate-100 flex items-center gap-2 mb-4">
-                                 <sub.icon className="w-5 h-5 text-indigo-500" />
-                                 {sub.label}
-                               </h3>
-                               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                                 {subApps.map(app => (
-                                    <div 
-                                      key={app.id}
-                                      onClick={() => handleToolClick(app)}
-                                      className="flex items-center justify-between p-3 sm:p-4 bg-slate-50 dark:bg-slate-700 hover:bg-indigo-50 border border-slate-200 dark:border-slate-700 hover:border-indigo-200 rounded-xl cursor-pointer transition-colors group"
-                                    >
-                                      <div>
-                                        <p className="font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-700 text-sm leading-tight">
-                                          {app.title}
-                                        </p>
-                                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 font-medium flex items-center gap-1">
-                                          आवेदन खोलें
-                                        </p>
-                                      </div>
-                                      <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 group-hover:text-indigo-500 group-hover:border-indigo-200 transition-colors shrink-0">
-                                        <ChevronRight className="w-4 h-4" />
-                                      </div>
-                                    </div>
-                                 ))}
-                               </div>
-                             </div>
-                           )
-                         })}
-                       </div>
-                    </div>
-                  );
-                }
-
-                // Standard Tools Layout
-                const tools = getToolsByCategory(category.id);
-                if (tools.length === 0) return null;
-
+            <div className="space-y-8">
+              {/* Group by category if 'ALL' is selected, else just show the grid */}
+              {(selectedCategory === 'ALL' ? CYBER_CAFE_CATEGORIES : CYBER_CAFE_CATEGORIES.filter(c => c.id === selectedCategory)).map(category => {
+                const toolsInCategory = filteredTools.filter(t => t.categoryId === category.id);
+                if (toolsInCategory.length === 0) return null;
+                
                 return (
-                  <div key={category.id} className="bg-white dark:bg-slate-800 rounded-[2rem] p-6 sm:p-10 shadow-sm border border-slate-200 dark:border-slate-700">
-                    <div className="flex items-center gap-4 mb-8 pb-4 border-b border-slate-100 dark:border-slate-700">
-                      <div className="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center shrink-0">
-                        <category.icon className="w-7 h-7" />
-                      </div>
-                      <div>
-                        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-                          {category.label.replace(/^\d+\.\s*/, '')}
-                        </h2>
-                      </div>
+                  <div key={category.id} className="space-y-4">
+                    <div className="flex items-center gap-2 border-b-2 border-slate-200 dark:border-slate-700 pb-2">
+                      <category.icon className="w-5 h-5 text-[#990000] dark:text-amber-400" />
+                      <h2 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-wider">{category.name}</h2>
+                      <span className="ml-2 text-xs font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-full">
+                        {toolsInCategory.length}
+                      </span>
                     </div>
-
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                      {tools.map(tool => <ToolCard key={tool.id} tool={tool} onClick={() => handleToolClick(tool)} />)}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                      {toolsInCategory.map(tool => (
+                        <button
+                          key={tool.id}
+                          onClick={() => onNavigate(`/workspace/tool/${tool.id}`)}
+                          className="group bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-[#990000] dark:hover:border-amber-400 transition-all text-left flex flex-col cursor-pointer"
+                        >
+                          <div className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-3 group-hover:bg-red-50 dark:group-hover:bg-amber-400/10 transition-colors">
+                            <tool.icon className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-[#990000] dark:group-hover:text-amber-400 transition-colors" />
+                          </div>
+                          <h3 className="font-bold text-slate-900 dark:text-white text-sm line-clamp-2 leading-snug group-hover:text-[#990000] dark:group-hover:text-amber-400 transition-colors">
+                            {tool.name}
+                          </h3>
+                        </button>
+                      ))}
                     </div>
                   </div>
-                )
+                );
               })}
-            </>
+            </div>
           )}
-
         </div>
+        
       </div>
     </div>
   );
 };
-
-// Extracted Tool Card Component for cleanliness
-const ToolCard = ({ tool, onClick }: { tool: ToolItem, onClick: () => void }) => {
-  const Icon = tool.icon;
-  return (
-    <div 
-      onClick={onClick}
-      className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-indigo-300 p-4 sm:p-5 rounded-2xl cursor-pointer hover:shadow-xl hover:shadow-indigo-900/5 hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between h-full"
-    >
-      <div>
-        <div className="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-700 group-hover:bg-indigo-50 text-slate-400 group-hover:text-indigo-600 flex items-center justify-center mb-4 transition-colors">
-          <Icon className="w-6 h-6" />
-        </div>
-        <h4 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white group-hover:text-indigo-700 leading-tight mb-2">
-          {tool.title}
-        </h4>
-        <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
-          {tool.description}
-        </p>
-      </div>
-      <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 font-bold text-[11px] text-indigo-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-1 group-hover:translate-y-0 uppercase tracking-wider">
-        Open Tool <ArrowLeft className="w-3 h-3 rotate-180" />
-      </div>
-    </div>
-  )
-}

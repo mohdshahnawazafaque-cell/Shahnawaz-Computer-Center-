@@ -1,31 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  X,
-  Sparkles,
-  Save,
-  Search,
-  Globe,
-  Share2,
-  Image as ImageIcon,
-  CheckCircle2,
-  AlertTriangle,
-  Code,
-  Tag,
-  FileText,
-  Copy,
-  Check,
-  RefreshCw,
-  Eye,
-  ShieldCheck,
-  Twitter,
-  ExternalLink,
-  HelpCircle,
-  TrendingUp,
-  Sliders,
-  Monitor,
-  Smartphone,
-  CheckCheck,
-} from 'lucide-react';
+import { X, Sparkles, Save, Search, Globe, Share2, Image as ImageIcon, CheckCircle2, AlertTriangle, Code, Tag, FileText, Copy, Check, RefreshCw, Eye, ShieldCheck, ExternalLink, HelpCircle, TrendingUp, Sliders, Monitor, Smartphone, CheckCheck } from 'lucide-react';
 import { Post } from '../types';
 import { getClientPosts, saveClientPosts } from '../utils/clientStorage';
 
@@ -52,7 +26,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
     'meta' | 'opengraph' | 'twitter' | 'preview_google' | 'preview_social' | 'schema'
   >('meta');
   const [devicePreview, setDevicePreview] = useState<'desktop' | 'mobile'>('mobile');
-  const [twitterTheme, setTwitterTheme] = useState<'light' | 'dark'>('dark');
+  const [twitterTheme, setShare2Theme] = useState<'light' | 'dark'>('dark');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
@@ -75,13 +49,13 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
   const [ogImage, setOgImage] = useState('');
   const [ogType, setOgType] = useState('article');
 
-  // Twitter Card State
-  const [twitterCard, setTwitterCard] = useState<'summary' | 'summary_large_image' | 'app' | 'player'>('summary_large_image');
-  const [twitterTitle, setTwitterTitle] = useState('');
-  const [twitterDescription, setTwitterDescription] = useState('');
-  const [twitterImage, setTwitterImage] = useState('');
-  const [twitterSite, setTwitterSite] = useState('@shahnawazcc');
-  const [twitterCreator, setTwitterCreator] = useState('@mohdshahnawaz');
+  // Share2 Card State
+  const [twitterCard, setShare2Card] = useState<'summary' | 'summary_large_image' | 'app' | 'player'>('summary_large_image');
+  const [twitterTitle, setShare2Title] = useState('');
+  const [twitterDescription, setShare2Description] = useState('');
+  const [twitterImage, setShare2Image] = useState('');
+  const [twitterSite, setShare2Site] = useState('@shahnawazcc');
+  const [twitterCreator, setShare2Creator] = useState('@mohdshahnawaz');
 
   // Sync state when post changes
   useEffect(() => {
@@ -119,13 +93,13 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
       setOgImage(defaultImage);
       setOgType(post.ogType || 'article');
 
-      // Twitter Card
-      setTwitterCard(post.twitterCard || 'summary_large_image');
-      setTwitterTitle(post.twitterTitle || post.ogTitle || defaultTitle);
-      setTwitterDescription(post.twitterDescription || post.ogDescription || defaultDesc);
-      setTwitterImage(post.twitterImage || defaultImage);
-      setTwitterSite(post.twitterSite || '@shahnawazcc');
-      setTwitterCreator(post.twitterCreator || '@mohdshahnawaz');
+      // Share2 Card
+      setShare2Card(post.twitterCard || 'summary_large_image');
+      setShare2Title(post.twitterTitle || post.ogTitle || defaultTitle);
+      setShare2Description(post.twitterDescription || post.ogDescription || defaultDesc);
+      setShare2Image(post.twitterImage || defaultImage);
+      setShare2Site(post.twitterSite || '@shahnawazcc');
+      setShare2Creator(post.twitterCreator || '@mohdshahnawaz');
 
       setErrorMsg('');
       setSuccessMsg('');
@@ -179,11 +153,11 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
     setMetaDescription(descTrim);
     setOgTitle(titleTrim);
     setOgDescription(descTrim);
-    setTwitterTitle(titleTrim);
-    setTwitterDescription(descTrim);
+    setShare2Title(titleTrim);
+    setShare2Description(descTrim);
     setKeywords(generateDefaultKeywords(post));
 
-    setSuccessMsg('⚡ AI Smart SEO Meta, OpenGraph & Twitter Cards generated successfully!');
+    setSuccessMsg('⚡ AI Smart SEO Meta, OpenGraph & Share2 Cards generated successfully!');
     setTimeout(() => setSuccessMsg(''), 3000);
   };
 
@@ -280,7 +254,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
 
       if (savedPost) {
         onSaved(savedPost);
-        setSuccessMsg('✅ SEO Meta Tags, OpenGraph & Twitter Card published successfully!');
+        setSuccessMsg('✅ SEO Meta Tags, OpenGraph & Share2 Card published successfully!');
         setTimeout(() => setSuccessMsg(''), 3500);
       }
     } catch (err: any) {
@@ -375,14 +349,14 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
   const isDescGood = descLen >= 120 && descLen <= 160;
   const hasKeywords = keywords.length >= 3;
   const hasOg = !!ogImage && !!ogTitle;
-  const hasTwitter = !!twitterTitle && !!twitterImage;
+  const hasShare2 = !!twitterTitle && !!twitterImage;
 
   const seoScore =
     (isTitleGood ? 20 : titleLen > 0 ? 12 : 0) +
     (isDescGood ? 20 : descLen > 0 ? 12 : 0) +
     (hasKeywords ? 20 : keywords.length > 0 ? 10 : 0) +
     (hasOg ? 20 : 10) +
-    (hasTwitter ? 20 : 10);
+    (hasShare2 ? 20 : 10);
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4">
@@ -483,7 +457,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                 Keywords: {keywords.length}
               </span>
               <span className="px-2 py-0.5 rounded font-bold bg-purple-100 text-purple-800">
-                OG & Twitter Card: Active
+                OG & Share2 Card: Active
               </span>
             </div>
           </div>
@@ -503,7 +477,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
           {[
             { id: 'meta', label: '1. Meta Tags & Keywords', icon: FileText },
             { id: 'opengraph', label: '2. OpenGraph (WhatsApp/FB)', icon: Share2 },
-            { id: 'twitter', label: '3. Twitter / X Card Data', icon: Twitter },
+            { id: 'twitter', label: '3. Share2 / X Card Data', icon: Share2 },
             { id: 'preview_google', label: 'Google SERP Preview', icon: Search },
             { id: 'preview_social', label: 'Live Social Previews', icon: Eye },
             { id: 'schema', label: 'Google Schema (JSON-LD)', icon: Code },
@@ -787,7 +761,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                       value={ogImage}
                       onChange={(e) => {
                         setOgImage(e.target.value);
-                        if (!twitterImage) setTwitterImage(e.target.value);
+                        if (!twitterImage) setShare2Image(e.target.value);
                       }}
                       placeholder="https://..."
                       className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-[11px]"
@@ -864,9 +838,9 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
           {activeTab === 'twitter' && (
             <div className="space-y-4 text-xs">
               <div className="p-3 bg-slate-900 text-white rounded-xl flex items-start gap-2 border border-slate-800">
-                <Twitter className="w-4 h-4 text-sky-400 mt-0.5 flex-shrink-0" />
+                <Share2 className="w-4 h-4 text-sky-400 mt-0.5 flex-shrink-0" />
                 <p className="text-[11px] leading-relaxed">
-                  Twitter Card meta tags determine how your post appears when tweeted or retweeted on <strong>Twitter / X</strong>.
+                  Share2 Card meta tags determine how your post appears when tweeted or retweeted on <strong>Share2 / X</strong>.
                 </p>
               </div>
 
@@ -878,7 +852,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                     </label>
                     <select
                       value={twitterCard}
-                      onChange={(e) => setTwitterCard(e.target.value as any)}
+                      onChange={(e) => setShare2Card(e.target.value as any)}
                       className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-bold text-slate-900 dark:text-white"
                     >
                       <option value="summary_large_image">
@@ -890,12 +864,12 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
 
                   <div>
                     <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
-                      twitter:title (Twitter Card Title)
+                      twitter:title (Share2 Card Title)
                     </label>
                     <input
                       type="text"
                       value={twitterTitle}
-                      onChange={(e) => setTwitterTitle(e.target.value)}
+                      onChange={(e) => setShare2Title(e.target.value)}
                       placeholder="Leave empty to use OG / Meta Title"
                       className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-bold text-slate-900 dark:text-white"
                     />
@@ -903,12 +877,12 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
 
                   <div>
                     <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
-                      twitter:description (Twitter Card Description)
+                      twitter:description (Share2 Card Description)
                     </label>
                     <textarea
                       rows={3}
                       value={twitterDescription}
-                      onChange={(e) => setTwitterDescription(e.target.value)}
+                      onChange={(e) => setShare2Description(e.target.value)}
                       placeholder="Leave empty to use OG / Meta Description"
                       className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
@@ -916,12 +890,12 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
 
                   <div>
                     <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
-                      twitter:image (Twitter Image URL)
+                      twitter:image (Share2 Image URL)
                     </label>
                     <input
                       type="text"
                       value={twitterImage}
-                      onChange={(e) => setTwitterImage(e.target.value)}
+                      onChange={(e) => setShare2Image(e.target.value)}
                       placeholder="https://..."
                       className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-[11px]"
                     />
@@ -933,7 +907,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                       <input
                         type="text"
                         value={twitterSite}
-                        onChange={(e) => setTwitterSite(e.target.value)}
+                        onChange={(e) => setShare2Site(e.target.value)}
                         placeholder="@shahnawazcc"
                         className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-xs"
                       />
@@ -943,7 +917,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                       <input
                         type="text"
                         value={twitterCreator}
-                        onChange={(e) => setTwitterCreator(e.target.value)}
+                        onChange={(e) => setShare2Creator(e.target.value)}
                         placeholder="@mohdshahnawaz"
                         className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-xs"
                       />
@@ -951,17 +925,17 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                   </div>
                 </div>
 
-                {/* Twitter Tweet Simulator */}
+                {/* Share2 Tweet Simulator */}
                 <div className="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-bold text-slate-700 dark:text-slate-200">
-                        Twitter / X Tweet Simulator:
+                        Share2 / X Tweet Simulator:
                       </span>
                       <div className="flex items-center gap-1 text-[10px] font-bold bg-slate-200 p-0.5 rounded-md">
                         <button
                           type="button"
-                          onClick={() => setTwitterTheme('light')}
+                          onClick={() => setShare2Theme('light')}
                           className={`px-2 py-0.5 rounded ${
                             twitterTheme === 'light' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-2xs' : 'text-slate-500 dark:text-slate-400'
                           }`}
@@ -970,7 +944,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                         </button>
                         <button
                           type="button"
-                          onClick={() => setTwitterTheme('dark')}
+                          onClick={() => setShare2Theme('dark')}
                           className={`px-2 py-0.5 rounded ${
                             twitterTheme === 'dark' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-500 dark:text-slate-400'
                           }`}
@@ -1018,7 +992,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                             <div className="h-36 bg-slate-900 relative">
                               <img
                                 src={twitterImage || ogImage}
-                                alt="Twitter Preview"
+                                alt="Share2 Preview"
                                 className="w-full h-full object-cover"
                                 onError={(e) => {
                                   (e.target as HTMLImageElement).src =
@@ -1043,7 +1017,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                             <div className="w-16 h-16 rounded-lg overflow-hidden bg-slate-800 flex-shrink-0">
                               <img
                                 src={twitterImage || ogImage}
-                                alt="Twitter Preview"
+                                alt="Share2 Preview"
                                 className="w-full h-full object-cover"
                               />
                             </div>
@@ -1065,7 +1039,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                   </div>
 
                   <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 block text-center">
-                    Complies with standard Twitter Card specification.
+                    Complies with standard Share2 Card specification.
                   </span>
                 </div>
               </div>

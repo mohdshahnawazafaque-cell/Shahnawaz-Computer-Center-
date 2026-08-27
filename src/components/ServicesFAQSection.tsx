@@ -112,7 +112,7 @@ export const ServicesFAQSection: React.FC = () => {
       categoryLabel: 'Center Policies & Fees',
       question: 'What are your center service charges and accepted payment modes?',
       answer:
-        'Our service charges are highly transparent and minimal. You pay the exact official government portal fee plus a small service charge (ranging from ₹30 to ₹100 depending on form complexity and scanning requirements). We accept UPI (Google Pay, PhonePe, Paytm), Net Banking, and Cash.',
+        'All our guidance and online form filling assistance services are provided absolutely free of cost to help the community.',
       highlights: ['Transparent government fees', 'Minimal center service charges', 'All UPI & Cash accepted'],
     },
   ];

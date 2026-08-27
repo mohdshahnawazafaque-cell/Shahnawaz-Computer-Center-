@@ -20,8 +20,7 @@ import { AdminLoginPage } from './pages/AdminLoginPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { CyberCafeHubPage } from './pages/CyberCafeHubPage';
 import { CyberCafeAppBuilderPage } from './pages/CyberCafeAppBuilderPage';
-import { WalletProvider } from './context/WalletContext';
-import { WalletPage } from './pages/WalletPage';
+import { CyberCafeToolViewerPage } from './pages/CyberCafeToolViewerPage';
 import { PrintServicesPage } from './pages/PrintServicesPage';
 import { PostType } from './types';
 
@@ -116,7 +115,6 @@ export default function App() {
       return <ContactPage onNavigate={navigate} />;
     }
     if (currentPath === '/wallet') {
-      return <WalletPage />;
     }
     if (currentPath === '/print-services') {
       return <PrintServicesPage onNavigate={navigate} />;
@@ -133,6 +131,10 @@ export default function App() {
           onSelectPost={handleSelectPost}
         />
       );
+    }
+
+    if (currentPath.startsWith('/workspace/tool/')) {
+      return <CyberCafeToolViewerPage onNavigate={navigate} currentPath={currentPath} />;
     }
 
     if (currentPath === '/workspace') {
@@ -161,7 +163,6 @@ export default function App() {
   return (
     <AuthProvider>
       <SettingsProvider>
-        <WalletProvider>
         <ThemeProvider>
           <div id="shahnawaz-computer-center-app" className="min-h-screen flex flex-col bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-red-600 selection:text-white transition-colors duration-200">
           {/* Offline Banner Indicator */}
@@ -218,7 +219,6 @@ export default function App() {
           <AIChatWidget />
           </div>
         </ThemeProvider>
-      </WalletProvider>
       </SettingsProvider>
     </AuthProvider>
   );

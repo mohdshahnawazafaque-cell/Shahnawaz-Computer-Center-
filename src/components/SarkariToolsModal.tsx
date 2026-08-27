@@ -16,13 +16,15 @@ import {
   Layers,
   ArrowRight,
   Wallet,
+  QrCode,
 } from 'lucide-react';
 import { SalaryCalculatorTab } from './SalaryCalculatorTab';
+import { QRCodeGeneratorTab } from './QRCodeGeneratorTab';
 
 export interface SarkariToolsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  initialTab?: 'salary' | 'resume' | 'image' | 'age' | 'photo_name' | 'converter';
+  initialTab?: 'salary' | 'resume' | 'image' | 'age' | 'photo_name' | 'converter' | 'qrcode';
 }
 
 export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
@@ -30,7 +32,7 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
   onClose,
   initialTab = 'salary',
 }) => {
-  const [activeTab, setActiveTab] = useState<'salary' | 'resume' | 'image' | 'age' | 'photo_name' | 'converter'>(initialTab);
+  const [activeTab, setActiveTab] = useState<'salary' | 'resume' | 'image' | 'age' | 'photo_name' | 'converter' | 'qrcode'>(initialTab);
 
   // 1. Image Resizer / KB Compressor State
   const [sourceImage, setSourceImage] = useState<string | null>(null);
@@ -311,6 +313,7 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
         <div className="bg-slate-100 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 px-4 py-2 flex items-center gap-2 overflow-x-auto shrink-0 scrollbar-none">
           {[
             { id: 'salary', label: '💰 In-Hand Salary Calculator', icon: Wallet },
+            { id: 'qrcode', label: '🔳 QR Code Generator', icon: QrCode },
             { id: 'image', label: '📷 Photo & Sign Resizer (KB)', icon: ImageIcon },
             { id: 'photo_name', label: '🏷️ Name & Date on Photo', icon: Type },
             { id: 'age', label: '🎂 DOB Age Calculator', icon: Calculator },
@@ -689,6 +692,7 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
             </div>
           )}
 
+          {activeTab === 'qrcode' && <QRCodeGeneratorTab />}
           {/* 4. ONLINE RESUME / CV MAKER TAB */}
           {activeTab === 'resume' && (
             <div className="space-y-5">

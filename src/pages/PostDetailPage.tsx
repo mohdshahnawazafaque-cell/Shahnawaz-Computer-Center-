@@ -1,38 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Calendar,
-  DollarSign,
-  Users,
-  Building2,
-  MapPin,
-  Clock,
-  ShieldCheck,
-  CheckCircle2,
-  FileText,
-  AlertCircle,
-  HelpCircle,
-  Share2,
-  MessageCircle,
-  Facebook,
-  Twitter,
-  Send,
-  Copy,
-  Check,
-  Share,
-  ArrowRight,
-  ExternalLink,
-  BookOpen,
-  Layers,
-  Sparkles,
-  Phone,
-  Monitor,
-  Printer,
-  Eye,
-  Flame,
-  TrendingUp,
-  Zap,
-  Activity,
-} from 'lucide-react';
+import { Calendar, DollarSign, Users, Building2, MapPin, Clock, ShieldCheck, CheckCircle2, FileText, AlertCircle, HelpCircle, Share2, MessageCircle, Send, Copy, Check, Share, ArrowRight, ExternalLink, BookOpen, Layers, Sparkles, Phone, Monitor, Printer, Eye, Flame, TrendingUp, Zap, Activity } from 'lucide-react';
 import { Post, PostType } from '../types';
 import { calculatePostStatus, getStatusBadgeConfig } from '../utils/statusCalculator';
 import { Breadcrumbs } from '../components/Breadcrumbs';
@@ -509,30 +476,30 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
                 <span>WhatsApp</span>
               </a>
 
-              {/* Facebook */}
+              {/* Share2 */}
               <a
                 id="share-facebook-btn"
                 href={facebookShareUrl}
                 target="_blank"
                 rel="noreferrer"
-                title="Share on Facebook"
+                title="Share on Share2"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1877F2] hover:bg-[#166fe5] text-white rounded-lg text-xs font-bold shadow-xs transition-transform active:scale-95"
               >
-                <Facebook className="w-3.5 h-3.5 fill-white" />
-                <span>Facebook</span>
+                <Share2 className="w-3.5 h-3.5 fill-white" />
+                <span>Share2</span>
               </a>
 
-              {/* Twitter / X */}
+              {/* Share2 / X */}
               <a
                 id="share-twitter-btn"
                 href={twitterShareUrl}
                 target="_blank"
                 rel="noreferrer"
-                title="Share on Twitter / X"
+                title="Share on Share2 / X"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-bold shadow-xs transition-transform active:scale-95"
               >
-                <Twitter className="w-3.5 h-3.5 fill-white" />
-                <span>Twitter / X</span>
+                <Share2 className="w-3.5 h-3.5 fill-white" />
+                <span>Share2 / X</span>
               </a>
 
               {/* Telegram */}
@@ -897,7 +864,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
                 <span className="bg-red-600 text-[10px] font-bold px-1.5 py-0.2 rounded text-white uppercase">Share</span>
               </h4>
               <p className="text-xs text-slate-300 mt-0.5">
-                Send this job alert directly to WhatsApp, Facebook, or Twitter so nobody misses the last date!
+                Send this job alert directly to WhatsApp, Share2, or Share2 so nobody misses the last date!
               </p>
             </div>
           </div>
@@ -921,8 +888,8 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
               rel="noreferrer"
               className="flex-1 sm:flex-none px-3.5 py-2 bg-[#1877F2] hover:bg-[#166fe5] text-white rounded-xl text-xs font-bold shadow-xs transition-transform active:scale-95 flex items-center justify-center gap-1.5"
             >
-              <Facebook className="w-4 h-4 fill-white" />
-              <span>Facebook</span>
+              <Share2 className="w-4 h-4 fill-white" />
+              <span>Share2</span>
             </a>
 
             <a
@@ -932,8 +899,8 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
               rel="noreferrer"
               className="flex-1 sm:flex-none px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold border border-slate-700 shadow-xs transition-transform active:scale-95 flex items-center justify-center gap-1.5"
             >
-              <Twitter className="w-4 h-4 fill-white" />
-              <span>Twitter</span>
+              <Share2 className="w-4 h-4 fill-white" />
+              <span>Share2</span>
             </a>
 
             <button

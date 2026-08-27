@@ -63,7 +63,6 @@ export const Header: React.FC<HeaderProps> = ({
   const moreNavLinks = [
     { name: 'Cyber Cafe Workspace', path: '/workspace' },
     { name: 'Scholarship', path: '/category/scholarship' },
-    { name: 'Dashboard & Wallet', path: '/wallet' },
     { name: 'Contact Us', path: '/contact' },
   ];
 
@@ -258,12 +257,7 @@ export const Header: React.FC<HeaderProps> = ({
               <Printer className="w-3 h-3" />
               <span>Print Services</span>
             </button>
-            <button
-              onClick={() => handleNavClick('/wallet')}
-              className="text-[11px] font-bold text-white bg-emerald-600 px-2 py-1 rounded hover:bg-emerald-500 transition-colors cursor-pointer flex items-center gap-1"
-            >
-              <span>Wallet</span>
-            </button>
+            
 
             {isAuthenticated ? (
               <button
@@ -316,12 +310,7 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Printer className="w-4 h-4" /> Print Services
             </button>
-            <button
-              onClick={() => handleNavClick('/wallet')}
-              className="w-full text-left py-2 px-3 rounded text-emerald-400 font-bold hover:bg-[#132C52] hover:text-white flex items-center gap-2"
-            >
-              Wallet
-            </button>
+            
             <div className="h-px bg-slate-700 my-1"></div>
             <button
               onClick={() => {

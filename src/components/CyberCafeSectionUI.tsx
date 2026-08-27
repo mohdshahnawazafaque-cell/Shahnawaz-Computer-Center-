@@ -1,13 +1,13 @@
 import React from 'react';
 import { Terminal, Flame, LayoutGrid, Monitor } from 'lucide-react';
-import { ALL_TOOLS } from '../data/cyberCafeData';
+import { CYBER_CAFE_TOOLS } from '../data/cyberCafeData';
 
 interface CyberCafeSectionUIProps {
   onNavigate: (path: string) => void;
 }
 
 export const CyberCafeSectionUI: React.FC<CyberCafeSectionUIProps> = ({ onNavigate }) => {
-  const quickTools = ALL_TOOLS.filter(t => t.isQuickTool).slice(0, 4);
+  const quickTools = CYBER_CAFE_TOOLS.filter(t => t.componentKey === 'DAILY_USE').slice(0, 4);
 
   return (
     <section className="w-full mb-6 print:hidden">
@@ -57,7 +57,7 @@ export const CyberCafeSectionUI: React.FC<CyberCafeSectionUIProps> = ({ onNaviga
                     <div 
                       key={`home-qt-${tool.id}`}
                       onClick={() => {
-                        if (tool.toolType === 'application_form') {
+                        if (tool.componentKey === 'application_form') {
                           onNavigate(`/workspace/application/${tool.id}`);
                         } else {
                           onNavigate(`/workspace/tool/${tool.id}`);
@@ -69,7 +69,7 @@ export const CyberCafeSectionUI: React.FC<CyberCafeSectionUIProps> = ({ onNaviga
                         <Icon className="w-4 h-4" />
                       </div>
                       <span className="text-slate-300 group-hover:text-white text-xs font-bold line-clamp-1">
-                        {tool.title}
+                        {tool.name}
                       </span>
                     </div>
                   )

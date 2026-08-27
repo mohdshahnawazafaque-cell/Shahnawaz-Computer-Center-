@@ -30,12 +30,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             >
               <Printer className="w-5 h-5" /> Quick Print Services
             </button>
-            <button 
-              onClick={() => onNavigate('/wallet')}
-              className="px-6 py-3 bg-[#0B2545] hover:bg-slate-800 text-amber-400 rounded-xl font-black uppercase tracking-wider flex items-center gap-2 transition-colors"
-            >
-              <Landmark className="w-5 h-5" /> Manage Wallet
-            </button>
           </div>
         </div>
 
@@ -99,7 +93,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
           
         </div>
-
       </div>
     </div>
   );
