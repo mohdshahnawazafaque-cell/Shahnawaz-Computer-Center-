@@ -148,10 +148,10 @@ export const ServicesFAQSection: React.FC = () => {
   return (
     <section
       id="services-faq-section"
-      className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-10 space-y-6"
+      className="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm p-6 sm:p-10 space-y-6"
     >
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-100 pb-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-100 dark:border-slate-700 pb-6">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-red-50 text-red-700 border border-red-200">
             <HelpCircle className="w-3.5 h-3.5" />
@@ -160,7 +160,7 @@ export const ServicesFAQSection: React.FC = () => {
           <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-[#0B2545] uppercase tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
             Essential guidelines on online exam application forms, admit cards, document specifications, and cyber cafe services at Shahnawaz Computer Center.
           </p>
         </div>
@@ -170,14 +170,14 @@ export const ServicesFAQSection: React.FC = () => {
           <button
             type="button"
             onClick={expandAll}
-            className="text-xs font-bold text-slate-600 hover:text-[#0B2545] px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+            className="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-[#0B2545] px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 rounded-lg transition-colors"
           >
             Expand All
           </button>
           <button
             type="button"
             onClick={collapseAll}
-            className="text-xs font-bold text-slate-600 hover:text-[#0B2545] px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+            className="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-[#0B2545] px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 rounded-lg transition-colors"
           >
             Collapse All
           </button>
@@ -203,7 +203,7 @@ export const ServicesFAQSection: React.FC = () => {
                 className={`px-3 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all text-xs ${
                   selectedCategory === cat.id
                     ? 'bg-[#0B2545] text-white shadow-xs'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    : 'bg-slate-100 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
                 }`}
               >
                 {cat.label}
@@ -219,7 +219,7 @@ export const ServicesFAQSection: React.FC = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search questions or keywords..."
-              className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium placeholder-slate-400"
+              className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-xl focus:bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium placeholder-slate-400"
             />
           </div>
         </div>
@@ -228,10 +228,10 @@ export const ServicesFAQSection: React.FC = () => {
       {/* Accordion List */}
       <div className="space-y-3 divide-y divide-slate-100">
         {filteredFaqs.length === 0 ? (
-          <div className="py-12 text-center text-slate-400 bg-slate-50 rounded-2xl border border-dashed border-slate-200 space-y-2">
+          <div className="py-12 text-center text-slate-400 bg-slate-50 dark:bg-slate-700 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700 space-y-2">
             <HelpCircle className="w-8 h-8 mx-auto text-slate-300" />
-            <p className="text-xs font-bold text-slate-700">No matching questions found</p>
-            <p className="text-[11px] text-slate-500">Try changing your search query or select another category above.</p>
+            <p className="text-xs font-bold text-slate-700 dark:text-slate-200">No matching questions found</p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">Try changing your search query or select another category above.</p>
             <button
               type="button"
               onClick={() => {
@@ -257,19 +257,19 @@ export const ServicesFAQSection: React.FC = () => {
                   type="button"
                   onClick={() => toggleAccordion(faq.id)}
                   aria-expanded={isOpen}
-                  className="w-full text-left p-4 rounded-2xl bg-slate-50/70 hover:bg-slate-100/90 border border-slate-200/80 transition-all flex items-start justify-between gap-4 group"
+                  className="w-full text-left p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/70 hover:bg-slate-100 dark:bg-slate-800/50/90 border border-slate-200 dark:border-slate-700/80 transition-all flex items-start justify-between gap-4 group"
                 >
                   <div className="space-y-1">
                     <span className="text-[10px] font-black uppercase tracking-wider text-blue-800 bg-blue-100/80 px-2 py-0.5 rounded-md inline-block">
                       {faq.categoryLabel}
                     </span>
-                    <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-blue-900 transition-colors leading-snug">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-900 transition-colors leading-snug">
                       {faq.question}
                     </h3>
                   </div>
 
                   <div
-                    className={`p-1.5 rounded-full bg-white border border-slate-200 text-slate-600 transition-transform duration-200 shrink-0 ${
+                    className={`p-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 transition-transform duration-200 shrink-0 ${
                       isOpen ? 'rotate-180 bg-blue-50 text-blue-700' : 'group-hover:translate-y-0.5'
                     }`}
                   >
@@ -279,8 +279,8 @@ export const ServicesFAQSection: React.FC = () => {
 
                 {/* Collapsible Answer Body */}
                 {isOpen && (
-                  <div className="p-4 sm:p-5 text-xs sm:text-sm text-slate-700 leading-relaxed bg-white border-x border-b border-slate-200 rounded-b-2xl -mt-1 space-y-3 animate-in fade-in-50 duration-150">
-                    <p className="whitespace-pre-line text-slate-600 leading-relaxed">
+                  <div className="p-4 sm:p-5 text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed bg-white dark:bg-slate-800 border-x border-b border-slate-200 dark:border-slate-700 rounded-b-2xl -mt-1 space-y-3 animate-in fade-in-50 duration-150">
+                    <p className="whitespace-pre-line text-slate-600 dark:text-slate-300 leading-relaxed">
                       {faq.answer}
                     </p>
 

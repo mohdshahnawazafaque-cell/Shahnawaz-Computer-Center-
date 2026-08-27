@@ -9,6 +9,7 @@ import {
   CategoryType, 
   ToolItem 
 } from '../data/cyberCafeData';
+import { SEOHead } from '../components/SEOHead';
 
 interface CyberCafeHubPageProps {
   onNavigate: (path: string) => void;
@@ -38,6 +39,12 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, 
 
   return (
     <div className="w-full bg-[#f8fafc] min-h-screen pb-16 print:hidden font-sans">
+      <SEOHead 
+        title="Cyber Cafe Workspace Hub | Shahnawaz Computer Center"
+        description="Comprehensive toolkit for Cyber Cafe owners and operators. Online form filling applications, essential portals, format builders, and workflow automation."
+        keywords="Cyber cafe tools, CSC VLE hub, Online form builder, Admit card print, Photo resizer for forms, Shahnawaz Computer Center"
+        canonicalUrl={window.location.origin + '/workspace'}
+      />
       {/* Premium Hero Header */}
       <div className="bg-[#0f172a] text-white pt-10 pb-16 px-4 border-b border-slate-800 shadow-xl relative overflow-hidden">
         {/* Abstract background shapes */}
@@ -49,7 +56,7 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, 
             <div className="flex justify-center mb-2">
                <button 
                   onClick={() => onNavigate('/')}
-                  className="px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 rounded-full text-slate-300 transition-colors flex items-center gap-2 text-sm font-medium"
+                  className="px-4 py-2 bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 backdrop-blur-md border border-white/10 rounded-full text-slate-300 transition-colors flex items-center gap-2 text-sm font-medium"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Back to Main Site
@@ -76,7 +83,7 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, 
                 placeholder="टूल या आवेदन खोजें… (उदा. Photo Resize, जाति प्रमाणपत्र)" 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white/10 backdrop-blur-xl border border-white/20 text-white rounded-2xl pl-14 pr-6 py-5 focus:outline-none focus:ring-4 focus:ring-indigo-500/40 focus:border-indigo-400 font-medium placeholder:text-slate-400 text-lg transition-all shadow-2xl"
+                className="w-full bg-white dark:bg-slate-800/10 backdrop-blur-xl border border-white/20 text-white rounded-2xl pl-14 pr-6 py-5 focus:outline-none focus:ring-4 focus:ring-indigo-500/40 focus:border-indigo-400 font-medium placeholder:text-slate-400 text-lg transition-all shadow-2xl"
               />
             </div>
           </div>
@@ -87,10 +94,10 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, 
         
         {/* Quick Tools Ribbon */}
         {!searchQuery && (
-          <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl shadow-slate-200/50 border border-slate-200 mb-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 sm:p-6 shadow-xl shadow-slate-200/50 border border-slate-200 dark:border-slate-700 mb-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 overflow-hidden">
             <div className="flex-shrink-0 text-center sm:text-left">
               <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Frequently Used</h3>
-              <p className="text-lg font-black text-slate-800">Quick Tools</p>
+              <p className="text-lg font-black text-slate-800 dark:text-slate-100">Quick Tools</p>
             </div>
             <div className="h-10 w-px bg-slate-200 hidden sm:block"></div>
             <div className="flex overflow-x-auto gap-2 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:pb-0 hide-scrollbar w-full">
@@ -100,7 +107,7 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, 
                   <button
                     key={`ribbon-${tool.id}`}
                     onClick={() => handleToolClick(tool)}
-                    className="flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-indigo-50 border border-slate-200 hover:border-indigo-200 text-slate-700 hover:text-indigo-700 rounded-xl font-bold text-sm transition-colors group"
+                    className="flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-700 hover:bg-indigo-50 border border-slate-200 dark:border-slate-700 hover:border-indigo-200 text-slate-700 dark:text-slate-200 hover:text-indigo-700 rounded-xl font-bold text-sm transition-colors group"
                   >
                     <Icon className="w-4 h-4 text-slate-400 group-hover:text-indigo-500" />
                     {tool.title}
@@ -115,8 +122,8 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, 
         <div className="space-y-12">
           
           {searchQuery ? (
-             <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200">
-               <h2 className="text-2xl font-black text-slate-900 mb-6 flex items-center gap-3">
+             <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200 dark:border-slate-700">
+               <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-6 flex items-center gap-3">
                   <Search className="w-6 h-6 text-indigo-500" />
                   Search Results for "{searchQuery}"
                </h2>
@@ -130,9 +137,9 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, 
 
                  if (filtered.length === 0) {
                     return (
-                      <div className="py-12 text-center text-slate-500">
+                      <div className="py-12 text-center text-slate-500 dark:text-slate-400">
                         <FileText className="w-16 h-16 text-slate-200 mx-auto mb-4" />
-                        <p className="text-xl font-bold text-slate-700">कोई परिणाम नहीं मिला</p>
+                        <p className="text-xl font-bold text-slate-700 dark:text-slate-200">कोई परिणाम नहीं मिला</p>
                         <p className="text-sm mt-1">कृपया कोई अन्य शब्द खोजें।</p>
                       </div>
                     );
@@ -152,16 +159,16 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, 
                 // Application Center has a custom layout
                 if (category.id === 'APPLICATION_CENTER') {
                   return (
-                    <div key={category.id} className="bg-white rounded-[2rem] p-6 sm:p-10 shadow-xl shadow-blue-900/5 border border-slate-200 overflow-hidden relative">
+                    <div key={category.id} className="bg-white dark:bg-slate-800 rounded-[2rem] p-6 sm:p-10 shadow-xl shadow-blue-900/5 border border-slate-200 dark:border-slate-700 overflow-hidden relative">
                        <div className="absolute top-0 right-0 p-10 opacity-[0.03] pointer-events-none">
                          <category.icon className="w-64 h-64" />
                        </div>
                        
                        <div className="relative z-10 mb-10 text-center sm:text-left">
-                         <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                         <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
                            {category.label.replace(/^\d+\.\s*/, '')}
                          </h2>
-                         <p className="text-slate-500 font-medium mt-2 text-lg">
+                         <p className="text-slate-500 dark:text-slate-400 font-medium mt-2 text-lg">
                            सभी जरूरी आवेदन और प्रार्थना पत्र एक ही जगह। जानकारी भरें → Preview → PDF बनाएं → Print
                          </p>
                        </div>
@@ -172,8 +179,8 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, 
                            if(subApps.length === 0) return null;
                            
                            return (
-                             <div key={sub.id} className="pt-6 border-t border-slate-100 first:border-0 first:pt-0">
-                               <h3 className="text-xl font-black text-slate-800 flex items-center gap-2 mb-4">
+                             <div key={sub.id} className="pt-6 border-t border-slate-100 dark:border-slate-700 first:border-0 first:pt-0">
+                               <h3 className="text-xl font-black text-slate-800 dark:text-slate-100 flex items-center gap-2 mb-4">
                                  <sub.icon className="w-5 h-5 text-indigo-500" />
                                  {sub.label}
                                </h3>
@@ -182,17 +189,17 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, 
                                     <div 
                                       key={app.id}
                                       onClick={() => handleToolClick(app)}
-                                      className="flex items-center justify-between p-3 sm:p-4 bg-slate-50 hover:bg-indigo-50 border border-slate-200 hover:border-indigo-200 rounded-xl cursor-pointer transition-colors group"
+                                      className="flex items-center justify-between p-3 sm:p-4 bg-slate-50 dark:bg-slate-700 hover:bg-indigo-50 border border-slate-200 dark:border-slate-700 hover:border-indigo-200 rounded-xl cursor-pointer transition-colors group"
                                     >
                                       <div>
-                                        <p className="font-bold text-slate-800 group-hover:text-indigo-700 text-sm leading-tight">
+                                        <p className="font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-700 text-sm leading-tight">
                                           {app.title}
                                         </p>
-                                        <p className="text-[11px] text-slate-500 mt-0.5 font-medium flex items-center gap-1">
+                                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 font-medium flex items-center gap-1">
                                           आवेदन खोलें
                                         </p>
                                       </div>
-                                      <div className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-indigo-500 group-hover:border-indigo-200 transition-colors shrink-0">
+                                      <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 group-hover:text-indigo-500 group-hover:border-indigo-200 transition-colors shrink-0">
                                         <ChevronRight className="w-4 h-4" />
                                       </div>
                                     </div>
@@ -211,13 +218,13 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate, 
                 if (tools.length === 0) return null;
 
                 return (
-                  <div key={category.id} className="bg-white rounded-[2rem] p-6 sm:p-10 shadow-sm border border-slate-200">
-                    <div className="flex items-center gap-4 mb-8 pb-4 border-b border-slate-100">
+                  <div key={category.id} className="bg-white dark:bg-slate-800 rounded-[2rem] p-6 sm:p-10 shadow-sm border border-slate-200 dark:border-slate-700">
+                    <div className="flex items-center gap-4 mb-8 pb-4 border-b border-slate-100 dark:border-slate-700">
                       <div className="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center shrink-0">
                         <category.icon className="w-7 h-7" />
                       </div>
                       <div>
-                        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                           {category.label.replace(/^\d+\.\s*/, '')}
                         </h2>
                       </div>
@@ -244,20 +251,20 @@ const ToolCard = ({ tool, onClick }: { tool: ToolItem, onClick: () => void }) =>
   return (
     <div 
       onClick={onClick}
-      className="bg-white border border-slate-200 hover:border-indigo-300 p-4 sm:p-5 rounded-2xl cursor-pointer hover:shadow-xl hover:shadow-indigo-900/5 hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between h-full"
+      className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-indigo-300 p-4 sm:p-5 rounded-2xl cursor-pointer hover:shadow-xl hover:shadow-indigo-900/5 hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between h-full"
     >
       <div>
-        <div className="w-12 h-12 rounded-xl bg-slate-50 group-hover:bg-indigo-50 text-slate-400 group-hover:text-indigo-600 flex items-center justify-center mb-4 transition-colors">
+        <div className="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-700 group-hover:bg-indigo-50 text-slate-400 group-hover:text-indigo-600 flex items-center justify-center mb-4 transition-colors">
           <Icon className="w-6 h-6" />
         </div>
-        <h4 className="font-bold text-sm sm:text-base text-slate-900 group-hover:text-indigo-700 leading-tight mb-2">
+        <h4 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white group-hover:text-indigo-700 leading-tight mb-2">
           {tool.title}
         </h4>
-        <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+        <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
           {tool.description}
         </p>
       </div>
-      <div className="mt-4 pt-3 border-t border-slate-100 font-bold text-[11px] text-indigo-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-1 group-hover:translate-y-0 uppercase tracking-wider">
+      <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 font-bold text-[11px] text-indigo-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-1 group-hover:translate-y-0 uppercase tracking-wider">
         Open Tool <ArrowLeft className="w-3 h-3 rotate-180" />
       </div>
     </div>

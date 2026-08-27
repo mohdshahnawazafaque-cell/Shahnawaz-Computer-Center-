@@ -13,9 +13,13 @@ import {
   Rss,
   Bell,
   BellRing,
+  Sun,
+  Moon,
+  Printer,
 } from 'lucide-react';
 import { useSettings } from '../context/SettingsContext';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { RssFeedModal } from './RssFeedModal';
 import { getNotificationPermissionState, getExistingPushSubscription } from '../utils/pushManager';
 
@@ -36,6 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const { settings } = useSettings();
   const { isAuthenticated } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
   const [isRssModalOpen, setIsRssModalOpen] = useState(false);
@@ -73,7 +78,7 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header id="main-sarkari-header" className="w-full bg-white select-none">
+    <header id="main-sarkari-header" className="w-full bg-white dark:bg-slate-800 select-none">
       {/* 1. TOP BRAND RED BANNER */}
       <div className="bg-[#990000] text-white py-4 px-4 text-center border-b-2 border-[#770000] shadow-sm">
         <div className="max-w-6xl mx-auto flex flex-col items-center justify-center cursor-pointer" onClick={() => handleNavClick('/')}>
@@ -200,6 +205,13 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
 
               <button
+                onClick={toggleTheme}
+                className="p-1.5 rounded text-white hover:bg-[#132C52]"
+                aria-label="Toggle Theme"
+              >
+                {theme === 'dark' ? <Sun className="w-5 h-5 text-amber-300" /> : <Moon className="w-5 h-5 text-amber-300" />}
+              </button>
+              <button
                 onClick={onOpenSearch}
                 className="p-1.5 rounded text-white hover:bg-[#132C52]"
                 aria-label="Search"
@@ -226,12 +238,35 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <button
+              id="header-theme-toggle-btn"
+              onClick={toggleTheme}
+              className="p-2 text-amber-300 hover:text-white hover:bg-[#132C52] rounded transition-colors cursor-pointer"
+              title="Toggle Dark Mode"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+
+            <button
               id="header-search-icon-btn"
               onClick={onOpenSearch}
               className="p-2 text-amber-300 hover:text-white hover:bg-[#132C52] rounded transition-colors cursor-pointer"
               title="Search Vacancy, Result, Admit Card"
             >
               <Search className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={() => handleNavClick('/print-services')}
+              className="text-[11px] font-bold text-amber-300 bg-[#990000] border border-amber-300 px-2 py-1 rounded hover:bg-amber-400 hover:text-[#990000] transition-colors cursor-pointer flex items-center gap-1"
+            >
+              <Printer className="w-3 h-3" />
+              <span>Print Services</span>
+            </button>
+            <button
+              onClick={() => handleNavClick('/wallet')}
+              className="text-[11px] font-bold text-white bg-emerald-600 px-2 py-1 rounded hover:bg-emerald-500 transition-colors cursor-pointer flex items-center gap-1"
+            >
+              <span>Wallet</span>
             </button>
 
             {isAuthenticated ? (
@@ -278,6 +313,20 @@ export const Header: React.FC<HeaderProps> = ({
                 {link.name}
               </button>
             ))}
+            <div className="h-px bg-slate-700 my-1"></div>
+            <button
+              onClick={() => handleNavClick('/print-services')}
+              className="w-full text-left py-2 px-3 rounded text-amber-300 font-bold hover:bg-[#132C52] hover:text-white flex items-center gap-2"
+            >
+              <Printer className="w-4 h-4" /> Print Services
+            </button>
+            <button
+              onClick={() => handleNavClick('/wallet')}
+              className="w-full text-left py-2 px-3 rounded text-emerald-400 font-bold hover:bg-[#132C52] hover:text-white flex items-center gap-2"
+            >
+              Wallet
+            </button>
+            <div className="h-px bg-slate-700 my-1"></div>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

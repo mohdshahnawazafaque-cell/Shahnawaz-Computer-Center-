@@ -93,7 +93,7 @@ export const RssFeedModal: React.FC<RssFeedModalProps> = ({ isOpen, onClose }) =
     >
       <div
         id="rss-feed-modal-container"
-        className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200"
+        className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -114,14 +114,14 @@ export const RssFeedModal: React.FC<RssFeedModalProps> = ({ isOpen, onClose }) =
           <button
             id="rss-modal-close-btn"
             onClick={onClose}
-            className="p-1.5 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+            className="p-1.5 text-slate-300 hover:text-white hover:bg-white dark:bg-slate-800/10 rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-5 overflow-y-auto space-y-4 text-slate-800 flex-1">
+        <div className="p-5 overflow-y-auto space-y-4 text-slate-800 dark:text-slate-100 flex-1">
           {/* Quick Explainer */}
           <div className="bg-amber-50 border border-amber-200 p-3.5 rounded-xl text-xs text-amber-900 flex items-start gap-3">
             <Info className="w-5 h-5 text-amber-700 flex-shrink-0 mt-0.5" />
@@ -143,7 +143,7 @@ export const RssFeedModal: React.FC<RssFeedModalProps> = ({ isOpen, onClose }) =
                 <div
                   key={feed.id}
                   id={`rss-feed-item-${feed.id}`}
-                  className="p-3.5 rounded-xl border border-slate-200 hover:border-blue-400 bg-slate-50/50 hover:bg-blue-50/20 transition-all space-y-2.5"
+                  className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-400 bg-slate-50 dark:bg-slate-700/50 hover:bg-blue-50/20 transition-all space-y-2.5"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-start gap-2.5">
@@ -152,19 +152,19 @@ export const RssFeedModal: React.FC<RssFeedModalProps> = ({ isOpen, onClose }) =
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <h4 className="font-bold text-sm text-slate-900">{feed.title}</h4>
+                          <h4 className="font-bold text-sm text-slate-900 dark:text-white">{feed.title}</h4>
                           <span className={`text-[10px] font-black px-2 py-0.5 rounded ${feed.badgeColor}`}>
                             {feed.badge}
                           </span>
                         </div>
-                        <p className="text-xs text-slate-600 mt-0.5 leading-snug">{feed.description}</p>
+                        <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5 leading-snug">{feed.description}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* URL Box & Actions */}
                   <div className="flex items-center gap-2 pt-1">
-                    <div className="flex-1 bg-white border border-slate-300 rounded-lg px-3 py-1.5 font-mono text-[11px] text-slate-700 truncate select-all">
+                    <div className="flex-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 font-mono text-[11px] text-slate-700 dark:text-slate-200 truncate select-all">
                       {feed.url}
                     </div>
 
@@ -196,7 +196,7 @@ export const RssFeedModal: React.FC<RssFeedModalProps> = ({ isOpen, onClose }) =
                       href={feed.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="px-2.5 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-lg text-xs font-bold flex items-center gap-1 transition-colors flex-shrink-0"
+                      className="px-2.5 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-800 dark:text-slate-100 rounded-lg text-xs font-bold flex items-center gap-1 transition-colors flex-shrink-0"
                       title="Open XML Feed in browser"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
@@ -209,8 +209,8 @@ export const RssFeedModal: React.FC<RssFeedModalProps> = ({ isOpen, onClose }) =
           </div>
 
           {/* Quick Reader Integrations */}
-          <div className="bg-slate-100 p-3.5 rounded-xl border border-slate-200 text-xs">
-            <h5 className="font-bold text-slate-900 mb-2 flex items-center gap-1.5">
+          <div className="bg-slate-100 dark:bg-slate-800/50 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
+            <h5 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-amber-500" />
               <span>Quick 1-Click Feed Reader Import:</span>
             </h5>
@@ -247,11 +247,11 @@ export const RssFeedModal: React.FC<RssFeedModalProps> = ({ isOpen, onClose }) =
         </div>
 
         {/* Footer */}
-        <div className="p-3.5 bg-slate-100 border-t border-slate-200 flex items-center justify-between text-xs text-slate-600">
+        <div className="p-3.5 bg-slate-100 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs text-slate-600 dark:text-slate-300">
           <span>Standards: <strong>RSS 2.0 & Atom</strong> • UTF-8 • Auto-updating</span>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 bg-slate-300 hover:bg-slate-400 text-slate-800 rounded-lg font-bold transition-colors"
+            className="px-4 py-1.5 bg-slate-300 hover:bg-slate-400 text-slate-800 dark:text-slate-100 rounded-lg font-bold transition-colors"
           >
             Close
           </button>

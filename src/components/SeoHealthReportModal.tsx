@@ -329,7 +329,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
       <div
         id="seo-health-report-modal"
-        className="bg-white text-slate-800 w-full max-w-6xl rounded-2xl shadow-2xl border border-slate-200 overflow-hidden my-auto flex flex-col max-h-[92vh]"
+        className="bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 w-full max-w-6xl rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden my-auto flex flex-col max-h-[92vh]"
       >
         {/* MODAL HEADER */}
         <div className="bg-gradient-to-r from-[#0B2545] via-[#133E68] to-[#0B2545] text-white px-5 py-4 flex items-center justify-between border-b border-blue-900/60 shrink-0">
@@ -355,7 +355,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+            className="w-9 h-9 rounded-xl bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 text-white flex items-center justify-center transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -382,7 +382,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
         )}
 
         {/* SCROLLABLE MAIN CONTENT */}
-        <div className="overflow-y-auto p-4 sm:p-6 space-y-6 flex-1 bg-slate-50/50">
+        <div className="overflow-y-auto p-4 sm:p-6 space-y-6 flex-1 bg-slate-50 dark:bg-slate-700/50">
           {/* TOP SECTION: GLOBAL SCORE & PERIODIC RUNNER BAR */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
             {/* Overall Score Card (4 cols) */}
@@ -394,7 +394,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                   <span className="text-xs uppercase font-bold text-slate-300 tracking-wider">
                     Portal SEO Health Score
                   </span>
-                  <span className="text-[10px] bg-white/10 text-blue-200 px-2 py-0.5 rounded font-mono font-bold">
+                  <span className="text-[10px] bg-white dark:bg-slate-800/10 text-blue-200 px-2 py-0.5 rounded font-mono font-bold">
                     Grade {report?.averageGrade || 'A'}
                   </span>
                 </div>
@@ -446,8 +446,8 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
 
             {/* Quick Metrics Breakdown (5 cols) */}
             <div className="lg:col-span-5 grid grid-cols-2 gap-3">
-              <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs flex flex-col justify-between">
-                <div className="flex items-center justify-between text-xs font-bold text-slate-500">
+              <div className="bg-white dark:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs flex flex-col justify-between">
+                <div className="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
                   <span>Fully Optimized</span>
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 </div>
@@ -457,8 +457,8 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                 <div className="text-[10px] text-slate-400 font-semibold">Score 90-100 (Google Ready)</div>
               </div>
 
-              <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs flex flex-col justify-between">
-                <div className="flex items-center justify-between text-xs font-bold text-slate-500">
+              <div className="bg-white dark:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs flex flex-col justify-between">
+                <div className="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
                   <span>Good / Minor Adjust</span>
                   <AlertTriangle className="w-4 h-4 text-blue-600" />
                 </div>
@@ -468,8 +468,8 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                 <div className="text-[10px] text-slate-400 font-semibold">Score 75-89 (Solid SEO)</div>
               </div>
 
-              <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs flex flex-col justify-between">
-                <div className="flex items-center justify-between text-xs font-bold text-slate-500">
+              <div className="bg-white dark:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs flex flex-col justify-between">
+                <div className="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
                   <span>Warnings Detected</span>
                   <AlertTriangle className="w-4 h-4 text-amber-600" />
                 </div>
@@ -479,8 +479,8 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                 <div className="text-[10px] text-slate-400 font-semibold">Score 50-74 (Needs Attention)</div>
               </div>
 
-              <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs flex flex-col justify-between">
-                <div className="flex items-center justify-between text-xs font-bold text-slate-500">
+              <div className="bg-white dark:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs flex flex-col justify-between">
+                <div className="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
                   <span>Critical SEO Risks</span>
                   <AlertCircle className="w-4 h-4 text-rose-600" />
                 </div>
@@ -492,10 +492,10 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
             </div>
 
             {/* Automated Periodic Runner Config Card (3 cols) */}
-            <div className="lg:col-span-3 bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs flex flex-col justify-between">
+            <div className="lg:col-span-3 bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                  <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-700">
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
                     <Clock className="w-3.5 h-3.5 text-blue-600" />
                     <span>Auto-Check Schedule</span>
                   </span>
@@ -505,7 +505,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                     className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase transition-colors ${
                       isAutoRunEnabled
                         ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200'
-                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                        : 'bg-slate-100 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
                     }`}
                   >
                     {isAutoRunEnabled ? '● Active' : '○ Paused'}
@@ -513,7 +513,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                 </div>
 
                 <div className="mt-3 space-y-2">
-                  <div className="text-[11px] text-slate-500 font-medium">
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
                     Audit Frequency:
                   </div>
                   <div className="grid grid-cols-3 gap-1 text-xs">
@@ -529,7 +529,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                         className={`py-1 rounded font-bold text-[11px] border transition-colors ${
                           autoRunIntervalMinutes === opt.val
                             ? 'bg-[#0B2545] text-white border-[#0B2545]'
-                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                            : 'bg-slate-50 dark:bg-slate-700 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:bg-slate-800/50'
                         }`}
                       >
                         {opt.label}
@@ -538,7 +538,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                   </div>
 
                   {isAutoRunEnabled && (
-                    <div className="mt-2 text-[10px] text-slate-500 flex items-center justify-between font-mono bg-slate-50 p-1.5 rounded border border-slate-100">
+                    <div className="mt-2 text-[10px] text-slate-500 dark:text-slate-400 flex items-center justify-between font-mono bg-slate-50 dark:bg-slate-700 p-1.5 rounded border border-slate-100 dark:border-slate-700">
                       <span>Next auto-scan in:</span>
                       <span className="font-bold text-blue-700">{formatCountdown(nextScanSeconds)}</span>
                     </div>
@@ -546,7 +546,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                 </div>
               </div>
 
-              <div className="mt-3 pt-2 border-t border-slate-100">
+              <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700">
                 <button
                   type="button"
                   onClick={() => executeAudit(false)}
@@ -576,7 +576,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                 {report.topMissingTags.map((item, idx) => (
                   <div
                     key={idx}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-amber-300 text-xs font-bold text-slate-800 shadow-2xs"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-amber-300 text-xs font-bold text-slate-800 dark:text-slate-100 shadow-2xs"
                   >
                     <span
                       className={`w-2 h-2 rounded-full ${
@@ -594,7 +594,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
           )}
 
           {/* ACTION & FILTER TOOLBAR */}
-          <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div className="bg-white dark:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2 flex-1">
               {/* Search Bar */}
               <div className="relative flex-1 min-w-[200px] max-w-sm">
@@ -604,7 +604,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search posts in audit..."
-                  className="w-full text-xs pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                  className="w-full text-xs pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
                 />
               </div>
 
@@ -624,7 +624,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                     className={`px-2.5 py-1 rounded-lg font-bold text-[11px] whitespace-nowrap transition-colors ${
                       severityFilter === f.id
                         ? 'bg-[#0B2545] text-white shadow-2xs'
-                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                        : 'bg-slate-100 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
                     }`}
                   >
                     {f.label}
@@ -636,7 +636,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
               <select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value)}
-                className="text-xs py-1.5 px-2.5 bg-slate-50 border border-slate-300 rounded-lg font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="text-xs py-1.5 px-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-bold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Types</option>
                 <option value="job">Jobs</option>
@@ -665,7 +665,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                   type="button"
                   onClick={handleExportMarkdown}
                   title="Download Markdown Report"
-                  className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg border border-slate-200 flex items-center gap-1 transition-colors"
+                  className="px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 flex items-center gap-1 transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Report.md</span>
@@ -674,7 +674,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                   type="button"
                   onClick={handleExportJson}
                   title="Download JSON Report"
-                  className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg border border-slate-200 flex items-center gap-1 transition-colors"
+                  className="px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 flex items-center gap-1 transition-colors"
                 >
                   <Code className="w-3.5 h-3.5" />
                   <span>JSON</span>
@@ -685,13 +685,13 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
 
           {/* POST DIAGNOSTIC ITEMS LIST */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between text-xs font-bold text-slate-500 px-1">
+            <div className="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400 px-1">
               <span>Showing {filteredPosts.length} Posts Analyzed</span>
               <span>Click any post card to view comprehensive diagnostic details & optimization tips</span>
             </div>
 
             {filteredPosts.length === 0 ? (
-              <div className="p-12 text-center bg-white rounded-xl border border-slate-200 text-slate-400 font-medium">
+              <div className="p-12 text-center bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-400 font-medium">
                 No posts match the selected SEO health filter.
               </div>
             ) : (
@@ -703,16 +703,16 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                 return (
                   <div
                     key={auditRes.postId}
-                    className={`bg-white rounded-xl border transition-all duration-200 shadow-2xs overflow-hidden ${
+                    className={`bg-white dark:bg-slate-800 rounded-xl border transition-all duration-200 shadow-2xs overflow-hidden ${
                       auditRes.criticalCount > 0
                         ? 'border-rose-200 hover:border-rose-300'
                         : auditRes.warningCount > 0
                         ? 'border-amber-200 hover:border-amber-300'
-                        : 'border-slate-200 hover:border-blue-300'
+                        : 'border-slate-200 dark:border-slate-700 hover:border-blue-300'
                     }`}
                   >
                     {/* CARD HEADER ROW */}
-                    <div className="p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white">
+                    <div className="p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white dark:bg-slate-800">
                       {/* Left: Score Badge & Title */}
                       <div className="flex items-start gap-3 flex-1">
                         {/* Score Circle */}
@@ -762,21 +762,21 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                             )}
                           </div>
 
-                          <h4 className="font-bold text-slate-900 text-sm leading-snug line-clamp-1">
+                          <h4 className="font-bold text-slate-900 dark:text-white text-sm leading-snug line-clamp-1">
                             {auditRes.postTitle}
                           </h4>
 
                           {/* Quick Tag Summary Line */}
-                          <div className="flex flex-wrap items-center gap-3 mt-1.5 text-[11px] text-slate-500 font-medium">
+                          <div className="flex flex-wrap items-center gap-3 mt-1.5 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
                             <span className="flex items-center gap-1">
                               <FileText className="w-3 h-3 text-slate-400" />
-                              <span className="font-mono text-slate-700">
+                              <span className="font-mono text-slate-700 dark:text-slate-200">
                                 Title: {auditRes.currentMeta.seoTitle.length}ch
                               </span>
                             </span>
                             <span className="flex items-center gap-1">
                               <Globe className="w-3 h-3 text-slate-400" />
-                              <span className="font-mono text-slate-700">
+                              <span className="font-mono text-slate-700 dark:text-slate-200">
                                 Desc: {auditRes.currentMeta.metaDescription.length}/160ch
                               </span>
                             </span>
@@ -820,7 +820,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                         <button
                           type="button"
                           onClick={() => setExpandedPostId(isExpanded ? null : auditRes.postId)}
-                          className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+                          className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 text-slate-700 dark:text-slate-200 transition-colors"
                         >
                           {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                         </button>
@@ -829,22 +829,22 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
 
                     {/* EXPANDABLE DETAILED DIAGNOSTIC & SUGGESTIONS ACCORDION */}
                     {isExpanded && (
-                      <div className="border-t border-slate-200 bg-slate-50/80 p-4 sm:p-5 space-y-4">
+                      <div className="border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/80 p-4 sm:p-5 space-y-4">
                         {/* Current Meta State Preview */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs bg-white dark:bg-slate-800 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs">
                           <div>
-                            <span className="font-bold text-slate-500 uppercase text-[10px] block mb-0.5">
+                            <span className="font-bold text-slate-500 dark:text-slate-400 uppercase text-[10px] block mb-0.5">
                               Current Search Meta Title (&lt;title&gt;)
                             </span>
-                            <div className="font-semibold text-slate-800 bg-slate-50 p-2 rounded border border-slate-200 font-mono text-[11px] break-words">
+                            <div className="font-semibold text-slate-800 dark:text-slate-100 bg-slate-50 dark:bg-slate-700 p-2 rounded border border-slate-200 dark:border-slate-700 font-mono text-[11px] break-words">
                               {auditRes.currentMeta.seoTitle || <span className="text-red-500 italic">Missing</span>}
                             </div>
                           </div>
                           <div>
-                            <span className="font-bold text-slate-500 uppercase text-[10px] block mb-0.5">
+                            <span className="font-bold text-slate-500 dark:text-slate-400 uppercase text-[10px] block mb-0.5">
                               Current Meta Description
                             </span>
-                            <div className="font-medium text-slate-700 bg-slate-50 p-2 rounded border border-slate-200 text-[11px] leading-relaxed break-words">
+                            <div className="font-medium text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-700 p-2 rounded border border-slate-200 dark:border-slate-700 text-[11px] leading-relaxed break-words">
                               {auditRes.currentMeta.metaDescription || <span className="text-red-500 italic">Missing</span>}
                             </div>
                           </div>
@@ -852,7 +852,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
 
                         {/* Audit Issues & Smart Suggestions */}
                         <div className="space-y-2">
-                          <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                          <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
                             <Info className="w-3.5 h-3.5 text-blue-600" />
                             <span>Detailed Audit Findings & Actionable Recommendations</span>
                           </h5>
@@ -886,7 +886,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
                                       <div className="font-bold text-xs">{issue.title}</div>
                                       <div className="text-[11px] opacity-90 mt-0.5">{issue.message}</div>
                                       {issue.suggestion && (
-                                        <div className="mt-1.5 p-2 rounded bg-white/75 border border-current/20 text-[11px] font-semibold">
+                                        <div className="mt-1.5 p-2 rounded bg-white dark:bg-slate-800/75 border border-current/20 text-[11px] font-semibold">
                                           💡 <span className="font-bold">Recommendation:</span> {issue.suggestion}
                                         </div>
                                       )}
@@ -921,8 +921,8 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
         </div>
 
         {/* MODAL FOOTER */}
-        <div className="bg-slate-100 border-t border-slate-200 px-5 py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
-          <div className="text-xs text-slate-500 font-medium">
+        <div className="bg-slate-100 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-700 px-5 py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
+          <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
             Automated SEO health checks update whenever posts are created, modified, or auto-fixed.
           </div>
 
@@ -930,7 +930,7 @@ export const SeoHealthReportModal: React.FC<SeoHealthReportModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 bg-white hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg border border-slate-300 transition-colors shadow-2xs"
+              className="px-4 py-2 bg-white dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-600 transition-colors shadow-2xs"
             >
               Close Inspector
             </button>

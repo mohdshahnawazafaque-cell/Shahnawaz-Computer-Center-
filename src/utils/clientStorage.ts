@@ -239,3 +239,22 @@ export function likeClientCommentReply(commentId: string, replyId: string): numb
   }
   return 0;
 }
+import { Promotion } from '../types';
+import { INITIAL_PROMOTIONS } from '../../server/seedData';
+
+const PROMOTIONS_KEY = 'scc_offline_promotions';
+
+export function getClientPromotions(): Promotion[] {
+  try {
+    const raw = localStorage.getItem(PROMOTIONS_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch {}
+  return INITIAL_PROMOTIONS;
+}
+
+export function saveClientPromotions(promotions: Promotion[]): void {
+  try {
+    localStorage.setItem(PROMOTIONS_KEY, JSON.stringify(promotions));
+  } catch {}
+}
+

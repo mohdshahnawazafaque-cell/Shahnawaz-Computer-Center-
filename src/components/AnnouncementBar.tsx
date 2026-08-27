@@ -43,7 +43,7 @@ export const AnnouncementBar: React.FC<AnnouncementBarProps> = ({ onNavigate }) 
             <Zap className="w-3.5 h-3.5 fill-slate-950" />
             <span>{current.badge || 'BREAKING'}</span>
           </span>
-          <span className="hidden md:inline-block w-1.5 h-1.5 rounded-full bg-white/60"></span>
+          <span className="hidden md:inline-block w-1.5 h-1.5 rounded-full bg-white dark:bg-slate-800/60"></span>
         </div>
 
         {/* Announcement Text with animated transition */}

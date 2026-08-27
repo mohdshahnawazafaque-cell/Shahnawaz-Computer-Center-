@@ -216,6 +216,21 @@ export interface Advertisement {
   enabled: boolean;
 }
 
+export interface Promotion {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl?: string;
+  videoUrl?: string; // Can be a Youtube link or hosted video
+  contactNumber?: string;
+  whatsAppNumber?: string;
+  promotionalLink?: string;
+  isActive: boolean;
+  startDate?: string;
+  endDate?: string;
+  order: number;
+}
+
 export interface SiteSettings {
   websiteName: string;
   tagline: string;

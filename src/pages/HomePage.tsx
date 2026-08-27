@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { Post, PostType } from '../types';
 import { JobCard } from '../components/JobCard';
+import { SEOHead } from '../components/SEOHead';
 import { ComputerServicesSection } from '../components/ComputerServicesSection';
 import { ServicesFAQSection } from '../components/ServicesFAQSection';
 import { SarkariYojanaSection } from '../components/SarkariYojanaSection';
@@ -20,8 +21,9 @@ import { FarmerRegistrySection } from '../components/FarmerRegistrySection';
 import { AdPlacement } from '../components/AdPlacement';
 import { AISectionUI } from '../components/AISectionUI';
 import { CyberCafeSectionUI } from '../components/CyberCafeSectionUI';
+import { PromotionsCarousel } from '../components/PromotionsCarousel';
 import { useSettings } from '../context/SettingsContext';
-import { getClientPosts } from '../utils/clientStorage';
+import { getClientPosts, getClientPromotions } from '../utils/clientStorage';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
@@ -38,9 +40,20 @@ export const HomePage: React.FC<HomePageProps> = ({
 }) => {
   const { settings } = useSettings();
   const [posts, setPosts] = useState<Post[]>(() => getClientPosts());
+  const [promotions, setPromotions] = useState(() => getClientPromotions());
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    // Fetch promotions
+    fetch('/api/promotions')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+          setPromotions(data);
+        }
+      })
+      .catch(() => console.warn('Offline mode: Using local promotions data.'));
+
     const fetchPosts = async () => {
       try {
         const res = await fetch('/api/posts?limit=100');
@@ -192,11 +205,17 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   return (
     <div id="sarkari-result-home" className="min-h-screen bg-[#F4F6F9] pb-12 select-none">
+      <SEOHead 
+        title="SHAHNAWAZ COMPUTER CENTER - Sarkari Naukri, Results, Admit Card & Online Information Portal"
+        description="Official Information Portal for Sarkari Naukri, Government Jobs, Admit Card, Results, Answer Key, Syllabus, Sarkari Yojana, UP Scholarship & Online Forms by Shahnawaz Computer Center."
+        keywords="Sarkari Naukri, Sarkari Result, Admit Card, Latest Jobs, Answer Key, Syllabus, Shahnawaz Computer Center, Online Form Filling, UP Scholarship"
+        canonicalUrl={window.location.origin + '/'}
+      />
       <div className="max-w-6xl mx-auto px-2 sm:px-4 space-y-4 pt-3">
         
         {/* 1. OFFICIAL WEBSITE TAGLINE & LIVE TEST ALERT */}
         <section className="text-center space-y-2 py-1">
-          <p className="text-[13px] sm:text-sm md:text-[14.5px] font-bold text-slate-900 leading-snug max-w-4xl mx-auto">
+          <p className="text-[13px] sm:text-sm md:text-[14.5px] font-bold text-slate-900 dark:text-white leading-snug max-w-4xl mx-auto">
             {settings?.websiteName || 'SHAHNAWAZ COMPUTER CENTER'} – Get Online Form, Results, Admit Card, Answer Key, Syllabus, Career News, Government Schemes, Scholarship, Notification etc.{' '}
             <span className="inline-flex items-center gap-1 bg-[#007BFF] text-white text-xs px-2 py-0.5 rounded font-bold ml-1">
               🪪 Standardized & Admissions Tests
@@ -209,7 +228,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           {/* Green WhatsApp Channel Pill Button & Tools Link */}
           <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
             <a
-              href={settings?.whatsAppUrl || 'https://whatsapp.com/channel/0029VaShahnawazComputerCenter'}
+              href={settings?.whatsAppUrl || 'https://whatsapp.com/channel/0029VbDh3ZP3QxRsUixBEU1P'}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center px-5 py-2 bg-[#00C853] hover:bg-[#00B048] text-white font-black text-xs sm:text-sm rounded-lg shadow-sm transition-transform hover:scale-[1.02] cursor-pointer"
@@ -233,6 +252,9 @@ export const HomePage: React.FC<HomePageProps> = ({
             </button>
           </div>
         </section>
+
+        {/* PROMOTIONS & ADVERTISEMENTS SECTION */}
+        <PromotionsCarousel promotions={promotions} />
 
         {/* 2. ICONIC 8 MULTI-COLORED RECRUITMENT BLOCKS GRID (Exact match to screenshot Capture777.JPG) */}
         <section className="w-full">
@@ -314,7 +336,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
             
             {/* TABLE 1: RESULTS */}
-            <section id="table-results" className="bg-white border border-[#990000] shadow-2xs flex flex-col justify-between">
+            <section id="table-results" className="bg-white dark:bg-slate-800 border border-[#990000] shadow-2xs flex flex-col justify-between">
               <div>
                 <div className="bg-[#990000] text-white py-2 px-3 text-center border-b border-[#880000]">
                   <h2 className="text-base sm:text-lg font-black tracking-wide uppercase">
@@ -337,9 +359,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                         <div
                           key={idx}
                           onClick={() => onSelectPost(item.slug, item.type)}
-                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200/80 transition-colors cursor-pointer flex items-start gap-1.5"
+                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200 dark:border-slate-700/80 transition-colors cursor-pointer flex items-start gap-1.5"
                         >
-                          <span className="text-slate-800 font-black text-sm leading-tight select-none">•</span>
+                          <span className="text-slate-800 dark:text-slate-100 font-black text-sm leading-tight select-none">•</span>
                           <span className="text-[12.5px] font-semibold text-[#0000CC] hover:underline hover:text-[#990000] leading-tight">
                             {item.title}
                           </span>
@@ -349,7 +371,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
 
               {/* Blue View More Button at Bottom Right (Exact match to screenshot) */}
-              <div className="p-2.5 flex justify-end bg-white border-t border-slate-100">
+              <div className="p-2.5 flex justify-end bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
                 <button
                   onClick={() => onNavigate('/category/result')}
                   className="px-4 py-1 bg-[#007BFF] hover:bg-[#0069D9] text-white text-xs font-black rounded cursor-pointer shadow-2xs transition-colors"
@@ -360,7 +382,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </section>
 
             {/* TABLE 2: ADMIT CARDS */}
-            <section id="table-admit-cards" className="bg-white border border-[#990000] shadow-2xs flex flex-col justify-between">
+            <section id="table-admit-cards" className="bg-white dark:bg-slate-800 border border-[#990000] shadow-2xs flex flex-col justify-between">
               <div>
                 <div className="bg-[#990000] text-white py-2 px-3 text-center border-b border-[#880000]">
                   <h2 className="text-base sm:text-lg font-black tracking-wide uppercase">
@@ -382,9 +404,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                         <div
                           key={idx}
                           onClick={() => onSelectPost(item.slug, item.type)}
-                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200/80 transition-colors cursor-pointer flex items-start gap-1.5"
+                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200 dark:border-slate-700/80 transition-colors cursor-pointer flex items-start gap-1.5"
                         >
-                          <span className="text-slate-800 font-black text-sm leading-tight select-none">•</span>
+                          <span className="text-slate-800 dark:text-slate-100 font-black text-sm leading-tight select-none">•</span>
                           <span className="text-[12.5px] font-semibold text-[#0000CC] hover:underline hover:text-[#990000] leading-tight">
                             {item.title}
                           </span>
@@ -394,7 +416,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
 
               {/* Blue View More Button at Bottom Right */}
-              <div className="p-2.5 flex justify-end bg-white border-t border-slate-100">
+              <div className="p-2.5 flex justify-end bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
                 <button
                   onClick={() => onNavigate('/category/admit-card')}
                   className="px-4 py-1 bg-[#007BFF] hover:bg-[#0069D9] text-white text-xs font-black rounded cursor-pointer shadow-2xs transition-colors"
@@ -405,7 +427,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </section>
 
             {/* TABLE 3: LATEST JOBS */}
-            <section id="table-latest-jobs" className="bg-white border border-[#990000] shadow-2xs flex flex-col justify-between">
+            <section id="table-latest-jobs" className="bg-white dark:bg-slate-800 border border-[#990000] shadow-2xs flex flex-col justify-between">
               <div>
                 <div className="bg-[#990000] text-white py-2 px-3 text-center border-b border-[#880000]">
                   <h2 className="text-base sm:text-lg font-black tracking-wide uppercase">
@@ -427,9 +449,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                         <div
                           key={idx}
                           onClick={() => onSelectPost(item.slug, item.type)}
-                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200/80 transition-colors cursor-pointer flex items-start gap-1.5"
+                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200 dark:border-slate-700/80 transition-colors cursor-pointer flex items-start gap-1.5"
                         >
-                          <span className="text-slate-800 font-black text-sm leading-tight select-none">•</span>
+                          <span className="text-slate-800 dark:text-slate-100 font-black text-sm leading-tight select-none">•</span>
                           <span className="text-[12.5px] font-semibold text-[#0000CC] hover:underline hover:text-[#990000] leading-tight">
                             {item.title}
                           </span>
@@ -439,7 +461,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
 
               {/* Blue View More Button at Bottom Right */}
-              <div className="p-2.5 flex justify-end bg-white border-t border-slate-100">
+              <div className="p-2.5 flex justify-end bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
                 <button
                   onClick={() => onNavigate('/category/latest-jobs')}
                   className="px-4 py-1 bg-[#007BFF] hover:bg-[#0069D9] text-white text-xs font-black rounded cursor-pointer shadow-2xs transition-colors"
@@ -456,7 +478,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
             
             {/* TABLE 4: ANSWER KEY */}
-            <div id="table-answer-key" className="bg-white border border-[#990000] shadow-2xs flex flex-col justify-between">
+            <div id="table-answer-key" className="bg-white dark:bg-slate-800 border border-[#990000] shadow-2xs flex flex-col justify-between">
               <div>
                 <div className="bg-[#990000] text-white py-2 px-3 text-center border-b border-[#880000]">
                   <h3 className="text-base font-black tracking-wide uppercase">
@@ -478,9 +500,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                         <div
                           key={idx}
                           onClick={() => onSelectPost(item.slug, item.type)}
-                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200/80 transition-colors cursor-pointer flex items-start gap-1.5"
+                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200 dark:border-slate-700/80 transition-colors cursor-pointer flex items-start gap-1.5"
                         >
-                          <span className="text-slate-800 font-black text-sm leading-tight select-none">•</span>
+                          <span className="text-slate-800 dark:text-slate-100 font-black text-sm leading-tight select-none">•</span>
                           <span className="text-[12.5px] font-semibold text-[#0000CC] hover:underline hover:text-[#990000] leading-tight">
                             {item.title}
                           </span>
@@ -489,7 +511,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </div>
               </div>
 
-              <div className="p-2.5 flex justify-end bg-white border-t border-slate-100">
+              <div className="p-2.5 flex justify-end bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
                 <button
                   onClick={() => onNavigate('/category/answer-key')}
                   className="px-4 py-1 bg-[#007BFF] hover:bg-[#0069D9] text-white text-xs font-black rounded cursor-pointer shadow-2xs transition-colors"
@@ -500,7 +522,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             {/* TABLE 5: DOCUMENTS / CERTIFICATE VERIFICATION */}
-            <div id="table-documents" className="bg-white border border-[#990000] shadow-2xs flex flex-col justify-between">
+            <div id="table-documents" className="bg-white dark:bg-slate-800 border border-[#990000] shadow-2xs flex flex-col justify-between">
               <div>
                 <div className="bg-[#990000] text-white py-2 px-3 text-center border-b border-[#880000]">
                   <h3 className="text-base font-black tracking-wide uppercase">
@@ -522,9 +544,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                         <div
                           key={idx}
                           onClick={() => onSelectPost(item.slug, item.type)}
-                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200/80 transition-colors cursor-pointer flex items-start gap-1.5"
+                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200 dark:border-slate-700/80 transition-colors cursor-pointer flex items-start gap-1.5"
                         >
-                          <span className="text-slate-800 font-black text-sm leading-tight select-none">•</span>
+                          <span className="text-slate-800 dark:text-slate-100 font-black text-sm leading-tight select-none">•</span>
                           <span className="text-[12.5px] font-semibold text-[#0000CC] hover:underline hover:text-[#990000] leading-tight">
                             {item.title}
                           </span>
@@ -533,7 +555,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </div>
               </div>
 
-              <div className="p-2.5 flex justify-end bg-white border-t border-slate-100">
+              <div className="p-2.5 flex justify-end bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
                 <button
                   onClick={() => onNavigate('/category/sarkari-yojana')}
                   className="px-4 py-1 bg-[#007BFF] hover:bg-[#0069D9] text-white text-xs font-black rounded cursor-pointer shadow-2xs transition-colors"
@@ -544,7 +566,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             {/* TABLE 6: ADMISSION */}
-            <div id="table-admission" className="bg-white border border-[#990000] shadow-2xs flex flex-col justify-between">
+            <div id="table-admission" className="bg-white dark:bg-slate-800 border border-[#990000] shadow-2xs flex flex-col justify-between">
               <div>
                 <div className="bg-[#990000] text-white py-2 px-3 text-center border-b border-[#880000]">
                   <h3 className="text-base font-black tracking-wide uppercase">
@@ -566,9 +588,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                         <div
                           key={idx}
                           onClick={() => onSelectPost(item.slug, item.type)}
-                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200/80 transition-colors cursor-pointer flex items-start gap-1.5"
+                          className="px-2.5 py-1.5 hover:bg-red-50/60 border-b border-slate-200 dark:border-slate-700/80 transition-colors cursor-pointer flex items-start gap-1.5"
                         >
-                          <span className="text-slate-800 font-black text-sm leading-tight select-none">•</span>
+                          <span className="text-slate-800 dark:text-slate-100 font-black text-sm leading-tight select-none">•</span>
                           <span className="text-[12.5px] font-semibold text-[#0000CC] hover:underline hover:text-[#990000] leading-tight">
                             {item.title}
                           </span>
@@ -577,7 +599,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </div>
               </div>
 
-              <div className="p-2.5 flex justify-end bg-white border-t border-slate-100">
+              <div className="p-2.5 flex justify-end bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
                 <button
                   onClick={() => onNavigate('/category/admission')}
                   className="px-4 py-1 bg-[#007BFF] hover:bg-[#0069D9] text-white text-xs font-black rounded cursor-pointer shadow-2xs transition-colors"
@@ -603,7 +625,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <ServicesFAQSection />
 
         {/* RECRUITMENT BOARDS & OFFICIAL DIRECTORY */}
-        <section className="bg-white p-4 border border-slate-300 shadow-2xs space-y-3">
+        <section className="bg-white dark:bg-slate-800 p-4 border border-slate-300 dark:border-slate-600 shadow-2xs space-y-3">
           <h3 className="text-sm font-black text-[#990000] uppercase tracking-tight">
             Official Recruitment Boards & Quick Links 2026
           </h3>
@@ -625,7 +647,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <button
                 key={link.name}
                 onClick={() => onNavigate(link.path)}
-                className="p-1.5 bg-slate-50 hover:bg-red-50 hover:text-red-700 text-slate-800 font-bold border border-slate-200 transition-colors text-center truncate"
+                className="p-1.5 bg-slate-50 dark:bg-slate-700 hover:bg-red-50 hover:text-red-700 text-slate-800 dark:text-slate-100 font-bold border border-slate-200 dark:border-slate-700 transition-colors text-center truncate"
               >
                 {link.name}
               </button>

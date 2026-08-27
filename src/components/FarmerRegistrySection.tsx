@@ -65,7 +65,7 @@ export const FarmerRegistrySection: React.FC<FarmerRegistrySectionProps> = ({
           <div
             key={item.id}
             id={`scheme-card-${item.id}`}
-            className="bg-white rounded-2xl border-2 border-slate-200 hover:border-emerald-600 hover:shadow-md transition-all p-4 sm:p-5 flex flex-col justify-between group"
+            className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-600 hover:shadow-md transition-all p-4 sm:p-5 flex flex-col justify-between group"
           >
             <div>
               {/* Card Badges */}
@@ -75,7 +75,7 @@ export const FarmerRegistrySection: React.FC<FarmerRegistrySectionProps> = ({
                 </span>
                 <div className="flex items-center gap-1">
                   {item.isCentral ? (
-                    <span className="px-1.5 py-0.5 rounded text-[9px] font-bold uppercase bg-slate-100 text-slate-700">
+                    <span className="px-1.5 py-0.5 rounded text-[9px] font-bold uppercase bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200">
                       Central Govt
                     </span>
                   ) : (
@@ -92,7 +92,7 @@ export const FarmerRegistrySection: React.FC<FarmerRegistrySectionProps> = ({
               </div>
 
               {/* Scheme Title */}
-              <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-emerald-900 leading-snug font-sans">
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-900 leading-snug font-sans">
                 {item.name}
               </h3>
               {item.hindiName && (
@@ -102,19 +102,19 @@ export const FarmerRegistrySection: React.FC<FarmerRegistrySectionProps> = ({
               )}
 
               {/* Department */}
-              <p className="text-[11px] text-slate-500 mt-1.5 font-medium flex items-center gap-1">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5 font-medium flex items-center gap-1">
                 <Building2 className="w-3 h-3 text-slate-400 flex-shrink-0" />
                 <span className="truncate">{item.department}</span>
               </p>
 
               {/* Description */}
-              <p className="text-[12px] text-slate-600 mt-2 line-clamp-3 leading-relaxed">
+              <p className="text-[12px] text-slate-600 dark:text-slate-300 mt-2 line-clamp-3 leading-relaxed">
                 {item.description}
               </p>
             </div>
 
             {/* Action Buttons */}
-            <div className="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 space-y-2">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {/* Primary Open/Apply Button */}
                 <a
@@ -136,7 +136,7 @@ export const FarmerRegistrySection: React.FC<FarmerRegistrySectionProps> = ({
                     href={item.statusCheckUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2 px-3 bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-blue-900 border border-slate-300 hover:border-blue-300 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1"
+                    className="w-full py-2 px-3 bg-slate-100 dark:bg-slate-800/50 hover:bg-blue-50 text-slate-800 dark:text-slate-100 hover:text-blue-900 border border-slate-300 dark:border-slate-600 hover:border-blue-300 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1"
                     title="Check Application Status / Beneficiary Search"
                   >
                     <FileCheck className="w-3.5 h-3.5 text-blue-600" />
@@ -148,7 +148,7 @@ export const FarmerRegistrySection: React.FC<FarmerRegistrySectionProps> = ({
                     href={item.guidelinesUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2 px-3 bg-slate-100 hover:bg-amber-50 text-slate-800 hover:text-amber-900 border border-slate-300 hover:border-amber-300 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1"
+                    className="w-full py-2 px-3 bg-slate-100 dark:bg-slate-800/50 hover:bg-amber-50 text-slate-800 dark:text-slate-100 hover:text-amber-900 border border-slate-300 dark:border-slate-600 hover:border-amber-300 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1"
                     title="View Official Scheme Guidelines"
                   >
                     <Globe className="w-3.5 h-3.5 text-amber-600" />
@@ -169,8 +169,8 @@ export const FarmerRegistrySection: React.FC<FarmerRegistrySectionProps> = ({
               </div>
 
               {item.note ? (
-                <div className="text-center bg-slate-50 border border-slate-200 py-1.5 px-2 rounded-lg">
-                  <span className="text-[10px] text-slate-600 font-medium inline-flex items-center gap-1">
+                <div className="text-center bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 py-1.5 px-2 rounded-lg">
+                  <span className="text-[10px] text-slate-600 dark:text-slate-300 font-medium inline-flex items-center gap-1">
                     {item.note}
                   </span>
                 </div>
@@ -180,7 +180,7 @@ export const FarmerRegistrySection: React.FC<FarmerRegistrySectionProps> = ({
                     href={`https://wa.me/${whatsAppPhone}?text=${encodeURIComponent('Hello Shahnawaz Computer Center, I want you to fill the form for: ' + item.name + '. Please guide me.')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[10px] text-slate-500 hover:text-emerald-700 font-medium inline-flex items-center gap-1 transition-colors"
+                    className="text-[10px] text-slate-500 dark:text-slate-400 hover:text-emerald-700 font-medium inline-flex items-center gap-1 transition-colors"
                   >
                     <span>Need center assistance with documents? Click to WhatsApp</span>
                     <ChevronRight className="w-2.5 h-2.5" />

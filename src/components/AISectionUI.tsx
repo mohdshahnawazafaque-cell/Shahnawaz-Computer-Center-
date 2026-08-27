@@ -32,7 +32,7 @@ export const AISectionUI: React.FC = () => {
                 const chatBtn = document.querySelector('button[aria-label="Toggle AI Assistant"]') as HTMLButtonElement;
                 if (chatBtn) chatBtn.click();
               }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-indigo-900 hover:bg-indigo-50 rounded-xl font-bold text-sm shadow-md transition-all active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-slate-800 text-indigo-900 hover:bg-indigo-50 rounded-xl font-bold text-sm shadow-md transition-all active:scale-95"
             >
               <Bot className="w-4 h-4 text-indigo-600" />
               <span>Try AI Chat Now</span>
@@ -46,7 +46,7 @@ export const AISectionUI: React.FC = () => {
 
         {/* Right Side: Features / Visuals */}
         <div className="w-full md:w-auto flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-3 relative z-10">
-          <div className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex items-start gap-3">
+          <div className="bg-white dark:bg-slate-800/10 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex items-start gap-3">
             <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center shrink-0">
               <Zap className="w-5 h-5 text-blue-300" />
             </div>
@@ -56,7 +56,7 @@ export const AISectionUI: React.FC = () => {
             </div>
           </div>
           
-          <div className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex items-start gap-3">
+          <div className="bg-white dark:bg-slate-800/10 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex items-start gap-3">
             <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center shrink-0">
               <MessageSquareText className="w-5 h-5 text-blue-300" />
             </div>

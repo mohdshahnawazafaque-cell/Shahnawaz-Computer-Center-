@@ -154,7 +154,7 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
         >
           {/* Shimmering Leading Edge Dot */}
           {scrollProgress > 0 && scrollProgress < 100 && (
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-white shadow-md animate-pulse" />
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-white dark:bg-slate-800 shadow-md animate-pulse" />
           )}
         </div>
       </div>
@@ -173,7 +173,7 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
               <button
                 type="button"
                 onClick={() => onNavigate('/')}
-                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0 cursor-pointer hidden xs:flex items-center"
+                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white dark:bg-slate-800/10 transition-colors flex-shrink-0 cursor-pointer hidden xs:flex items-center"
                 title="Back to Home"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -204,7 +204,7 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
               className={`px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer ${
                 activeSection === 'dates'
                   ? 'bg-red-600 text-white shadow-xs'
-                  : 'text-slate-300 hover:text-white hover:bg-white/10'
+                  : 'text-slate-300 hover:text-white hover:bg-white dark:bg-slate-800/10'
               }`}
             >
               <Calendar className="w-3 h-3" />
@@ -217,7 +217,7 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
               className={`px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer ${
                 activeSection === 'fee'
                   ? 'bg-amber-600 text-white shadow-xs'
-                  : 'text-slate-300 hover:text-white hover:bg-white/10'
+                  : 'text-slate-300 hover:text-white hover:bg-white dark:bg-slate-800/10'
               }`}
             >
               <DollarSign className="w-3 h-3" />
@@ -230,7 +230,7 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
               className={`px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer ${
                 activeSection === 'vacancies'
                   ? 'bg-blue-600 text-white shadow-xs'
-                  : 'text-slate-300 hover:text-white hover:bg-white/10'
+                  : 'text-slate-300 hover:text-white hover:bg-white dark:bg-slate-800/10'
               }`}
             >
               <Users className="w-3 h-3" />
@@ -243,7 +243,7 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
               className={`px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer ${
                 activeSection === 'links'
                   ? 'bg-emerald-600 text-white shadow-xs'
-                  : 'text-slate-300 hover:text-white hover:bg-white/10'
+                  : 'text-slate-300 hover:text-white hover:bg-white dark:bg-slate-800/10'
               }`}
             >
               <Link2 className="w-3 h-3" />
@@ -256,7 +256,7 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
               className={`px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer ${
                 activeSection === 'comments'
                   ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'text-slate-300 hover:text-white hover:bg-white/10'
+                  : 'text-slate-300 hover:text-white hover:bg-white dark:bg-slate-800/10'
               }`}
             >
               <MessageSquare className="w-3 h-3" />
@@ -272,7 +272,7 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
               className={`px-2 sm:px-2.5 py-1 rounded-lg text-xs font-black flex items-center gap-1.5 border transition-all ${
                 isCompleted
                   ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40'
-                  : 'bg-white/10 text-amber-300 border-white/15'
+                  : 'bg-white dark:bg-slate-800/10 text-amber-300 border-white/15'
               }`}
               title={`${scrollProgress}% of the notification viewed`}
             >

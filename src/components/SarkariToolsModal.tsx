@@ -275,7 +275,7 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-xs overflow-y-auto">
       <div
         id="sarkari-tools-modal"
-        className="bg-white text-slate-800 w-full max-w-5xl rounded-2xl shadow-2xl border border-slate-200 overflow-hidden my-auto flex flex-col max-h-[92vh]"
+        className="bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 w-full max-w-5xl rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden my-auto flex flex-col max-h-[92vh]"
       >
         {/* MODAL HEADER */}
         <div className="bg-gradient-to-r from-[#800000] via-[#A00000] to-[#800000] text-white px-5 py-4 flex items-center justify-between border-b-2 border-amber-400 shrink-0">
@@ -301,14 +301,14 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-xl bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 text-white flex items-center justify-center transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* TABS SELECTOR */}
-        <div className="bg-slate-100 border-b border-slate-200 px-4 py-2 flex items-center gap-2 overflow-x-auto shrink-0 scrollbar-none">
+        <div className="bg-slate-100 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 px-4 py-2 flex items-center gap-2 overflow-x-auto shrink-0 scrollbar-none">
           {[
             { id: 'salary', label: '💰 In-Hand Salary Calculator', icon: Wallet },
             { id: 'image', label: '📷 Photo & Sign Resizer (KB)', icon: ImageIcon },
@@ -322,7 +322,7 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
               className={`px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap flex items-center gap-1.5 transition-all cursor-pointer ${
                 activeTab === tab.id
                   ? 'bg-[#800000] text-white shadow-sm'
-                  : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 border border-slate-200 dark:border-slate-700'
               }`}
             >
               <span>{tab.label}</span>
@@ -331,7 +331,7 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
         </div>
 
         {/* SCROLLABLE TOOL WORKSPACE */}
-        <div className="p-4 sm:p-6 overflow-y-auto flex-1 bg-slate-50 space-y-6">
+        <div className="p-4 sm:p-6 overflow-y-auto flex-1 bg-slate-50 dark:bg-slate-700 space-y-6">
           {/* TAB 0: IN-HAND SALARY CALCULATOR */}
           {activeTab === 'salary' && <SalaryCalculatorTab />}
 
@@ -344,15 +344,15 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Left: Settings & Upload */}
-                <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
-                  <h4 className="font-bold text-sm text-slate-800 flex items-center gap-2">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs space-y-4">
+                  <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100 flex items-center gap-2">
                     <Upload className="w-4 h-4 text-red-700" />
                     <span>1. Upload Candidate Photo or Signature</span>
                   </h4>
 
-                  <label className="border-2 border-dashed border-slate-300 hover:border-red-600 rounded-xl p-6 flex flex-col items-center justify-center cursor-pointer bg-slate-50 hover:bg-red-50/50 transition-colors text-center">
+                  <label className="border-2 border-dashed border-slate-300 dark:border-slate-600 hover:border-red-600 rounded-xl p-6 flex flex-col items-center justify-center cursor-pointer bg-slate-50 dark:bg-slate-700 hover:bg-red-50/50 transition-colors text-center">
                     <ImageIcon className="w-8 h-8 text-slate-400 mb-2" />
-                    <span className="text-xs font-bold text-slate-700">Choose Image File (JPG, PNG)</span>
+                    <span className="text-xs font-bold text-slate-700 dark:text-slate-200">Choose Image File (JPG, PNG)</span>
                     <span className="text-[10px] text-slate-400 mt-1">Drag & Drop or Click to Browse</span>
                     <input
                       type="file"
@@ -364,7 +364,7 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
 
                   {/* Preset Presets */}
                   <div>
-                    <span className="text-xs font-bold text-slate-600 block mb-1.5">Quick Exam Presets:</span>
+                    <span className="text-xs font-bold text-slate-600 dark:text-slate-300 block mb-1.5">Quick Exam Presets:</span>
                     <div className="grid grid-cols-2 gap-2 text-xs">
                       <button
                         type="button"
@@ -374,10 +374,10 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
                           setTargetHeight(450);
                           if (sourceImage) processImageCompression(sourceImage, 40, 350, 450);
                         }}
-                        className="p-2 rounded-lg bg-slate-100 hover:bg-red-50 text-slate-800 font-bold border border-slate-200 text-left"
+                        className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800/50 hover:bg-red-50 text-slate-800 dark:text-slate-100 font-bold border border-slate-200 dark:border-slate-700 text-left"
                       >
                         <div>📷 Passport Photo</div>
-                        <div className="text-[10px] text-slate-500 font-normal">20-50 KB (350x450px)</div>
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400 font-normal">20-50 KB (350x450px)</div>
                       </button>
                       <button
                         type="button"
@@ -387,18 +387,18 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
                           setTargetHeight(120);
                           if (sourceImage) processImageCompression(sourceImage, 15, 250, 120);
                         }}
-                        className="p-2 rounded-lg bg-slate-100 hover:bg-red-50 text-slate-800 font-bold border border-slate-200 text-left"
+                        className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800/50 hover:bg-red-50 text-slate-800 dark:text-slate-100 font-bold border border-slate-200 dark:border-slate-700 text-left"
                       >
                         <div>✍️ Signature</div>
-                        <div className="text-[10px] text-slate-500 font-normal">10-20 KB (250x120px)</div>
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400 font-normal">10-20 KB (250x120px)</div>
                       </button>
                     </div>
                   </div>
 
                   {/* Custom Controls */}
-                  <div className="space-y-3 pt-3 border-t border-slate-100">
+                  <div className="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-700">
                     <div>
-                      <div className="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                      <div className="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">
                         <span>Target File Size:</span>
                         <span className="text-red-700">{targetKb} KB</span>
                       </div>
@@ -419,21 +419,21 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
 
                     <div className="grid grid-cols-2 gap-3 text-xs">
                       <div>
-                        <label className="font-bold text-slate-600 block mb-1">Width (px)</label>
+                        <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Width (px)</label>
                         <input
                           type="number"
                           value={targetWidth}
                           onChange={(e) => setTargetWidth(Number(e.target.value))}
-                          className="w-full p-2 border border-slate-200 rounded-lg"
+                          className="w-full p-2 border border-slate-200 dark:border-slate-700 rounded-lg"
                         />
                       </div>
                       <div>
-                        <label className="font-bold text-slate-600 block mb-1">Height (px)</label>
+                        <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Height (px)</label>
                         <input
                           type="number"
                           value={targetHeight}
                           onChange={(e) => setTargetHeight(Number(e.target.value))}
-                          className="w-full p-2 border border-slate-200 rounded-lg"
+                          className="w-full p-2 border border-slate-200 dark:border-slate-700 rounded-lg"
                         />
                       </div>
                     </div>
@@ -441,21 +441,21 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
                 </div>
 
                 {/* Right: Preview & Download */}
-                <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs flex flex-col justify-between items-center text-center space-y-4">
-                  <h4 className="font-bold text-sm text-slate-800 w-full text-left flex items-center gap-2">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs flex flex-col justify-between items-center text-center space-y-4">
+                  <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100 w-full text-left flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                     <span>2. Output Preview & File Size</span>
                   </h4>
 
-                  <div className="w-full min-h-[220px] bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center p-4">
+                  <div className="w-full min-h-[220px] bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl flex items-center justify-center p-4">
                     {compressedImage ? (
                       <div className="space-y-2">
                         <img
                           src={compressedImage}
                           alt="Compressed Output"
-                          className="max-h-56 mx-auto rounded shadow-sm border border-slate-300 bg-white"
+                          className="max-h-56 mx-auto rounded shadow-sm border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800"
                         />
-                        <div className="text-xs font-bold text-slate-700">
+                        <div className="text-xs font-bold text-slate-700 dark:text-slate-200">
                           Final File Size: <span className="text-emerald-700 font-extrabold">{compressedSizeKb} KB</span> (Target: {targetKb} KB)
                         </div>
                       </div>
@@ -489,40 +489,40 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
-                  <h4 className="font-bold text-sm text-slate-800 flex items-center gap-2">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs space-y-4">
+                  <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100 flex items-center gap-2">
                     <Type className="w-4 h-4 text-blue-700" />
                     <span>Candidate Name & Date of Photo</span>
                   </h4>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-600 block mb-1">Candidate Full Name (Capital Letters)</label>
+                    <label className="text-xs font-bold text-slate-600 dark:text-slate-300 block mb-1">Candidate Full Name (Capital Letters)</label>
                     <input
                       type="text"
                       value={candName}
                       onChange={(e) => setCandName(e.target.value)}
                       placeholder="e.g. AMIT KUMAR"
-                      className="w-full p-2 border border-slate-300 rounded-lg text-xs font-bold uppercase"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-bold uppercase"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-600 block mb-1">Date of Photo (DOP)</label>
+                    <label className="text-xs font-bold text-slate-600 dark:text-slate-300 block mb-1">Date of Photo (DOP)</label>
                     <input
                       type="date"
                       value={photoDate}
                       onChange={(e) => setPhotoDate(e.target.value)}
-                      className="w-full p-2 border border-slate-300 rounded-lg text-xs"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg text-xs"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-600 block mb-1">Select Passport Photo</label>
+                    <label className="text-xs font-bold text-slate-600 dark:text-slate-300 block mb-1">Select Passport Photo</label>
                     <input
                       type="file"
                       accept="image/*"
                       onChange={handleImageUpload}
-                      className="w-full p-2 border border-slate-300 rounded-lg text-xs file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg text-xs file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100"
                     />
                   </div>
 
@@ -536,17 +536,17 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
                   </button>
                 </div>
 
-                <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs flex flex-col justify-between items-center text-center space-y-4">
-                  <h4 className="font-bold text-sm text-slate-800 w-full text-left">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs flex flex-col justify-between items-center text-center space-y-4">
+                  <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100 w-full text-left">
                     Generated Photo Preview (SSC Format)
                   </h4>
 
-                  <div className="w-full min-h-[240px] bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center p-4">
+                  <div className="w-full min-h-[240px] bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl flex items-center justify-center p-4">
                     {photoWithDateUrl ? (
                       <img
                         src={photoWithDateUrl}
                         alt="Photo with Name & Date"
-                        className="max-h-64 mx-auto rounded shadow-md border-2 border-slate-400 bg-white"
+                        className="max-h-64 mx-auto rounded shadow-md border-2 border-slate-400 bg-white dark:bg-slate-800"
                       />
                     ) : (
                       <div className="text-xs text-slate-400">
@@ -578,54 +578,54 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
-                  <h4 className="font-bold text-sm text-slate-800 flex items-center gap-2">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs space-y-4">
+                  <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100 flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-emerald-700" />
                     <span>Enter Birth & Reckoning Dates</span>
                   </h4>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-600 block mb-1">Date of Birth (DOB as per 10th Matric Certificate)</label>
+                    <label className="text-xs font-bold text-slate-600 dark:text-slate-300 block mb-1">Date of Birth (DOB as per 10th Matric Certificate)</label>
                     <input
                       type="date"
                       value={dob}
                       onChange={(e) => setDob(e.target.value)}
-                      className="w-full p-2 border border-slate-300 rounded-lg text-xs font-bold"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-bold"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-600 block mb-1">Age as on Date (Cut-off Date from Notification)</label>
+                    <label className="text-xs font-bold text-slate-600 dark:text-slate-300 block mb-1">Age as on Date (Cut-off Date from Notification)</label>
                     <input
                       type="date"
                       value={asOnDate}
                       onChange={(e) => setAsOnDate(e.target.value)}
-                      className="w-full p-2 border border-slate-300 rounded-lg text-xs font-bold"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-bold"
                     />
                   </div>
 
                   {/* Preset Cutoff Date buttons */}
                   <div>
-                    <span className="text-xs font-bold text-slate-500 block mb-1">Quick Cutoff Presets:</span>
+                    <span className="text-xs font-bold text-slate-500 dark:text-slate-400 block mb-1">Quick Cutoff Presets:</span>
                     <div className="flex gap-2">
                       <button
                         type="button"
                         onClick={() => setAsOnDate('2026-01-01')}
-                        className="px-2.5 py-1 text-xs bg-slate-100 hover:bg-slate-200 rounded font-bold"
+                        className="px-2.5 py-1 text-xs bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 rounded font-bold"
                       >
                         01 Jan 2026
                       </button>
                       <button
                         type="button"
                         onClick={() => setAsOnDate('2026-07-01')}
-                        className="px-2.5 py-1 text-xs bg-slate-100 hover:bg-slate-200 rounded font-bold"
+                        className="px-2.5 py-1 text-xs bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 rounded font-bold"
                       >
                         01 July 2026
                       </button>
                       <button
                         type="button"
                         onClick={() => setAsOnDate('2026-08-01')}
-                        className="px-2.5 py-1 text-xs bg-slate-100 hover:bg-slate-200 rounded font-bold"
+                        className="px-2.5 py-1 text-xs bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 rounded font-bold"
                       >
                         01 Aug 2026
                       </button>
@@ -642,8 +642,8 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
                   </button>
                 </div>
 
-                <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs flex flex-col justify-center items-center text-center space-y-4">
-                  <h4 className="font-bold text-sm text-slate-800 w-full text-left">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs flex flex-col justify-center items-center text-center space-y-4">
+                  <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100 w-full text-left">
                     Age Calculation Result
                   </h4>
 
@@ -664,17 +664,17 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
                         </div>
                       </div>
 
-                      <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-1 text-left">
+                      <div className="bg-slate-50 dark:bg-slate-700 p-4 rounded-xl border border-slate-200 dark:border-slate-700 text-xs space-y-1 text-left">
                         <div className="flex justify-between">
-                          <span className="text-slate-500">Date of Birth:</span>
-                          <span className="font-bold text-slate-800">{dob}</span>
+                          <span className="text-slate-500 dark:text-slate-400">Date of Birth:</span>
+                          <span className="font-bold text-slate-800 dark:text-slate-100">{dob}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-slate-500">Age Reckoned As On:</span>
-                          <span className="font-bold text-slate-800">{asOnDate}</span>
+                          <span className="text-slate-500 dark:text-slate-400">Age Reckoned As On:</span>
+                          <span className="font-bold text-slate-800 dark:text-slate-100">{asOnDate}</span>
                         </div>
-                        <div className="flex justify-between border-t border-slate-200 pt-1">
-                          <span className="text-slate-500">Total Age in Days:</span>
+                        <div className="flex justify-between border-t border-slate-200 dark:border-slate-700 pt-1">
+                          <span className="text-slate-500 dark:text-slate-400">Total Age in Days:</span>
                           <span className="font-bold text-emerald-700">{ageResult.totalDays.toLocaleString('en-IN')} Days</span>
                         </div>
                       </div>
@@ -706,109 +706,109 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
                 </button>
               </div>
 
-              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-4 text-xs">
+              <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs space-y-4 text-xs">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                   <div>
-                    <label className="font-bold text-slate-600 block mb-1">Full Name</label>
+                    <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Full Name</label>
                     <input
                       type="text"
                       value={resumeData.name}
                       onChange={(e) => setResumeData({ ...resumeData, name: e.target.value })}
-                      className="w-full p-2 border border-slate-300 rounded-lg"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
                   <div>
-                    <label className="font-bold text-slate-600 block mb-1">Email Address</label>
+                    <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Email Address</label>
                     <input
                       type="email"
                       value={resumeData.email}
                       onChange={(e) => setResumeData({ ...resumeData, email: e.target.value })}
-                      className="w-full p-2 border border-slate-300 rounded-lg"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
                   <div>
-                    <label className="font-bold text-slate-600 block mb-1">Mobile Phone</label>
+                    <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Mobile Phone</label>
                     <input
                       type="text"
                       value={resumeData.phone}
                       onChange={(e) => setResumeData({ ...resumeData, phone: e.target.value })}
-                      className="w-full p-2 border border-slate-300 rounded-lg"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="font-bold text-slate-600 block mb-1">Full Permanent Address</label>
+                    <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Full Permanent Address</label>
                     <input
                       type="text"
                       value={resumeData.address}
                       onChange={(e) => setResumeData({ ...resumeData, address: e.target.value })}
-                      className="w-full p-2 border border-slate-300 rounded-lg"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
                   <div>
-                    <label className="font-bold text-slate-600 block mb-1">Father&apos;s Name</label>
+                    <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Father&apos;s Name</label>
                     <input
                       type="text"
                       value={resumeData.fatherName}
                       onChange={(e) => setResumeData({ ...resumeData, fatherName: e.target.value })}
-                      className="w-full p-2 border border-slate-300 rounded-lg"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
                   <div>
-                    <label className="font-bold text-slate-600 block mb-1">Date of Birth</label>
+                    <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Date of Birth</label>
                     <input
                       type="text"
                       value={resumeData.dob}
                       onChange={(e) => setResumeData({ ...resumeData, dob: e.target.value })}
-                      className="w-full p-2 border border-slate-300 rounded-lg"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
                   <div>
-                    <label className="font-bold text-slate-600 block mb-1">Gender</label>
+                    <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Gender</label>
                     <input
                       type="text"
                       value={resumeData.gender}
                       onChange={(e) => setResumeData({ ...resumeData, gender: e.target.value })}
-                      className="w-full p-2 border border-slate-300 rounded-lg"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
                   <div>
-                    <label className="font-bold text-slate-600 block mb-1">Marital Status</label>
+                    <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Marital Status</label>
                     <input
                       type="text"
                       value={resumeData.maritalStatus}
                       onChange={(e) => setResumeData({ ...resumeData, maritalStatus: e.target.value })}
-                      className="w-full p-2 border border-slate-300 rounded-lg"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-600 block mb-1">Academic & Educational Qualifications</label>
+                  <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Academic & Educational Qualifications</label>
                   <textarea
                     rows={2}
                     value={resumeData.qualification}
                     onChange={(e) => setResumeData({ ...resumeData, qualification: e.target.value })}
-                    className="w-full p-2 border border-slate-300 rounded-lg font-mono text-xs"
+                    className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-xs"
                   />
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-600 block mb-1">Technical / Computer Skills</label>
+                  <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Technical / Computer Skills</label>
                   <input
                     type="text"
                     value={resumeData.computerSkills}
                     onChange={(e) => setResumeData({ ...resumeData, computerSkills: e.target.value })}
-                    className="w-full p-2 border border-slate-300 rounded-lg"
+                    className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                   />
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-600 block mb-1">Work Experience</label>
+                  <label className="font-bold text-slate-600 dark:text-slate-300 block mb-1">Work Experience</label>
                   <input
                     type="text"
                     value={resumeData.experience}
                     onChange={(e) => setResumeData({ ...resumeData, experience: e.target.value })}
-                    className="w-full p-2 border border-slate-300 rounded-lg"
+                    className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                   />
                 </div>
               </div>
@@ -817,14 +817,14 @@ export const SarkariToolsModal: React.FC<SarkariToolsModalProps> = ({
         </div>
 
         {/* MODAL FOOTER */}
-        <div className="bg-slate-100 border-t border-slate-200 px-5 py-3.5 flex items-center justify-between shrink-0">
-          <div className="text-xs text-slate-500 font-medium hidden sm:block">
+        <div className="bg-slate-100 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-700 px-5 py-3.5 flex items-center justify-between shrink-0">
+          <div className="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block">
             SarkariResult.com.cm Online Utility Tools • 100% Client-Side Private & Free
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 bg-white hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg border border-slate-300 transition-colors ml-auto cursor-pointer"
+            className="px-4 py-2 bg-white dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-600 transition-colors ml-auto cursor-pointer"
           >
             Close Tools
           </button>

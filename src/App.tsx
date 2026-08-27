@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AuthProvider } from './context/AuthContext';
 import { SettingsProvider } from './context/SettingsContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header';
 import { AnnouncementBar } from './components/AnnouncementBar';
 import { Footer } from './components/Footer';
@@ -19,6 +20,9 @@ import { AdminLoginPage } from './pages/AdminLoginPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { CyberCafeHubPage } from './pages/CyberCafeHubPage';
 import { CyberCafeAppBuilderPage } from './pages/CyberCafeAppBuilderPage';
+import { WalletProvider } from './context/WalletContext';
+import { WalletPage } from './pages/WalletPage';
+import { PrintServicesPage } from './pages/PrintServicesPage';
 import { PostType } from './types';
 
 export default function App() {
@@ -114,6 +118,12 @@ export default function App() {
     if (currentPath === '/contact') {
       return <ContactPage onNavigate={navigate} />;
     }
+    if (currentPath === '/wallet') {
+      return <WalletPage />;
+    }
+    if (currentPath === '/print-services') {
+      return <PrintServicesPage onNavigate={navigate} />;
+    }
 
     if (currentPath === '/admin/login') {
       return <AdminLoginPage onNavigate={navigate} />;
@@ -149,10 +159,14 @@ export default function App() {
 
   const isAdminView = currentPath === '/admin';
 
+
+
   return (
     <AuthProvider>
       <SettingsProvider>
-        <div id="shahnawaz-computer-center-app" className="min-h-screen flex flex-col bg-slate-100 text-slate-900 font-sans antialiased selection:bg-red-600 selection:text-white">
+        <WalletProvider>
+        <ThemeProvider>
+          <div id="shahnawaz-computer-center-app" className="min-h-screen flex flex-col bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-red-600 selection:text-white transition-colors duration-200">
           {/* Offline Banner Indicator */}
           <OfflineIndicator />
 
@@ -205,7 +219,9 @@ export default function App() {
 
           {/* Floating AI Chat Assistant */}
           <AIChatWidget />
-        </div>
+          </div>
+        </ThemeProvider>
+      </WalletProvider>
       </SettingsProvider>
     </AuthProvider>
   );

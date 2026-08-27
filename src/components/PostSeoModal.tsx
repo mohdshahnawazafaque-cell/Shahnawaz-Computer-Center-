@@ -386,7 +386,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4">
-      <div className="bg-white w-full max-w-5xl rounded-2xl shadow-2xl border border-slate-300 flex flex-col max-h-[94vh] overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div className="bg-white dark:bg-slate-800 w-full max-w-5xl rounded-2xl shadow-2xl border border-slate-300 dark:border-slate-600 flex flex-col max-h-[94vh] overflow-hidden animate-in fade-in zoom-in-95 duration-150">
         {/* Header */}
         <div className="bg-[#0B2545] text-white p-4 sm:px-6 flex items-center justify-between border-b border-blue-900">
           <div className="flex items-center gap-3">
@@ -433,7 +433,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
 
             <button
               onClick={onClose}
-              className="p-1.5 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+              className="p-1.5 text-slate-300 hover:text-white hover:bg-white dark:bg-slate-800/10 rounded-lg transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -441,10 +441,10 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
         </div>
 
         {/* SEO Health Score & Smart Optimizer */}
-        <div className="bg-slate-50 px-4 sm:px-6 py-3 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        <div className="bg-slate-50 dark:bg-slate-700 px-4 sm:px-6 py-3 border-b border-slate-200 dark:border-slate-700 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-4 text-xs">
             <div className="flex items-center gap-2">
-              <span className="font-bold text-slate-700">Search Engine Optimization Score:</span>
+              <span className="font-bold text-slate-700 dark:text-slate-200">Search Engine Optimization Score:</span>
               <div className="flex items-center gap-1.5">
                 <div className="w-24 bg-slate-200 h-2.5 rounded-full overflow-hidden">
                   <div
@@ -499,7 +499,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
         </div>
 
         {/* Tab Navigation */}
-        <div className="bg-white px-4 sm:px-6 border-b border-slate-200 flex items-center gap-1 overflow-x-auto text-xs font-bold">
+        <div className="bg-white dark:bg-slate-800 px-4 sm:px-6 border-b border-slate-200 dark:border-slate-700 flex items-center gap-1 overflow-x-auto text-xs font-bold">
           {[
             { id: 'meta', label: '1. Meta Tags & Keywords', icon: FileText },
             { id: 'opengraph', label: '2. OpenGraph (WhatsApp/FB)', icon: Share2 },
@@ -517,7 +517,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                 className={`flex items-center gap-1.5 py-3 px-3 border-b-2 font-bold whitespace-nowrap transition-colors ${
                   isActive
                     ? 'border-red-600 text-red-600 font-black bg-red-50/50'
-                    : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                    : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:text-white hover:bg-slate-50 dark:bg-slate-700'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -549,7 +549,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
               {/* Meta Title */}
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="font-bold text-slate-800 flex items-center gap-1.5">
+                  <label className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
                     <span>Meta Title / Search Engine Title</span>
                     <span className="text-red-500">*</span>
                   </label>
@@ -570,9 +570,9 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                   value={seoTitle}
                   onChange={(e) => setSeoTitle(e.target.value)}
                   placeholder="e.g. SSC CGL 2026: Apply Online for 17727 Posts, Eligibility & Last Date"
-                  className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-bold text-slate-900 dark:text-white focus:bg-white dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
-                <p className="text-[11px] text-slate-500 mt-1">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
                   Primary headline shown in Google Search results. Keep between 50–60 characters with targeted keywords.
                 </p>
               </div>
@@ -580,7 +580,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
               {/* Meta Description */}
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="font-bold text-slate-800 flex items-center gap-1.5">
+                  <label className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
                     <span>Meta Description</span>
                     <span className="text-red-500">*</span>
                   </label>
@@ -601,16 +601,16 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                   value={metaDescription}
                   onChange={(e) => setMetaDescription(e.target.value)}
                   placeholder="e.g. SSC CGL Recruitment 2026 online form is now open. Check eligibility criteria, exam pattern, syllabus, application fee and direct official apply link at Shahnawaz Computer Center."
-                  className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-slate-800 font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none leading-relaxed"
+                  className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-100 font-medium focus:bg-white dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none leading-relaxed"
                 />
-                <p className="text-[11px] text-slate-500 mt-1">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
                   Concise snippet displayed underneath the title in Google search results.
                 </p>
               </div>
 
               {/* Meta Keywords */}
               <div>
-                <label className="block font-bold text-slate-800 mb-1">
+                <label className="block font-bold text-slate-800 dark:text-slate-100 mb-1">
                   Meta Keywords & Target Search Phrases
                 </label>
                 <div className="flex items-center gap-2 mb-2">
@@ -627,7 +627,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                         }
                       }}
                       placeholder="Type keyword and press Enter (e.g. 'SSC CGL 2026', 'Govt Job UP')"
-                      className="w-full pl-8 pr-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs"
+                      className="w-full pl-8 pr-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs"
                     />
                   </div>
                   <button
@@ -640,7 +640,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                 </div>
 
                 {/* Keyword Chips */}
-                <div className="flex flex-wrap gap-1.5 p-3 bg-slate-100 rounded-xl border border-slate-200 min-h-[48px] items-center">
+                <div className="flex flex-wrap gap-1.5 p-3 bg-slate-100 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 min-h-[48px] items-center">
                   {keywords.length === 0 ? (
                     <span className="text-slate-400 text-xs italic">
                       No keywords added yet. Click suggested tags below or add custom terms.
@@ -649,7 +649,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                     keywords.map((kw, i) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 bg-white border border-slate-300 rounded-md font-bold text-slate-800 shadow-2xs"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-md font-bold text-slate-800 dark:text-slate-100 shadow-2xs"
                       >
                         <span>{kw}</span>
                         <button
@@ -666,7 +666,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
 
                 {/* Suggested Keywords */}
                 <div className="mt-2">
-                  <span className="text-[11px] font-bold text-slate-600 block mb-1">
+                  <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300 block mb-1">
                     ⚡ Suggested High-Volume Keywords:
                   </span>
                   <div className="flex flex-wrap gap-1.5">
@@ -678,7 +678,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                         disabled={keywords.includes(tag)}
                         className={`text-[11px] px-2 py-0.5 rounded border transition-colors ${
                           keywords.includes(tag)
-                            ? 'bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed'
+                            ? 'bg-slate-100 dark:bg-slate-800/50 text-slate-400 border-slate-200 dark:border-slate-700 cursor-not-allowed'
                             : 'bg-blue-50 text-blue-800 border-blue-200 hover:bg-blue-100 font-semibold'
                         }`}
                       >
@@ -690,13 +690,13 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
               </div>
 
               {/* Directives & Canonical */}
-              <div className="pt-4 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="pt-4 border-t border-slate-200 dark:border-slate-700 grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Robots Meta Directive</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Robots Meta Directive</label>
                   <select
                     value={robotsIndex}
                     onChange={(e) => setRobotsIndex(e.target.value)}
-                    className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg font-bold"
+                    className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-bold"
                   >
                     <option value="index, follow">index, follow (Allow search indexing)</option>
                     <option value="noindex, follow">noindex, follow (Hide from search, follow links)</option>
@@ -705,34 +705,34 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Author Name Tag</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Author Name Tag</label>
                   <input
                     type="text"
                     value={authorName}
                     onChange={(e) => setAuthorName(e.target.value)}
                     placeholder="Shahnawaz Computer Center"
-                    className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg"
+                    className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">URL Slug</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">URL Slug</label>
                   <input
                     type="text"
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
-                    className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg font-mono text-xs"
+                    className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-xs"
                   />
                 </div>
 
                 <div className="sm:col-span-3">
-                  <label className="block font-bold text-slate-700 mb-1">Canonical URL</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Canonical URL</label>
                   <input
                     type="text"
                     value={canonicalUrl}
                     onChange={(e) => setCanonicalUrl(e.target.value)}
                     placeholder="https://shahnawazcomputercenter.in/post/..."
-                    className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg font-mono text-[11px]"
+                    className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-[11px]"
                   />
                 </div>
               </div>
@@ -752,7 +752,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-3">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
                       og:title (OpenGraph Title)
                     </label>
                     <input
@@ -760,13 +760,13 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                       value={ogTitle}
                       onChange={(e) => setOgTitle(e.target.value)}
                       placeholder="Leave empty to use Meta Title"
-                      className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg font-bold text-slate-900"
+                      className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-bold text-slate-900 dark:text-white"
                     />
                     <span className="text-[10px] text-slate-400">Falls back to Meta Title if blank</span>
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
                       og:description (OpenGraph Description)
                     </label>
                     <textarea
@@ -774,12 +774,12 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                       value={ogDescription}
                       onChange={(e) => setOgDescription(e.target.value)}
                       placeholder="Leave empty to use Meta Description"
-                      className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg"
+                      className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
                       og:image (Social Share Banner URL)
                     </label>
                     <input
@@ -790,19 +790,19 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                         if (!twitterImage) setTwitterImage(e.target.value);
                       }}
                       placeholder="https://..."
-                      className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg font-mono text-[11px]"
+                      className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-[11px]"
                     />
-                    <span className="text-[10px] text-slate-500">
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400">
                       Recommended: 1200 x 630 px (1.91:1 ratio) for crisp WhatsApp and Facebook cards.
                     </span>
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">og:type</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">og:type</label>
                     <select
                       value={ogType}
                       onChange={(e) => setOgType(e.target.value)}
-                      className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg font-bold"
+                      className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-bold"
                     >
                       <option value="article">article (Recommended for job/exam posts)</option>
                       <option value="website">website (General web page)</option>
@@ -811,12 +811,12 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                 </div>
 
                 {/* Live OG Card Thumbnail */}
-                <div className="bg-slate-100 p-4 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                <div className="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
                   <div>
-                    <span className="text-xs font-bold text-slate-700 block mb-2">
+                    <span className="text-xs font-bold text-slate-700 dark:text-slate-200 block mb-2">
                       OpenGraph Card Live Preview:
                     </span>
-                    <div className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-300">
+                    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md overflow-hidden border border-slate-300 dark:border-slate-600">
                       <div className="h-40 bg-slate-900 relative">
                         {ogImage ? (
                           <img
@@ -837,14 +837,14 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                           {post.type}
                         </span>
                       </div>
-                      <div className="p-3 bg-slate-50 border-t border-slate-200">
+                      <div className="p-3 bg-slate-50 dark:bg-slate-700 border-t border-slate-200 dark:border-slate-700">
                         <span className="text-[10px] text-slate-400 font-mono block">
                           shahnawazcomputercenter.in
                         </span>
-                        <h4 className="font-bold text-slate-900 line-clamp-1 mt-0.5">
+                        <h4 className="font-bold text-slate-900 dark:text-white line-clamp-1 mt-0.5">
                           {ogTitle || seoTitle || post.title}
                         </h4>
-                        <p className="text-[11px] text-slate-600 line-clamp-2 mt-0.5">
+                        <p className="text-[11px] text-slate-600 dark:text-slate-300 line-clamp-2 mt-0.5">
                           {ogDescription || metaDescription || post.shortDescription}
                         </p>
                       </div>
@@ -873,13 +873,13 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-3">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
                       twitter:card Type
                     </label>
                     <select
                       value={twitterCard}
                       onChange={(e) => setTwitterCard(e.target.value as any)}
-                      className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg font-bold text-slate-900"
+                      className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-bold text-slate-900 dark:text-white"
                     >
                       <option value="summary_large_image">
                         summary_large_image (Large Hero Card - Best CTR)
@@ -889,7 +889,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
                       twitter:title (Twitter Card Title)
                     </label>
                     <input
@@ -897,12 +897,12 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                       value={twitterTitle}
                       onChange={(e) => setTwitterTitle(e.target.value)}
                       placeholder="Leave empty to use OG / Meta Title"
-                      className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg font-bold text-slate-900"
+                      className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-bold text-slate-900 dark:text-white"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
                       twitter:description (Twitter Card Description)
                     </label>
                     <textarea
@@ -910,12 +910,12 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                       value={twitterDescription}
                       onChange={(e) => setTwitterDescription(e.target.value)}
                       placeholder="Leave empty to use OG / Meta Description"
-                      className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg"
+                      className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
                       twitter:image (Twitter Image URL)
                     </label>
                     <input
@@ -923,39 +923,39 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                       value={twitterImage}
                       onChange={(e) => setTwitterImage(e.target.value)}
                       placeholder="https://..."
-                      className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg font-mono text-[11px]"
+                      className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-[11px]"
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <label className="block font-bold text-slate-700 mb-1">twitter:site</label>
+                      <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">twitter:site</label>
                       <input
                         type="text"
                         value={twitterSite}
                         onChange={(e) => setTwitterSite(e.target.value)}
                         placeholder="@shahnawazcc"
-                        className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg font-mono text-xs"
+                        className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-xs"
                       />
                     </div>
                     <div>
-                      <label className="block font-bold text-slate-700 mb-1">twitter:creator</label>
+                      <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">twitter:creator</label>
                       <input
                         type="text"
                         value={twitterCreator}
                         onChange={(e) => setTwitterCreator(e.target.value)}
                         placeholder="@mohdshahnawaz"
-                        className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg font-mono text-xs"
+                        className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-xs"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Twitter Tweet Simulator */}
-                <div className="bg-slate-100 p-4 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                <div className="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-bold text-slate-700">
+                      <span className="text-xs font-bold text-slate-700 dark:text-slate-200">
                         Twitter / X Tweet Simulator:
                       </span>
                       <div className="flex items-center gap-1 text-[10px] font-bold bg-slate-200 p-0.5 rounded-md">
@@ -963,7 +963,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                           type="button"
                           onClick={() => setTwitterTheme('light')}
                           className={`px-2 py-0.5 rounded ${
-                            twitterTheme === 'light' ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500'
+                            twitterTheme === 'light' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-2xs' : 'text-slate-500 dark:text-slate-400'
                           }`}
                         >
                           Light
@@ -972,7 +972,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                           type="button"
                           onClick={() => setTwitterTheme('dark')}
                           className={`px-2 py-0.5 rounded ${
-                            twitterTheme === 'dark' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-500'
+                            twitterTheme === 'dark' ? 'bg-slate-900 text-white shadow-2xs' : 'text-slate-500 dark:text-slate-400'
                           }`}
                         >
                           Dark
@@ -985,7 +985,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                       className={`p-3.5 rounded-xl border transition-all ${
                         twitterTheme === 'dark'
                           ? 'bg-black border-slate-800 text-white'
-                          : 'bg-white border-slate-300 text-slate-900 shadow-xs'
+                          : 'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white shadow-xs'
                       }`}
                     >
                       <div className="flex items-center gap-2 mb-2">
@@ -1010,7 +1010,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                       {/* Card embed */}
                       <div
                         className={`rounded-xl overflow-hidden border ${
-                          twitterTheme === 'dark' ? 'border-slate-800 bg-slate-950' : 'border-slate-200 bg-slate-50'
+                          twitterTheme === 'dark' ? 'border-slate-800 bg-slate-950' : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700'
                         }`}
                       >
                         {twitterCard === 'summary_large_image' ? (
@@ -1064,7 +1064,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                     </div>
                   </div>
 
-                  <span className="text-[10px] text-slate-500 mt-2 block text-center">
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 block text-center">
                     Complies with standard Twitter Card specification.
                   </span>
                 </div>
@@ -1076,7 +1076,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
           {activeTab === 'preview_google' && (
             <div className="space-y-4 max-w-2xl mx-auto">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-700">
+                <span className="text-xs font-bold text-slate-700 dark:text-slate-200">
                   Google Search Results (SERP) Live Simulation:
                 </span>
                 <div className="flex items-center gap-1 bg-slate-200 p-1 rounded-lg text-xs font-bold">
@@ -1084,7 +1084,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                     type="button"
                     onClick={() => setDevicePreview('mobile')}
                     className={`px-3 py-1 rounded-md transition-all flex items-center gap-1 ${
-                      devicePreview === 'mobile' ? 'bg-white shadow-xs text-blue-900 font-black' : 'text-slate-600'
+                      devicePreview === 'mobile' ? 'bg-white dark:bg-slate-800 shadow-xs text-blue-900 font-black' : 'text-slate-600 dark:text-slate-300'
                     }`}
                   >
                     <Smartphone className="w-3.5 h-3.5" />
@@ -1094,7 +1094,7 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                     type="button"
                     onClick={() => setDevicePreview('desktop')}
                     className={`px-3 py-1 rounded-md transition-all flex items-center gap-1 ${
-                      devicePreview === 'desktop' ? 'bg-white shadow-xs text-blue-900 font-black' : 'text-slate-600'
+                      devicePreview === 'desktop' ? 'bg-white dark:bg-slate-800 shadow-xs text-blue-900 font-black' : 'text-slate-600 dark:text-slate-300'
                     }`}
                   >
                     <Monitor className="w-3.5 h-3.5" />
@@ -1105,18 +1105,18 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
 
               {/* SERP Card */}
               <div
-                className={`bg-white p-5 rounded-2xl border border-slate-300 shadow-md ${
+                className={`bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-300 dark:border-slate-600 shadow-md ${
                   devicePreview === 'mobile' ? 'max-w-md mx-auto' : 'w-full'
                 }`}
               >
                 {/* Site identifier */}
-                <div className="flex items-center gap-2 text-xs text-slate-800 mb-1.5">
+                <div className="flex items-center gap-2 text-xs text-slate-800 dark:text-slate-100 mb-1.5">
                   <div className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center font-black text-[10px]">
                     SCC
                   </div>
                   <div className="leading-tight">
-                    <div className="font-semibold text-slate-900">Shahnawaz Computer Center</div>
-                    <div className="text-[11px] text-slate-500 truncate font-mono">
+                    <div className="font-semibold text-slate-900 dark:text-white">Shahnawaz Computer Center</div>
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate font-mono">
                       https://shahnawazcomputercenter.in › {post.category?.toLowerCase() || 'jobs'} ›{' '}
                       {slug || post.slug}
                     </div>
@@ -1139,8 +1139,8 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                 </p>
 
                 {/* Sitelinks / Meta tags */}
-                <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-slate-100 text-[11px]">
-                  <span className="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-semibold">
+                <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-slate-100 dark:border-slate-700 text-[11px]">
+                  <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 rounded font-semibold">
                     Category: {post.category}
                   </span>
                   {post.totalVacancy && (
@@ -1171,13 +1171,13 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
           {/* TAB 5: LIVE SOCIAL PREVIEWS (WHATSAPP & TELEGRAM) */}
           {activeTab === 'preview_social' && (
             <div className="space-y-4 max-w-md mx-auto">
-              <span className="text-xs font-bold text-slate-700 block text-center">
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-200 block text-center">
                 WhatsApp & Telegram Link Preview Card:
               </span>
 
               {/* WhatsApp Mock Chat Bubble */}
-              <div className="bg-[#EFEAE2] p-4 rounded-2xl border border-slate-300 shadow-inner">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden max-w-sm ml-auto border border-slate-200">
+              <div className="bg-[#EFEAE2] p-4 rounded-2xl border border-slate-300 dark:border-slate-600 shadow-inner">
+                <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md overflow-hidden max-w-sm ml-auto border border-slate-200 dark:border-slate-700">
                   <div className="h-44 bg-slate-900 relative overflow-hidden">
                     <img
                       src={ogImage || twitterImage}
@@ -1194,13 +1194,13 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
                   </div>
 
                   <div className="p-3 bg-[#F0F2F5] space-y-1">
-                    <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider block">
+                    <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider block">
                       shahnawazcomputercenter.in
                     </span>
-                    <h4 className="text-xs font-black text-slate-900 leading-tight line-clamp-2">
+                    <h4 className="text-xs font-black text-slate-900 dark:text-white leading-tight line-clamp-2">
                       {ogTitle || seoTitle || post.title}
                     </h4>
-                    <p className="text-[11px] text-slate-600 line-clamp-2 leading-snug">
+                    <p className="text-[11px] text-slate-600 dark:text-slate-300 line-clamp-2 leading-snug">
                       {ogDescription || metaDescription || post.shortDescription}
                     </p>
                   </div>
@@ -1221,10 +1221,10 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900">
+                  <h4 className="text-xs font-bold text-slate-900 dark:text-white">
                     Google Structured Data (JSON-LD)
                   </h4>
-                  <p className="text-[11px] text-slate-500">
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
                     Injected into the post's HTML &lt;head&gt; for Google Jobs and Rich Snippets ranking.
                   </p>
                 </div>
@@ -1247,11 +1247,11 @@ export const PostSeoModal: React.FC<PostSeoModalProps> = ({
         </div>
 
         {/* Modal Action Buttons */}
-        <div className="p-4 sm:px-6 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        <div className="p-4 sm:px-6 bg-slate-50 dark:bg-slate-700 border-t border-slate-200 dark:border-slate-700 flex flex-wrap items-center justify-between gap-3">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-200 rounded-lg border border-slate-300"
+            className="px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-200 rounded-lg border border-slate-300 dark:border-slate-600"
           >
             Close
           </button>

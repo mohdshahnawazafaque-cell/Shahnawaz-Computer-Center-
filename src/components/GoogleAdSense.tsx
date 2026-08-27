@@ -18,20 +18,26 @@ export const GoogleAdSense: React.FC<GoogleAdSenseProps> = ({
   style = { display: 'block' },
 }) => {
   useEffect(() => {
-    try {
-      // Push empty object to initialize the ad
-      // @ts-ignore
-      if (typeof window !== 'undefined' && window.adsbygoogle) {
+    let timeoutId: NodeJS.Timeout;
+    
+    // Delay push to ensure the container has a non-zero width (solves availableWidth=0 error)
+    timeoutId = setTimeout(() => {
+      try {
         // @ts-ignore
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        if (typeof window !== 'undefined' && window.adsbygoogle) {
+          // @ts-ignore
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
+      } catch (e: any) {
+        if (e && e.message && (e.message.includes('already have ads') || e.message.includes('No slot size') || e.message.includes('availableWidth=0'))) {
+          // Ignore the benign errors often caused by React StrictMode duplicate renders or zero-width containers
+          return;
+        }
+        console.error('Google AdSense initialization error:', e.message || e);
       }
-    } catch (e: any) {
-      if (e && e.message && e.message.includes('already have ads')) {
-        // Ignore the benign error often caused by React StrictMode duplicate renders
-        return;
-      }
-      console.error('Google AdSense initialization error:', e);
-    }
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (

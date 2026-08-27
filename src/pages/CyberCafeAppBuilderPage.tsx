@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Printer, AlertCircle } from 'lucide-react';
 import { ALL_TOOLS } from '../data/cyberCafeData';
 import { getTemplate } from '../data/applicationTemplates';
+import { SEOHead } from '../components/SEOHead';
 
 interface CyberCafeAppBuilderPageProps {
   onNavigate: (path: string) => void;
@@ -33,10 +34,10 @@ export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = (
 
   if (!tool || !template) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-700">
         <AlertCircle className="w-16 h-16 text-slate-400 mb-4" />
-        <h1 className="text-2xl font-bold text-slate-800">Application Template Not Found</h1>
-        <p className="text-slate-500 mt-2">The form you are looking for does not exist or is under construction.</p>
+        <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Application Template Not Found</h1>
+        <p className="text-slate-500 dark:text-slate-400 mt-2">The form you are looking for does not exist or is under construction.</p>
         <button onClick={() => onNavigate('/workspace')} className="mt-6 px-6 py-2 bg-indigo-600 text-white rounded-lg font-bold shadow-md hover:bg-indigo-700 transition-colors">
           Go Back to Workspace
         </button>
@@ -45,7 +46,13 @@ export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = (
   }
 
   return (
-    <div className="w-full bg-slate-50 min-h-screen pb-12">
+    <div className="w-full bg-slate-50 dark:bg-slate-700 min-h-screen pb-12">
+      <SEOHead 
+        title={`${tool.title} | Cyber Cafe Hub | Shahnawaz Computer Center`}
+        description={tool.description}
+        keywords={`Apply online, ${tool.title}, Shahnawaz Computer Center, Cyber cafe form`}
+        canonicalUrl={window.location.origin + currentPath}
+      />
       {/* Hide header and controls when printing */}
       <div className="print:hidden">
         <div className="bg-indigo-950 text-white py-6 px-4 border-b border-indigo-900 shadow-sm relative overflow-hidden">
@@ -81,9 +88,9 @@ export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = (
 
         <div className="max-w-7xl mx-auto px-4 mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Form Editor */}
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[calc(100vh-140px)]">
-            <div className="bg-slate-50 border-b border-slate-200 p-4 shrink-0 flex justify-between items-center">
-              <h2 className="font-bold text-slate-800">1. जानकारी भरें (Fill Information)</h2>
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col h-[calc(100vh-140px)]">
+            <div className="bg-slate-50 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-700 p-4 shrink-0 flex justify-between items-center">
+              <h2 className="font-bold text-slate-800 dark:text-slate-100">1. जानकारी भरें (Fill Information)</h2>
             </div>
             
             <div className="p-4 sm:p-6 overflow-y-auto flex-1">
@@ -93,7 +100,7 @@ export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = (
                   
                   return (
                     <div key={field.name} className={isFullWidth ? 'sm:col-span-2' : ''}>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">{field.label}</label>
+                      <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">{field.label}</label>
                       
                       {field.type === 'textarea' ? (
                         <textarea 
@@ -102,14 +109,14 @@ export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = (
                           onChange={handleInputChange} 
                           placeholder={field.placeholder}
                           rows={6} 
-                          className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none resize-y"
+                          className="w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none resize-y"
                         />
                       ) : field.type === 'select' ? (
                         <select
                           name={field.name}
                           value={formData[field.name] || ''}
                           onChange={handleInputChange}
-                          className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none"
+                          className="w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none"
                         >
                           <option value="">-- चुनें --</option>
                           {field.options?.map(opt => (
@@ -123,7 +130,7 @@ export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = (
                           value={formData[field.name] || ''} 
                           onChange={handleInputChange} 
                           placeholder={field.placeholder}
-                          className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" 
+                          className="w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" 
                         />
                       )}
                     </div>
@@ -133,7 +140,7 @@ export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = (
             </div>
             
             {/* Mobile Print Button */}
-            <div className="p-4 border-t border-slate-200 bg-slate-50 sm:hidden">
+            <div className="p-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700 sm:hidden">
               <button 
                 onClick={handlePrint}
                 className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-xl font-bold transition-colors shadow-md"
@@ -144,13 +151,13 @@ export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = (
           </div>
 
           {/* Preview Panel - Hidden on small screens unless we are printing */}
-          <div className="hidden lg:flex flex-col bg-slate-200 rounded-2xl overflow-hidden border border-slate-300 h-[calc(100vh-140px)]">
+          <div className="hidden lg:flex flex-col bg-slate-200 rounded-2xl overflow-hidden border border-slate-300 dark:border-slate-600 h-[calc(100vh-140px)]">
             <div className="bg-slate-700 text-white p-3 shrink-0 flex items-center justify-between">
               <h2 className="font-medium text-sm">Live Preview (A4 Size)</h2>
             </div>
             <div className="flex-1 overflow-y-auto p-4 sm:p-8 flex items-start justify-center">
               {/* Virtual A4 Paper Wrapper for Live Preview */}
-              <div className="bg-white shadow-xl w-[210mm] min-h-[297mm] p-[20mm] mx-auto text-black font-serif relative" style={{ transform: 'scale(0.8)', transformOrigin: 'top center' }}>
+              <div className="bg-white dark:bg-slate-800 shadow-xl w-[210mm] min-h-[297mm] p-[20mm] mx-auto text-black font-serif relative" style={{ transform: 'scale(0.8)', transformOrigin: 'top center' }}>
                  <template.renderDocument data={formData} />
               </div>
             </div>
@@ -159,7 +166,7 @@ export const CyberCafeAppBuilderPage: React.FC<CyberCafeAppBuilderPageProps> = (
       </div>
 
       {/* Actual Print Rendering (Only visible during window.print) */}
-      <div className="hidden print:block w-full bg-white text-black font-serif print:p-8">
+      <div className="hidden print:block w-full bg-white dark:bg-slate-800 text-black font-serif print:p-8">
         <template.renderDocument data={formData} />
       </div>
     </div>

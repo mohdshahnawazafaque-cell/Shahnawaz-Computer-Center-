@@ -148,7 +148,7 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onNavigate }) =>
       <Breadcrumbs items={[{ label: 'Admin Access Login' }]} onNavigate={onNavigate} />
 
       <div className="max-w-md mx-auto w-full px-4 mt-4">
-        <div className="bg-white rounded-2xl border-2 border-slate-300 shadow-xl overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-300 dark:border-slate-600 shadow-xl overflow-hidden">
           {/* Header */}
           <div className="bg-[#0B2545] p-6 text-white text-center border-b-4 border-red-600">
             <div className="w-12 h-12 rounded-xl bg-red-600 text-white mx-auto flex items-center justify-center font-black shadow-md mb-2">
@@ -173,7 +173,7 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onNavigate }) =>
 
             <form onSubmit={handleSubmit} className="space-y-4 text-xs">
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Admin Email Address</label>
+                <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Admin Email Address</label>
                 <div className="relative">
                   <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                   <input
@@ -182,14 +182,14 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onNavigate }) =>
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter admin email address"
-                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="block font-bold text-slate-700">Master Password</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200">Master Password</label>
                   <button
                     type="button"
                     onClick={() => {
@@ -210,12 +210,12 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onNavigate }) =>
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password..."
-                    className="w-full pl-9 pr-9 py-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                    className="w-full pl-9 pr-9 py-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-3 text-slate-400 hover:text-slate-600"
+                    className="absolute right-3 top-3 text-slate-400 hover:text-slate-600 dark:text-slate-300"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -239,7 +239,7 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onNavigate }) =>
             </form>
           </div>
 
-          <div className="p-4 bg-slate-50 border-t border-slate-200 text-center text-xs text-slate-500 flex items-center justify-center gap-1.5">
+          <div className="p-4 bg-slate-50 dark:bg-slate-700 border-t border-slate-200 dark:border-slate-700 text-center text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
             <span>Protected with JSON Web Token (JWT) & Bcrypt Encryption</span>
           </div>
@@ -249,7 +249,7 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onNavigate }) =>
       {/* Forgot / Reset Password Modal */}
       {showResetModal && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border-2 border-slate-300 shadow-2xl max-w-md w-full overflow-hidden text-xs">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-300 dark:border-slate-600 shadow-2xl max-w-md w-full overflow-hidden text-xs">
             <div className="bg-[#0B2545] p-4 text-white flex items-center justify-between">
               <div className="flex items-center gap-2 font-black uppercase">
                 <KeyRound className="w-4 h-4 text-amber-400" />
@@ -257,7 +257,7 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onNavigate }) =>
               </div>
               <button
                 onClick={() => setShowResetModal(false)}
-                className="p-1 hover:bg-white/10 rounded-lg transition-colors text-white"
+                className="p-1 hover:bg-white dark:bg-slate-800/10 rounded-lg transition-colors text-white"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -283,18 +283,18 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onNavigate }) =>
 
               {resetStep === 'request' ? (
                 <form onSubmit={handleRequestReset} className="space-y-3">
-                  <p className="text-slate-600">
+                  <p className="text-slate-600 dark:text-slate-300">
                     Enter your registered admin email address to generate an instant security reset token:
                   </p>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Registered Email</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Registered Email</label>
                     <input
                       type="email"
                       required
                       value={resetEmail}
                       onChange={(e) => setResetEmail(e.target.value)}
                       placeholder="Enter registered admin email"
-                      className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg"
+                      className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
                   <button
@@ -308,41 +308,41 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onNavigate }) =>
               ) : (
                 <form onSubmit={handleExecuteReset} className="space-y-3">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Security Token</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Security Token</label>
                     <input
                       type="text"
                       readOnly
                       value={resetTokenInput}
-                      className="w-full p-2 bg-slate-100 border border-slate-300 rounded font-mono text-[11px] text-slate-600"
+                      className="w-full p-2 bg-slate-100 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-600 rounded font-mono text-[11px] text-slate-600 dark:text-slate-300"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">New Password (min 6 chars)</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">New Password (min 6 chars)</label>
                     <input
                       type="password"
                       required
                       value={newResetPassword}
                       onChange={(e) => setNewResetPassword(e.target.value)}
                       placeholder="Enter new password"
-                      className="w-full p-2.5 border border-slate-300 rounded-lg"
+                      className="w-full p-2.5 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Confirm New Password</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Confirm New Password</label>
                     <input
                       type="password"
                       required
                       value={confirmResetPassword}
                       onChange={(e) => setConfirmResetPassword(e.target.value)}
                       placeholder="Re-type new password"
-                      className="w-full p-2.5 border border-slate-300 rounded-lg"
+                      className="w-full p-2.5 border border-slate-300 dark:border-slate-600 rounded-lg"
                     />
                   </div>
                   <div className="flex gap-2 pt-2">
                     <button
                       type="button"
                       onClick={() => setResetStep('request')}
-                      className="w-1/3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg"
+                      className="w-1/3 py-2 bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-bold rounded-lg"
                     >
                       Back
                     </button>

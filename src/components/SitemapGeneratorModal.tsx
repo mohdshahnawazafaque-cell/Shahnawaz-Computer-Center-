@@ -109,7 +109,7 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 animate-in fade-in duration-150">
       <div
-        className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-5xl overflow-hidden flex flex-col max-h-[92vh]"
+        className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 w-full max-w-5xl overflow-hidden flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -135,7 +135,7 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
 
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-lg bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 text-white flex items-center justify-center transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -154,20 +154,20 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
         {/* Modal Body */}
         <div className="p-6 overflow-y-auto space-y-6 flex-1">
           {/* Controls & Configuration Bar */}
-          <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-4">
+          <div className="bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-xl p-4 space-y-4">
             <div className="flex items-center justify-between">
-              <h4 className="text-xs font-black uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+              <h4 className="text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-blue-600" />
                 <span>Auto-Generation Settings</span>
               </h4>
-              <span className="text-xs font-mono text-slate-500 font-semibold">
+              <span className="text-xs font-mono text-slate-500 dark:text-slate-400 font-semibold">
                 Database: {posts.length} Total Posts Loaded
               </span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-200 mb-1">
                   Canonical Base URL
                 </label>
                 <input
@@ -175,7 +175,7 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
                   value={baseUrl}
                   onChange={(e) => setBaseUrl(e.target.value)}
                   placeholder="https://shahnawazcomputercenter.in"
-                  className="w-full p-2 border border-slate-300 rounded-lg text-xs font-mono bg-white focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
+                  className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-mono bg-white dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
                 />
               </div>
 
@@ -187,7 +187,7 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
                     onChange={(e) => setIncludeImages(e.target.checked)}
                     className="w-4 h-4 text-blue-600 rounded-sm focus:ring-blue-500"
                   />
-                  <span className="text-xs font-semibold text-slate-800 flex items-center gap-1">
+                  <span className="text-xs font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-1">
                     <ImageIcon className="w-3.5 h-3.5 text-blue-600" />
                     Google Image Schema
                   </span>
@@ -200,7 +200,7 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
                     onChange={(e) => setIncludeNews(e.target.checked)}
                     className="w-4 h-4 text-blue-600 rounded-sm focus:ring-blue-500"
                   />
-                  <span className="text-xs font-semibold text-slate-800 flex items-center gap-1">
+                  <span className="text-xs font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-1">
                     <Newspaper className="w-3.5 h-3.5 text-orange-600" />
                     Google News (48h)
                   </span>
@@ -232,7 +232,7 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
 
           {/* Real-time Crawl Metrics Dashboard */}
           <div>
-            <h4 className="text-xs font-black uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+            <h4 className="text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200 mb-2 flex items-center gap-1.5">
               <Layers className="w-3.5 h-3.5 text-blue-600" />
               <span>Live Index Coverage & Crawl Statistics</span>
             </h4>
@@ -241,9 +241,9 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
                 <span className="text-[10px] font-black uppercase text-blue-900 block">Total URLs</span>
                 <span className="text-xl font-black text-blue-800">{metrics.totalUrls}</span>
               </div>
-              <div className="bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-center">
-                <span className="text-[10px] font-bold uppercase text-slate-600 block">Jobs</span>
-                <span className="text-lg font-black text-slate-900">{metrics.jobsCount}</span>
+              <div className="bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-center">
+                <span className="text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 block">Jobs</span>
+                <span className="text-lg font-black text-slate-900 dark:text-white">{metrics.jobsCount}</span>
               </div>
               <div className="bg-orange-50/70 border border-orange-200 rounded-xl p-2.5 text-center">
                 <span className="text-[10px] font-bold uppercase text-orange-900 block">Admit Cards</span>
@@ -273,7 +273,7 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
           {/* XML Output Code Preview */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <h4 className="text-xs font-black uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+              <h4 className="text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
                 <Code className="w-3.5 h-3.5 text-blue-600" />
                 <span>Generated sitemap.xml Preview ({entries.length} URL entries)</span>
               </h4>
@@ -318,7 +318,7 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
                 href={pingUrls.google}
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-bold flex items-center justify-between border border-white/10 transition-colors"
+                className="p-2.5 bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 rounded-lg text-xs font-bold flex items-center justify-between border border-white/10 transition-colors"
               >
                 <span className="flex items-center gap-1.5">
                   <Send className="w-3.5 h-3.5 text-emerald-400" />
@@ -331,7 +331,7 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
                 href={pingUrls.bing}
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-bold flex items-center justify-between border border-white/10 transition-colors"
+                className="p-2.5 bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 rounded-lg text-xs font-bold flex items-center justify-between border border-white/10 transition-colors"
               >
                 <span className="flex items-center gap-1.5">
                   <Send className="w-3.5 h-3.5 text-sky-400" />
@@ -344,7 +344,7 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
                 href="https://search.google.com/search-console"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-bold flex items-center justify-between border border-white/10 transition-colors"
+                className="p-2.5 bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 rounded-lg text-xs font-bold flex items-center justify-between border border-white/10 transition-colors"
               >
                 <span className="flex items-center gap-1.5">
                   <Search className="w-3.5 h-3.5 text-amber-400" />
@@ -357,8 +357,8 @@ export const SitemapGeneratorModal: React.FC<SitemapGeneratorModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="bg-slate-50 border-t border-slate-200 px-6 py-3.5 flex items-center justify-between">
-          <span className="text-xs text-slate-500 font-medium">
+        <div className="bg-slate-50 dark:bg-slate-700 border-t border-slate-200 dark:border-slate-700 px-6 py-3.5 flex items-center justify-between">
+          <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
             W3C standard XML format recognized by Googlebot, Bingbot, DuckDuckGo & Yandex.
           </span>
           <button

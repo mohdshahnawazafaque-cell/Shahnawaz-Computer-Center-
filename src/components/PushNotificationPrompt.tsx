@@ -150,7 +150,7 @@ export const PushNotificationPrompt: React.FC<PushNotificationPromptProps> = ({
     >
       <div
         id="push-notification-modal"
-        className="bg-white text-slate-800 w-full max-w-lg rounded-2xl shadow-2xl border border-slate-200 overflow-hidden my-auto flex flex-col max-h-[92vh] animate-in fade-in zoom-in-95 duration-150"
+        className="bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 w-full max-w-lg rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden my-auto flex flex-col max-h-[92vh] animate-in fade-in zoom-in-95 duration-150"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with Sarkari/Cyber Cafe Red Gradient */}
@@ -171,7 +171,7 @@ export const PushNotificationPrompt: React.FC<PushNotificationPromptProps> = ({
           <button
             id="close-push-modal-btn"
             onClick={onClose}
-            className="text-white/80 hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+            className="text-white/80 hover:text-white p-1.5 rounded-lg hover:bg-white dark:bg-slate-800/10 transition-colors cursor-pointer"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -214,28 +214,28 @@ export const PushNotificationPrompt: React.FC<PushNotificationPromptProps> = ({
           )}
 
           {/* Value Prop Banner */}
-          <div className="bg-gradient-to-br from-slate-50 to-amber-50/40 p-3.5 rounded-xl border border-slate-200 space-y-2">
+          <div className="bg-gradient-to-br from-slate-50 to-amber-50/40 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 space-y-2">
             <div className="flex items-center gap-2 text-xs font-bold text-[#990000] uppercase tracking-wider">
               <Zap className="w-3.5 h-3.5 text-amber-500" /> Never Miss An Important Deadline
             </div>
-            <p className="text-xs text-slate-700 leading-relaxed">
+            <p className="text-xs text-slate-700 dark:text-slate-200 leading-relaxed">
               Get notified the <strong>second</strong> a new Government Vacancy, SSC/UPSC Admit Card, Board Result, or Sarkari Yojana is published. Works in background even when website is closed!
             </p>
           </div>
 
           {/* Subscription Status Card */}
-          <div className="flex items-center justify-between p-3.5 bg-white rounded-xl border border-slate-200 shadow-2xs">
+          <div className="flex items-center justify-between p-3.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs">
             <div className="flex items-center gap-3">
               <div className={`w-3 h-3 rounded-full ${isSubscribed ? 'bg-emerald-500 animate-ping' : 'bg-slate-300'}`} />
               <div>
-                <div className="text-xs font-bold text-slate-900">
+                <div className="text-xs font-bold text-slate-900 dark:text-white">
                   Subscription Status: {isSubscribed ? (
                     <span className="text-emerald-700 font-extrabold">Active & Connected</span>
                   ) : (
-                    <span className="text-slate-500">Not Subscribed</span>
+                    <span className="text-slate-500 dark:text-slate-400">Not Subscribed</span>
                   )}
                 </div>
-                <div className="text-[11px] text-slate-500">
+                <div className="text-[11px] text-slate-500 dark:text-slate-400">
                   {isSubscribed ? 'Service Worker Push active' : 'Click below to enable alerts'}
                 </div>
               </div>
@@ -256,7 +256,7 @@ export const PushNotificationPrompt: React.FC<PushNotificationPromptProps> = ({
           {/* Category Preferences Selection */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-black text-slate-800 uppercase tracking-tight flex items-center gap-1.5">
+              <span className="text-xs font-black text-slate-800 dark:text-slate-100 uppercase tracking-tight flex items-center gap-1.5">
                 <Layers className="w-3.5 h-3.5 text-[#990000]" /> Select Categories You Want Alerts For:
               </span>
             </div>
@@ -279,7 +279,7 @@ export const PushNotificationPrompt: React.FC<PushNotificationPromptProps> = ({
                     className={`p-2.5 rounded-lg border text-left flex items-center justify-between transition-all cursor-pointer ${
                       isSelected
                         ? 'bg-red-50 border-[#990000] text-[#990000] font-bold shadow-2xs'
-                        : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                        : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:bg-slate-700'
                     }`}
                   >
                     <span className="truncate pr-1">{item.label}</span>
@@ -291,7 +291,7 @@ export const PushNotificationPrompt: React.FC<PushNotificationPromptProps> = ({
           </div>
 
           {/* Privacy & Zero Spam Guarantee */}
-          <div className="flex items-center gap-2 text-[11px] text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+          <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700">
             <Shield className="w-4 h-4 text-emerald-600 shrink-0" />
             <span>
               100% Free & No spam. You can change preferences or unsubscribe anytime in 1-click.
@@ -300,19 +300,19 @@ export const PushNotificationPrompt: React.FC<PushNotificationPromptProps> = ({
         </div>
 
         {/* Action Footer */}
-        <div className="bg-slate-50 px-5 py-3.5 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-2.5 shrink-0">
+        <div className="bg-slate-50 dark:bg-slate-700 px-5 py-3.5 border-t border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-2.5 shrink-0">
           {isSubscribed ? (
             <button
               id="send-test-push-alert-btn"
               onClick={handleSendTest}
               disabled={testStatus === 'sending'}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs rounded-xl transition-colors cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 dark:text-slate-100 font-bold text-xs rounded-xl transition-colors cursor-pointer"
             >
-              <Send className="w-3.5 h-3.5 text-slate-600" />
+              <Send className="w-3.5 h-3.5 text-slate-600 dark:text-slate-300" />
               {testStatus === 'sending' ? 'Dispatching...' : 'Send Test Notification'}
             </button>
           ) : (
-            <div className="text-[11px] text-slate-500 hidden sm:block">
+            <div className="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">
               Requires browser notification permission
             </div>
           )}
@@ -321,7 +321,7 @@ export const PushNotificationPrompt: React.FC<PushNotificationPromptProps> = ({
             <button
               id="cancel-push-modal-btn"
               onClick={onClose}
-              className="w-1/2 sm:w-auto px-4 py-2 bg-white border border-slate-300 text-slate-700 font-bold text-xs rounded-xl hover:bg-slate-100 cursor-pointer"
+              className="w-1/2 sm:w-auto px-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 font-bold text-xs rounded-xl hover:bg-slate-100 dark:bg-slate-800/50 cursor-pointer"
             >
               Close
             </button>

@@ -31,6 +31,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { AdPlacement } from '../components/AdPlacement';
 import { RecentPostsWidget } from '../components/RecentPostsWidget';
 import { SarkariYojanaSection } from '../components/SarkariYojanaSection';
+import { SEOHead } from '../components/SEOHead';
 import { useSettings } from '../context/SettingsContext';
 import { getClientPosts } from '../utils/clientStorage';
 
@@ -244,10 +245,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
   useEffect(() => {
     fetchCategoryPosts();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Update document title
-    document.title = `${meta.title} | Shahnawaz Computer Center`;
-  }, [fetchCategoryPosts, meta.title]);
+  }, [fetchCategoryPosts]);
 
   const stateList = ['All', 'All India', 'Uttar Pradesh', 'Bihar', 'Delhi', 'Rajasthan', 'Madhya Pradesh'];
 
@@ -293,6 +291,12 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
 
   return (
     <div id="category-page-container" className="pb-16">
+      <SEOHead 
+        title={`${meta.title} | Shahnawaz Computer Center`}
+        description={meta.desc}
+        keywords={`${meta.title}, Sarkari Naukri, Sarkari Result, Latest Jobs`}
+        canonicalUrl={window.location.origin + `/category/${categorySlug}`}
+      />
       {/* Breadcrumbs */}
       <Breadcrumbs
         items={[{ label: 'Categories', path: '/' }, { label: meta.title }]}
@@ -317,7 +321,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
             </div>
 
             {/* Quick Stats Pill */}
-            <div className="bg-white/10 backdrop-blur-xs border border-white/20 rounded-xl p-3 text-right shrink-0 hidden md:block">
+            <div className="bg-white dark:bg-slate-800/10 backdrop-blur-xs border border-white/20 rounded-xl p-3 text-right shrink-0 hidden md:block">
               <div className="text-2xl font-black text-amber-300">
                 {isLoading ? '...' : filteredPosts.length}
               </div>
@@ -340,7 +344,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
         )}
 
         {/* Filters & Search Controls */}
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-3">
+        <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-3">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
             {/* Search bar inside category */}
             <div className="relative flex-1 max-w-md">
@@ -353,21 +357,21 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                   setCurrentPage(1);
                 }}
                 placeholder={`Search in ${meta.title} (e.g. SSC, UPSC, Railway, Police)...`}
-                className="w-full text-xs pl-9 pr-3 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                className="w-full text-xs pl-9 pr-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
               />
             </div>
 
             {/* View mode toggle */}
             <div className="flex items-center gap-2 justify-end">
-              <div className="text-xs text-slate-500 font-bold hidden sm:block">
+              <div className="text-xs text-slate-500 dark:text-slate-400 font-bold hidden sm:block">
                 Showing {filteredPosts.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0}-
                 {Math.min(currentPage * itemsPerPage, filteredPosts.length)} of {filteredPosts.length}
               </div>
-              <div className="flex items-center border border-slate-200 rounded-lg p-0.5 bg-slate-50">
+              <div className="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg p-0.5 bg-slate-50 dark:bg-slate-700">
                 <button
                   onClick={() => setViewMode('grid')}
                   className={`p-1.5 rounded ${
-                    viewMode === 'grid' ? 'bg-white shadow-xs text-blue-900' : 'text-slate-500 hover:text-slate-700'
+                    viewMode === 'grid' ? 'bg-white dark:bg-slate-800 shadow-xs text-blue-900' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'
                   }`}
                   title="Grid View"
                 >
@@ -376,7 +380,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                 <button
                   onClick={() => setViewMode('list')}
                   className={`p-1.5 rounded ${
-                    viewMode === 'list' ? 'bg-white shadow-xs text-blue-900' : 'text-slate-500 hover:text-slate-700'
+                    viewMode === 'list' ? 'bg-white dark:bg-slate-800 shadow-xs text-blue-900' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'
                   }`}
                   title="Compact List View"
                 >
@@ -387,8 +391,8 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
           </div>
 
           {/* State & Region Pills */}
-          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100 text-xs">
-            <span className="text-[11px] font-bold text-slate-500 uppercase flex items-center gap-1 whitespace-nowrap">
+          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-700 text-xs">
+            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase flex items-center gap-1 whitespace-nowrap">
               <MapPin className="w-3.5 h-3.5 text-red-600" /> Filter by State:
             </span>
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 flex-1 scrollbar-none">
@@ -402,7 +406,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                   className={`px-3 py-1 rounded-md text-[11px] font-bold transition-all whitespace-nowrap ${
                     selectedState === st
                       ? 'bg-red-600 text-white shadow-xs'
-                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+                      : 'bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 hover:bg-slate-200 border border-slate-200 dark:border-slate-700'
                   }`}
                 >
                   {st}
@@ -417,18 +421,18 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
           {/* Main Category Content Column */}
           <div className="lg:col-span-8 xl:col-span-9 space-y-4">
             {isLoading ? (
-              <div className="py-16 text-center text-slate-400 text-xs bg-white rounded-2xl border border-slate-200">
+              <div className="py-16 text-center text-slate-400 text-xs bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
                 <div className="inline-block w-7 h-7 border-2 border-red-600 border-t-transparent rounded-full animate-spin mb-2"></div>
-                <p className="font-semibold text-slate-600">Fetching verified government database records...</p>
+                <p className="font-semibold text-slate-600 dark:text-slate-300">Fetching verified government database records...</p>
               </div>
             ) : hasError ? (
-              <div className="bg-white p-8 sm:p-12 text-center rounded-2xl border border-red-200 shadow-xs space-y-4">
+              <div className="bg-white dark:bg-slate-800 p-8 sm:p-12 text-center rounded-2xl border border-red-200 shadow-xs space-y-4">
                 <div className="w-12 h-12 bg-red-50 text-red-600 rounded-full flex items-center justify-center mx-auto">
                   <AlertTriangle className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-black text-slate-900 text-base">Unable to Load Category Notices</h3>
-                  <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto">
+                  <h3 className="font-black text-slate-900 dark:text-white text-base">Unable to Load Category Notices</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-md mx-auto">
                     A temporary connection issue occurred while fetching posts for this section. Click below to refresh.
                   </p>
                 </div>
@@ -442,13 +446,13 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                 </button>
               </div>
             ) : filteredPosts.length === 0 ? (
-              <div className="bg-white p-10 text-center rounded-2xl border border-slate-200 shadow-xs space-y-4">
+              <div className="bg-white dark:bg-slate-800 p-10 text-center rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
                 <div className="w-12 h-12 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mx-auto">
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-black text-slate-800 text-sm sm:text-base">No Matching Updates Found</h3>
-                  <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto">
+                  <h3 className="font-black text-slate-800 dark:text-slate-100 text-sm sm:text-base">No Matching Updates Found</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-md mx-auto">
                     {searchQuery || selectedState !== 'All'
                       ? 'No posts matched your current search filters. Try clearing the search query or state selection.'
                       : 'Currently there are no active recruitments published in this category.'}
@@ -463,14 +467,14 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                       setSelectedState('All');
                       setCurrentPage(1);
                     }}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-lg text-xs font-bold transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 text-slate-800 dark:text-slate-100 rounded-lg text-xs font-bold transition-colors"
                   >
                     <span>Reset Filters</span>
                   </button>
                 )}
 
                 {/* Other Popular Categories */}
-                <div className="pt-4 border-t border-slate-100 max-w-lg mx-auto">
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-700 max-w-lg mx-auto">
                   <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2.5">
                     Browse Other Government Categories
                   </p>
@@ -485,7 +489,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                       <button
                         key={cat.slug}
                         onClick={() => onNavigate(`/category/${cat.slug}`)}
-                        className="px-2.5 py-1 bg-slate-50 hover:bg-red-50 hover:text-red-700 border border-slate-200 rounded-md text-[11px] font-semibold transition-colors"
+                        className="px-2.5 py-1 bg-slate-50 dark:bg-slate-700 hover:bg-red-50 hover:text-red-700 border border-slate-200 dark:border-slate-700 rounded-md text-[11px] font-semibold transition-colors"
                       >
                         {cat.label}
                       </button>
@@ -520,17 +524,17 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
 
                 {/* Pagination Controls */}
                 {totalPages > 1 && (
-                  <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 mt-6">
-                    <div className="text-xs text-slate-600 font-semibold">
-                      Showing Page <span className="font-black text-slate-900">{currentPage}</span> of{' '}
-                      <span className="font-black text-slate-900">{totalPages}</span> ({filteredPosts.length} total records)
+                  <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 mt-6">
+                    <div className="text-xs text-slate-600 dark:text-slate-300 font-semibold">
+                      Showing Page <span className="font-black text-slate-900 dark:text-white">{currentPage}</span> of{' '}
+                      <span className="font-black text-slate-900 dark:text-white">{totalPages}</span> ({filteredPosts.length} total records)
                     </div>
 
                     <div className="flex items-center gap-1.5">
                       <button
                         onClick={() => handlePageChange(1)}
                         disabled={currentPage === 1}
-                        className="p-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                        className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-800/50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                         title="First Page"
                       >
                         <ChevronsLeft className="w-4 h-4" />
@@ -539,7 +543,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                       <button
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
-                        className="px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed font-bold text-xs flex items-center gap-1 transition-colors"
+                        className="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:bg-slate-800/50 disabled:opacity-40 disabled:cursor-not-allowed font-bold text-xs flex items-center gap-1 transition-colors"
                       >
                         <ChevronLeft className="w-3.5 h-3.5" />
                         <span>Prev</span>
@@ -570,7 +574,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                                   className={`w-8 h-8 rounded-lg text-xs font-black transition-all ${
                                     currentPage === pageNum
                                       ? 'bg-red-600 text-white shadow-xs'
-                                      : 'border border-slate-200 text-slate-700 hover:bg-slate-100'
+                                      : 'border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:bg-slate-800/50'
                                   }`}
                                 >
                                   {pageNum}
@@ -583,7 +587,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                       <button
                         onClick={() => handlePageChange(currentPage + 1)}
                         disabled={currentPage === totalPages}
-                        className="px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed font-bold text-xs flex items-center gap-1 transition-colors"
+                        className="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:bg-slate-800/50 disabled:opacity-40 disabled:cursor-not-allowed font-bold text-xs flex items-center gap-1 transition-colors"
                       >
                         <span>Next</span>
                         <ChevronRight className="w-3.5 h-3.5" />
@@ -592,7 +596,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                       <button
                         onClick={() => handlePageChange(totalPages)}
                         disabled={currentPage === totalPages}
-                        className="p-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                        className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-800/50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                         title="Last Page"
                       >
                         <ChevronsRight className="w-4 h-4" />

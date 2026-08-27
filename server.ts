@@ -24,6 +24,11 @@ import {
   createService,
   updateService,
   deleteService,
+  getPromotions,
+  getAllPromotionsAdmin,
+  createPromotion,
+  updatePromotion,
+  deletePromotion,
   getAds,
   updateAds,
   updateAdById,
@@ -1195,6 +1200,100 @@ async function startServer() {
   app.get('/api/admin/announcements', requireAdmin, (req, res) => {
     res.json(getAllAnnouncementsAdmin());
   });
+
+  
+  // --- Promotions API ---
+  app.get('/api/promotions', (req, res) => {
+    try {
+      res.json(getPromotions());
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to fetch promotions' });
+    }
+  });
+
+  app.get('/api/admin/promotions', requireAdmin, (req, res) => {
+    try {
+      res.json(getAllPromotionsAdmin());
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to fetch promotions' });
+    }
+  });
+
+  function validatePromotionPayload(payload) {
+    if (!payload.title || !payload.description) {
+      return 'Title and Description are required';
+    }
+    const urlPattern = /^(https?:\/\/)/i;
+    
+    if (payload.promotionalLink && !urlPattern.test(payload.promotionalLink)) {
+      return 'Promotional link must be a valid HTTP/HTTPS URL';
+    }
+    if (payload.imageUrl) {
+      if (!urlPattern.test(payload.imageUrl)) return 'Image URL must be valid HTTP/HTTPS URL';
+      try {
+        const urlObj = new URL(payload.imageUrl);
+        const ext = urlObj.pathname.split('.').pop().toLowerCase();
+        if (!['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext)) {
+          return 'Image URL must point to a valid image file type (.jpg, .png, .gif, .webp, .svg)';
+        }
+      } catch (e) {
+        return 'Invalid Image URL format';
+      }
+    }
+    if (payload.videoUrl) {
+      if (!urlPattern.test(payload.videoUrl)) return 'Video URL must be valid HTTP/HTTPS URL';
+      if (!payload.videoUrl.includes('youtube.com') && !payload.videoUrl.includes('youtu.be')) {
+        try {
+          const urlObj = new URL(payload.videoUrl);
+          const ext = urlObj.pathname.split('.').pop().toLowerCase();
+          if (!['mp4', 'webm', 'ogg'].includes(ext)) {
+            return 'Video URL must be a valid YouTube link or an MP4/WEBM/OGG video file';
+          }
+        } catch(e) {
+          return 'Invalid Video URL format';
+        }
+      }
+    }
+    return null;
+  }
+
+  app.post('/api/admin/promotions', requireAdmin, (req, res) => {
+    try {
+      const error = validatePromotionPayload(req.body);
+      if (error) {
+        res.status(400).json({ error });
+        return;
+      }
+      const promo = createPromotion(req.body);
+      res.status(201).json(promo);
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to create promotion' });
+    }
+  });
+
+  app.put('/api/admin/promotions/:id', requireAdmin, (req, res) => {
+    try {
+      const error = validatePromotionPayload(req.body);
+      if (error) {
+        res.status(400).json({ error });
+        return;
+      }
+      const promo = updatePromotion(req.params.id, req.body);
+      res.json(promo);
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to update promotion' });
+    }
+  });
+
+  app.delete('/api/admin/promotions/:id', requireAdmin, (req, res) => {
+    try {
+      deletePromotion(req.params.id);
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to delete promotion' });
+    }
+  });
+  // --- End Promotions API ---
 
   app.post('/api/admin/announcements', requireAdmin, (req, res) => {
     try {

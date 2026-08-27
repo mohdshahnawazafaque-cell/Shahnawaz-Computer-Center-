@@ -35,7 +35,7 @@ export const ImportantLinksTable: React.FC<ImportantLinksTableProps> = ({
 
   return (
     <section id="important-links-section" className="my-6">
-      <div className="bg-white rounded-xl border-2 border-[#0B2545] shadow-md overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-xl border-2 border-[#0B2545] shadow-md overflow-hidden">
         {/* Table Header */}
         <div className="bg-[#0B2545] text-white px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -53,8 +53,8 @@ export const ImportantLinksTable: React.FC<ImportantLinksTableProps> = ({
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-100 border-b border-slate-300 text-xs font-black uppercase text-slate-700 tracking-wider">
-                <th className="py-2.5 px-4 w-2/3 border-r border-slate-300">LINK TITLE / DETAILS</th>
+              <tr className="bg-slate-100 dark:bg-slate-800/50 border-b border-slate-300 dark:border-slate-600 text-xs font-black uppercase text-slate-700 dark:text-slate-200 tracking-wider">
+                <th className="py-2.5 px-4 w-2/3 border-r border-slate-300 dark:border-slate-600">LINK TITLE / DETAILS</th>
                 <th className="py-2.5 px-4 w-1/3 text-center">CLICK TO OPEN / APPLY</th>
               </tr>
             </thead>
@@ -63,10 +63,10 @@ export const ImportantLinksTable: React.FC<ImportantLinksTableProps> = ({
                 <tr
                   key={link.id || idx}
                   className={`hover:bg-blue-50/70 transition-colors ${
-                    idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/60'
+                    idx % 2 === 0 ? 'bg-white dark:bg-slate-800' : 'bg-slate-50 dark:bg-slate-700/60'
                   }`}
                 >
-                  <td className="py-3 px-4 font-bold text-slate-900 border-r border-slate-200">
+                  <td className="py-3 px-4 font-bold text-slate-900 dark:text-white border-r border-slate-200 dark:border-slate-700">
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                       <span className="leading-snug">{link.name}</span>

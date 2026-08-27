@@ -101,7 +101,7 @@ export const ComputerServicesSection: React.FC<ComputerServicesSectionProps> = (
               <button
                 id="services-contact-btn"
                 onClick={onNavigateToContact}
-                className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white hover:bg-slate-100 text-[#0B2545] font-black text-xs uppercase tracking-wider rounded-xl shadow transition-all"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-800/50 text-[#0B2545] font-black text-xs uppercase tracking-wider rounded-xl shadow transition-all"
               >
                 <span>CONTACT US</span>
                 <ArrowRight className="w-4 h-4" />

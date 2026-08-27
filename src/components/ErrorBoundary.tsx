@@ -123,11 +123,11 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
         >
           <div
             id="error-boundary-card"
-            className="w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-red-200 overflow-hidden text-slate-800 animate-in fade-in zoom-in-95 duration-200"
+            className="w-full max-w-2xl bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-red-200 overflow-hidden text-slate-800 dark:text-slate-100 animate-in fade-in zoom-in-95 duration-200"
           >
             {/* Header Banner */}
             <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-6 flex items-start gap-4">
-              <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm flex-shrink-0">
+              <div className="p-3 bg-white dark:bg-slate-800/20 rounded-xl backdrop-blur-sm flex-shrink-0">
                 <ShieldAlert className="w-8 h-8 text-white" />
               </div>
               <div className="flex-1">
@@ -179,15 +179,15 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
                 <button
                   id="error-boundary-home-btn"
                   onClick={this.handleGoHome}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-sm transition-all border border-slate-300 active:scale-[0.98]"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 text-slate-800 dark:text-slate-100 font-bold rounded-xl text-sm transition-all border border-slate-300 dark:border-slate-600 active:scale-[0.98]"
                 >
-                  <Home className="w-4 h-4 text-slate-600" />
+                  <Home className="w-4 h-4 text-slate-600 dark:text-slate-300" />
                   <span>Go to Home</span>
                 </button>
               </div>
 
               {/* Help & Support Info */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-600 dark:text-slate-300">
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                   <span>Need urgent help with form filling or admit cards?</span>
@@ -201,17 +201,17 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
               </div>
 
               {/* Collapsible Technical Details for Debugging */}
-              <div className="border border-slate-200 rounded-xl overflow-hidden">
+              <div className="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
                 <button
                   id="error-boundary-toggle-details-btn"
                   onClick={this.toggleDetails}
-                  className="w-full px-4 py-3 bg-slate-50 hover:bg-slate-100 flex items-center justify-between text-xs font-semibold text-slate-700 transition-colors text-left"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:bg-slate-800/50 flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-200 transition-colors text-left"
                 >
                   <span>Technical Diagnostics & Stack Trace</span>
                   {this.state.showDetails ? (
-                    <ChevronUp className="w-4 h-4 text-slate-500" />
+                    <ChevronUp className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 text-slate-500" />
+                    <ChevronDown className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                   )}
                 </button>
 

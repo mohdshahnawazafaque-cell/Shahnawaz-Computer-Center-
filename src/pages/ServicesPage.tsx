@@ -23,6 +23,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ServicesFAQSection } from '../components/ServicesFAQSection';
 import { SarkariYojanaSection } from '../components/SarkariYojanaSection';
 import { FarmerRegistrySection } from '../components/FarmerRegistrySection';
+import { SEOHead } from '../components/SEOHead';
 import { useSettings } from '../context/SettingsContext';
 
 interface ServicesPageProps {
@@ -60,6 +61,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
 
   return (
     <div id="services-page-container" className="pb-16">
+      <SEOHead 
+        title="Computer Center Services | Shahnawaz Computer Center"
+        description="Explore our online computer center services including form filling, document printing, passport applications, PAN card, Aadhaar card, and more."
+        keywords="Online form filling, PAN card apply, Aadhaar card, Passport apply, Shahnawaz Computer Center, CSC services, e-mitra, common service center"
+        canonicalUrl={window.location.origin + '/services'}
+      />
       {/* Breadcrumbs */}
       <Breadcrumbs
         items={[{ label: 'Computer Center Services' }]}
@@ -93,7 +100,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
 
               <a
                 href={`tel:${callPhone}`}
-                className="px-4 py-2.5 bg-white hover:bg-slate-100 text-[#0B2545] font-black text-xs uppercase tracking-wider rounded-xl transition-all flex items-center gap-2"
+                className="px-4 py-2.5 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-800/50 text-[#0B2545] font-black text-xs uppercase tracking-wider rounded-xl transition-all flex items-center gap-2"
               >
                 <Phone className="w-4 h-4 text-red-600" />
                 <span>Call: {callPhone}</span>
@@ -124,25 +131,25 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
           ].map((item, idx) => (
             <div
               key={idx}
-              className="p-4 bg-white rounded-xl border border-slate-200 shadow-xs space-y-1.5"
+              className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-1.5"
             >
               <div className="w-7 h-7 rounded-lg bg-red-100 text-red-600 flex items-center justify-center font-bold text-xs">
                 0{idx + 1}
               </div>
-              <h3 className="font-bold text-sm text-slate-900">{item.title}</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">{item.title}</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
 
         {/* Full Services Grid */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
             <div>
               <h2 className="text-lg sm:text-xl font-black text-[#0B2545] uppercase tracking-tight">
                 Our Complete Service Catalog
               </h2>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Click any service to book directly via WhatsApp or call our center
               </p>
             </div>
@@ -153,7 +160,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
               <div
                 key={srv.id}
                 id={`catalog-service-${srv.id}`}
-                className="bg-white rounded-2xl border-2 border-slate-200 hover:border-blue-500 shadow-xs hover:shadow-md transition-all p-5 flex flex-col justify-between group"
+                className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-200 dark:border-slate-700 hover:border-blue-500 shadow-xs hover:shadow-md transition-all p-5 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
@@ -167,23 +174,23 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                     )}
                   </div>
 
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-[#0B2545]">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0B2545]">
                     {srv.name}
                   </h3>
-                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                     {srv.description}
                   </p>
 
-                  <div className="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-xs">
-                    <div className="flex items-center justify-between text-slate-600">
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 space-y-1.5 text-xs">
+                    <div className="flex items-center justify-between text-slate-600 dark:text-slate-300">
                       <span className="flex items-center gap-1 font-medium">
                         <Clock className="w-3.5 h-3.5 text-amber-600" /> Time:
                       </span>
-                      <span className="font-bold text-slate-900">{srv.turnaroundTime}</span>
+                      <span className="font-bold text-slate-900 dark:text-white">{srv.turnaroundTime}</span>
                     </div>
 
                     {srv.feeRange && (
-                      <div className="flex items-center justify-between text-slate-600">
+                      <div className="flex items-center justify-between text-slate-600 dark:text-slate-300">
                         <span className="font-medium">Fee:</span>
                         <span className="font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
                           {srv.feeRange}
@@ -193,7 +200,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                <div className="mt-5 pt-3 border-t border-slate-100">
+                <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-700">
                   <a
                     href={`https://wa.me/${whatsAppPhone}?text=${encodeURIComponent(`Hello Shahnawaz Computer Center, I want to book: ${srv.name}. Please provide details.`)}`}
                     target="_blank"
@@ -217,12 +224,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
         <ServicesFAQSection />
 
         {/* Operating Hours & Location Callout */}
-        <div className="bg-slate-100 rounded-2xl p-6 border border-slate-300 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="bg-slate-100 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-300 dark:border-slate-600 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
             <h3 className="font-black text-[#0B2545] text-base uppercase">
               Visiting Shahnawaz Computer Center in Person?
             </h3>
-            <p className="text-xs text-slate-600">
+            <p className="text-xs text-slate-600 dark:text-slate-300">
               Open <strong>{settings?.timing || 'Mon-Sat 8:00 AM - 8:30 PM'}</strong> at {settings?.address || 'Shahnawaz Computer Center, Tambour, District Sitapur, Uttar Pradesh, India'}.
             </p>
           </div>

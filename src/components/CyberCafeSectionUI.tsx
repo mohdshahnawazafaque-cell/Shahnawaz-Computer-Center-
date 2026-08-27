@@ -36,7 +36,7 @@ export const CyberCafeSectionUI: React.FC<CyberCafeSectionUIProps> = ({ onNaviga
               </button>
               <button 
                 onClick={() => onNavigate('/workspace')}
-                className="bg-white/10 hover:bg-white/20 text-white border border-white/10 px-6 py-3 rounded-xl font-bold text-sm transition-colors flex items-center justify-center gap-2"
+                className="bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 text-white border border-white/10 px-6 py-3 rounded-xl font-bold text-sm transition-colors flex items-center justify-center gap-2"
               >
                 सभी आवेदन देखें (Applications)
               </button>

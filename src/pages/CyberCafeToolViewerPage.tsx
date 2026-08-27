@@ -15,7 +15,7 @@ export const CyberCafeToolViewerPage: React.FC<CyberCafeToolViewerPageProps> = (
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-800">Tool Not Found</h1>
+          <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Tool Not Found</h1>
           <button onClick={() => onNavigate('/workspace')} className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded">
             Go Back
           </button>
@@ -40,12 +40,12 @@ export const CyberCafeToolViewerPage: React.FC<CyberCafeToolViewerPageProps> = (
 
     // Default stub for other tools
     return (
-      <div className="bg-white rounded-2xl p-12 text-center border-2 border-dashed border-slate-200">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl p-12 text-center border-2 border-dashed border-slate-200 dark:border-slate-700">
         <div className="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-4">
           <Construction className="w-10 h-10 text-indigo-400" />
         </div>
-        <h2 className="text-2xl font-black text-slate-800 mb-2">Under Development</h2>
-        <p className="text-slate-600 max-w-md mx-auto">
+        <h2 className="text-2xl font-black text-slate-800 dark:text-slate-100 mb-2">Under Development</h2>
+        <p className="text-slate-600 dark:text-slate-300 max-w-md mx-auto">
           This feature ({tool.title}) is currently being developed and will be available in a future update. 
         </p>
       </div>
@@ -53,7 +53,7 @@ export const CyberCafeToolViewerPage: React.FC<CyberCafeToolViewerPageProps> = (
   };
 
   return (
-    <div className="w-full bg-slate-50 min-h-screen pb-12">
+    <div className="w-full bg-slate-50 dark:bg-slate-700 min-h-screen pb-12">
       <div className="bg-indigo-950 text-white py-6 px-4 border-b border-indigo-900 shadow-sm relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/4 pointer-events-none"></div>
         <div className="max-w-7xl mx-auto relative z-10 flex items-center justify-between">
@@ -114,14 +114,14 @@ const AgeCalculator = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 dark:border-slate-700">
       <div className="max-w-md mx-auto">
-        <label className="block text-sm font-bold text-slate-700 mb-2">जन्म तिथि (Date of Birth)</label>
+        <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-2">जन्म तिथि (Date of Birth)</label>
         <input 
           type="date" 
           value={dob} 
           onChange={(e) => setDob(e.target.value)}
-          className="w-full border-2 border-slate-200 rounded-xl px-4 py-3 mb-4 focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
+          className="w-full border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 mb-4 focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
         />
         <button 
           onClick={calculateAge}
@@ -170,15 +170,15 @@ const PercentageCalculator = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 dark:border-slate-700">
       <div className="max-w-md mx-auto space-y-4">
         <div className="flex items-center gap-4">
           <div className="flex-1">
-            <input type="number" placeholder="%" value={val1} onChange={(e) => setVal1(e.target.value)} className="w-full border-2 border-slate-200 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none" />
+            <input type="number" placeholder="%" value={val1} onChange={(e) => setVal1(e.target.value)} className="w-full border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none" />
           </div>
           <span className="font-bold text-slate-400">of</span>
           <div className="flex-1">
-            <input type="number" placeholder="Value" value={val2} onChange={(e) => setVal2(e.target.value)} className="w-full border-2 border-slate-200 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none" />
+            <input type="number" placeholder="Value" value={val2} onChange={(e) => setVal2(e.target.value)} className="w-full border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none" />
           </div>
         </div>
         
@@ -199,11 +199,11 @@ const PercentageCalculator = () => {
 // Simple Photo Resize (UI only as actual canvas resize logic is complex for this demo, will just provide a stub)
 const PhotoResizeTool = () => {
   return (
-    <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 text-center">
-        <div className="border-4 border-dashed border-slate-200 rounded-2xl p-12 bg-slate-50 cursor-pointer hover:bg-slate-100 transition-colors">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 dark:border-slate-700 text-center">
+        <div className="border-4 border-dashed border-slate-200 dark:border-slate-700 rounded-2xl p-12 bg-slate-50 dark:bg-slate-700 cursor-pointer hover:bg-slate-100 dark:bg-slate-800/50 transition-colors">
           <FileImage className="w-16 h-16 text-slate-400 mx-auto mb-4" />
-          <h3 className="font-bold text-slate-700 mb-1">Click to Upload Image</h3>
-          <p className="text-sm text-slate-500">JPG, PNG supported</p>
+          <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-1">Click to Upload Image</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400">JPG, PNG supported</p>
         </div>
         <p className="text-xs text-slate-400 mt-4">(Note: Fully client-side resizing via Canvas API is available in full release)</p>
     </div>

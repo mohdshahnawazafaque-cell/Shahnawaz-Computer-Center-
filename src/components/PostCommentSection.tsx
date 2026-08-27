@@ -77,9 +77,9 @@ const TAG_CONFIG: Record<
   general: {
     label: 'General Discussion',
     icon: MessageCircle,
-    color: 'text-slate-700',
-    bg: 'bg-slate-50',
-    border: 'border-slate-200',
+    color: 'text-slate-700 dark:text-slate-200',
+    bg: 'bg-slate-50 dark:bg-slate-700',
+    border: 'border-slate-200 dark:border-slate-700',
   },
 };
 
@@ -432,10 +432,10 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
   return (
     <section
       id="candidate-discussion-section"
-      className="no-print bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 transition-all"
+      className="no-print bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm p-4 sm:p-6 transition-all"
     >
       {/* SECTION HEADER */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-700">
         <div>
           <div className="flex items-center gap-2">
             <span className="p-2 rounded-xl bg-blue-50 text-blue-800 border border-blue-100">
@@ -451,7 +451,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                   {comments.length} Posts
                 </span>
               </div>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Ask vacancy questions, verify eligibility, share preparation tips, and clear form-filling doubts with fellow aspirants.
               </p>
             </div>
@@ -483,7 +483,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
 
       {/* QUICK QUESTION STARTER PROMPTS */}
       <div className="mt-4 pt-1 pb-3">
-        <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2">
+        <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-2">
           💡 Common Aspirant Questions (Click to Ask):
         </span>
         <div className="flex flex-wrap gap-2">
@@ -492,7 +492,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
               key={idx}
               type="button"
               onClick={() => handleUseStarter(starter)}
-              className="text-left text-xs bg-slate-50 hover:bg-amber-50 hover:text-amber-900 hover:border-amber-300 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+              className="text-left text-xs bg-slate-50 dark:bg-slate-700 hover:bg-amber-50 hover:text-amber-900 hover:border-amber-300 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
               <span className="line-clamp-1">{starter.text}</span>
@@ -513,14 +513,14 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
               <MessageCircle className="w-4 h-4 text-blue-700" />
               <span>Post to Recruitment Discussion</span>
             </h4>
-            <span className="text-[10px] text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+            <span className="text-[10px] text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700">
               Post: {postTitle.substring(0, 35)}...
             </span>
           </div>
 
           {/* Topic Tag Selector */}
           <div>
-            <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               Select Discussion Category:
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
@@ -535,8 +535,8 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                     onClick={() => setCommentTag(t)}
                     className={`px-2.5 py-2 rounded-xl text-xs font-bold border transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                       isSelected
-                        ? 'bg-white shadow-sm border-blue-600 text-blue-900 ring-2 ring-blue-500/20'
-                        : 'bg-white/80 border-slate-200 text-slate-600 hover:bg-white hover:border-slate-300'
+                        ? 'bg-white dark:bg-slate-800 shadow-sm border-blue-600 text-blue-900 ring-2 ring-blue-500/20'
+                        : 'bg-white dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-white dark:bg-slate-800 hover:border-slate-300 dark:border-slate-600'
                     }`}
                   >
                     <Icon className={`w-3.5 h-3.5 ${cfg.color}`} />
@@ -550,7 +550,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
           {/* Author Details Inputs */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="block text-[11px] font-bold text-slate-700 mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-200 mb-1">
                 Your Name / Handle <span className="text-red-500">*</span>
               </label>
               <input
@@ -559,18 +559,18 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                 value={authorName}
                 onChange={(e) => setAuthorName(e.target.value)}
                 placeholder="e.g. Rahul Sharma"
-                className="w-full text-xs px-3 py-2 bg-white rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-slate-900"
+                className="w-full text-xs px-3 py-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-600 focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-slate-700 mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-200 mb-1">
                 Aspirant Category / Background
               </label>
               <select
                 value={authorBadge}
                 onChange={(e) => setAuthorBadge(e.target.value)}
-                className="w-full text-xs px-3 py-2 bg-white rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-slate-900"
+                className="w-full text-xs px-3 py-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-600 focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
               >
                 {ASPIRANT_BADGES.map((b) => (
                   <option key={b} value={b}>
@@ -581,7 +581,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-slate-700 mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-200 mb-1">
                 Your City / District (Optional)
               </label>
               <input
@@ -589,7 +589,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                 value={authorLocation}
                 onChange={(e) => setAuthorLocation(e.target.value)}
                 placeholder="e.g. Sitapur / Lucknow / Prayagraj"
-                className="w-full text-xs px-3 py-2 bg-white rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-slate-900"
+                className="w-full text-xs px-3 py-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-600 focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
               />
             </div>
           </div>
@@ -597,7 +597,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
           {/* Comment Textarea */}
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="text-[11px] font-bold text-slate-700">
+              <label className="text-[11px] font-bold text-slate-700 dark:text-slate-200">
                 Your Question, Tip, or Update: <span className="text-red-500">*</span>
               </label>
               <span className="text-[10px] text-slate-400">
@@ -611,20 +611,20 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
               value={commentContent}
               onChange={(e) => setCommentContent(e.target.value)}
               placeholder="Write your question, eligibility query, syllabus tip, or document issue here..."
-              className="w-full text-xs sm:text-sm px-3.5 py-2.5 bg-white rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-slate-900 resize-none leading-relaxed"
+              className="w-full text-xs sm:text-sm px-3.5 py-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-600 focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white resize-none leading-relaxed"
             />
           </div>
 
           {/* Action Row */}
           <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
-            <p className="text-[10px] text-slate-500">
+            <p className="text-[10px] text-slate-500 dark:text-slate-400">
               🛡️ No login required. Please maintain helpful and friendly discussion standards.
             </p>
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => setIsComposerOpen(false)}
-                className="px-3.5 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold rounded-xl transition-colors cursor-pointer"
+                className="px-3.5 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-xl transition-colors cursor-pointer"
               >
                 Cancel
               </button>
@@ -642,7 +642,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
       )}
 
       {/* FILTER & SORT BAR */}
-      <div className="mt-5 pt-4 border-t border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-700 flex flex-col md:flex-row md:items-center justify-between gap-3">
         {/* Category Filter Pills */}
         <div className="flex flex-wrap items-center gap-1.5">
           <button
@@ -651,7 +651,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               activeFilter === 'all'
                 ? 'bg-[#0B2545] text-white shadow-xs'
-                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                : 'bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 hover:bg-slate-200'
             }`}
           >
             All ({comments.length})
@@ -706,14 +706,14 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search comments..."
-              className="text-xs pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-hidden focus:bg-white focus:ring-1 focus:ring-blue-500 w-36 sm:w-44"
+              className="text-xs pl-8 pr-3 py-1.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white focus:outline-hidden focus:bg-white dark:bg-slate-800 focus:ring-1 focus:ring-blue-500 w-36 sm:w-44"
             />
           </div>
 
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
-            className="text-xs px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-700 font-medium focus:outline-hidden"
+            className="text-xs px-2.5 py-1.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 font-medium focus:outline-hidden"
           >
             <option value="newest">Newest First</option>
             <option value="helpful">Most Helpful</option>
@@ -729,9 +729,9 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
             <span className="animate-spin inline-block mr-2">⏳</span> Loading candidate discussions...
           </div>
         ) : sortedComments.length === 0 ? (
-          <div className="py-8 text-center bg-slate-50 rounded-2xl border border-dashed border-slate-200 p-6">
+          <div className="py-8 text-center bg-slate-50 dark:bg-slate-700 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700 p-6">
             <MessageSquare className="w-8 h-8 text-slate-300 mx-auto mb-2" />
-            <h4 className="text-xs font-bold text-slate-700">No discussions match your filter</h4>
+            <h4 className="text-xs font-bold text-slate-700 dark:text-slate-200">No discussions match your filter</h4>
             <p className="text-[11px] text-slate-400 mt-1 max-w-sm mx-auto">
               Be the first aspirant to ask a question or share advice about this vacancy!
             </p>
@@ -762,7 +762,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                     ? 'bg-amber-50/40 border-amber-300 ring-2 ring-amber-400/20 shadow-xs'
                     : comment.isStaff
                     ? 'bg-blue-50/30 border-blue-200'
-                    : 'bg-white hover:bg-slate-50/40 border-slate-200 shadow-xs'
+                    : 'bg-white dark:bg-slate-800 hover:bg-slate-50 dark:bg-slate-700/40 border-slate-200 dark:border-slate-700 shadow-xs'
                 }`}
               >
                 {/* Header: Author & Tag */}
@@ -781,7 +781,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
 
                     <div>
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-xs sm:text-sm font-black text-slate-900">
+                        <span className="text-xs sm:text-sm font-black text-slate-900 dark:text-white">
                           {comment.authorName}
                         </span>
 
@@ -793,13 +793,13 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                         )}
 
                         {comment.authorBadge && !comment.isStaff && (
-                          <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                          <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
                             {comment.authorBadge}
                           </span>
                         )}
 
                         {comment.authorLocation && (
-                          <span className="inline-flex items-center gap-0.5 text-[10px] text-slate-500">
+                          <span className="inline-flex items-center gap-0.5 text-[10px] text-slate-500 dark:text-slate-400">
                             <MapPin className="w-2.5 h-2.5 text-slate-400" />
                             {comment.authorLocation}
                           </span>
@@ -832,12 +832,12 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                 </div>
 
                 {/* Comment Content */}
-                <p className="text-xs sm:text-sm text-slate-800 mt-2.5 whitespace-pre-line leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-100 mt-2.5 whitespace-pre-line leading-relaxed font-normal">
                   {comment.content}
                 </p>
 
                 {/* Action Bar */}
-                <div className="mt-3.5 pt-2.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                <div className="mt-3.5 pt-2.5 border-t border-slate-100 dark:border-slate-700 flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-3">
                     {/* Upvote */}
                     <button
@@ -846,7 +846,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                       className={`inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
                         isLiked
                           ? 'bg-blue-50 text-blue-800 border border-blue-200'
-                          : 'text-slate-500 hover:text-blue-700 hover:bg-blue-50'
+                          : 'text-slate-500 dark:text-slate-400 hover:text-blue-700 hover:bg-blue-50'
                       }`}
                     >
                       <ThumbsUp className={`w-3.5 h-3.5 ${isLiked ? 'fill-blue-700 text-blue-700' : ''}`} />
@@ -860,7 +860,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                         setActiveReplyCommentId(isReplying ? null : comment.id);
                         setReplyText('');
                       }}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-slate-900 hover:bg-slate-100 px-2.5 py-1 rounded-lg transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white hover:bg-slate-100 dark:bg-slate-800/50 px-2.5 py-1 rounded-lg transition-colors cursor-pointer"
                     >
                       <Reply className="w-3.5 h-3.5" />
                       <span>{comment.replies?.length ? `${comment.replies.length} Replies` : 'Reply'}</span>
@@ -872,7 +872,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                     <button
                       type="button"
                       onClick={() => handleShareComment(comment)}
-                      className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer text-xs flex items-center gap-1"
+                      className="text-slate-400 hover:text-slate-700 dark:text-slate-200 p-1.5 rounded-lg hover:bg-slate-100 dark:bg-slate-800/50 transition-colors cursor-pointer text-xs flex items-center gap-1"
                       title="Copy comment text & link"
                     >
                       {copiedCommentId === comment.id ? (
@@ -896,7 +896,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
 
                 {/* INLINE REPLIES LIST */}
                 {comment.replies && comment.replies.length > 0 && (
-                  <div className="mt-3 pl-3 sm:pl-4 space-y-2.5 border-l-2 border-slate-200 pt-1">
+                  <div className="mt-3 pl-3 sm:pl-4 space-y-2.5 border-l-2 border-slate-200 dark:border-slate-700 pt-1">
                     {comment.replies.map((reply) => {
                       const isReplyLiked = likedCommentIds.has(`rep_${reply.id}`);
                       return (
@@ -905,19 +905,19 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                           className={`p-3 rounded-xl text-xs ${
                             reply.isStaff
                               ? 'bg-blue-50/80 border border-blue-200'
-                              : 'bg-slate-50 border border-slate-200'
+                              : 'bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700'
                           }`}
                         >
                           <div className="flex items-center justify-between gap-2">
                             <div className="flex items-center gap-1.5">
-                              <span className="font-black text-slate-900">{reply.authorName}</span>
+                              <span className="font-black text-slate-900 dark:text-white">{reply.authorName}</span>
                               {reply.isStaff ? (
                                 <span className="px-1.5 py-0.2 rounded text-[9px] font-black bg-red-100 text-red-900 border border-red-200">
                                   Staff Reply
                                 </span>
                               ) : (
                                 reply.authorBadge && (
-                                  <span className="text-[9px] text-slate-500 font-medium">
+                                  <span className="text-[9px] text-slate-500 dark:text-slate-400 font-medium">
                                     • {reply.authorBadge}
                                   </span>
                                 )
@@ -928,7 +928,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                             </span>
                           </div>
 
-                          <p className="text-slate-700 mt-1 leading-relaxed">{reply.content}</p>
+                          <p className="text-slate-700 dark:text-slate-200 mt-1 leading-relaxed">{reply.content}</p>
 
                           <div className="mt-2 flex items-center justify-end">
                             <button
@@ -937,7 +937,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                               className={`text-[11px] font-bold inline-flex items-center gap-1 px-2 py-0.5 rounded transition-colors cursor-pointer ${
                                 isReplyLiked
                                   ? 'text-blue-700 bg-blue-100/50'
-                                  : 'text-slate-400 hover:text-slate-700'
+                                  : 'text-slate-400 hover:text-slate-700 dark:text-slate-200'
                               }`}
                             >
                               <ThumbsUp className={`w-3 h-3 ${isReplyLiked ? 'fill-blue-700' : ''}`} />
@@ -961,7 +961,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                         <button
                           type="button"
                           onClick={() => setActiveReplyCommentId(null)}
-                          className="text-[10px] text-slate-400 hover:text-slate-700 font-bold"
+                          className="text-[10px] text-slate-400 hover:text-slate-700 dark:text-slate-200 font-bold"
                         >
                           ✕ Cancel
                         </button>
@@ -973,7 +973,7 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                           value={replyAuthorName}
                           onChange={(e) => setReplyAuthorName(e.target.value)}
                           placeholder="Your Name (e.g. Amit K.)"
-                          className="text-xs px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-hidden focus:ring-1 focus:ring-blue-500"
+                          className="text-xs px-2.5 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-slate-900 dark:text-white focus:outline-hidden focus:ring-1 focus:ring-blue-500"
                         />
                       </div>
 
@@ -982,14 +982,14 @@ export const PostCommentSection: React.FC<PostCommentSectionProps> = ({
                         value={replyText}
                         onChange={(e) => setReplyText(e.target.value)}
                         placeholder="Write your answer or suggestion here..."
-                        className="w-full text-xs px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-hidden focus:ring-1 focus:ring-blue-500 resize-none"
+                        className="w-full text-xs px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-slate-900 dark:text-white focus:outline-hidden focus:ring-1 focus:ring-blue-500 resize-none"
                       />
 
                       <div className="flex justify-end gap-2">
                         <button
                           type="button"
                           onClick={() => setActiveReplyCommentId(null)}
-                          className="px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-200 rounded-lg font-bold cursor-pointer"
+                          className="px-3 py-1.5 text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-200 rounded-lg font-bold cursor-pointer"
                         >
                           Cancel
                         </button>

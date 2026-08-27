@@ -18,6 +18,7 @@ import {
   CheckCircle2,
   AlertCircle,
   Sparkles,
+  Megaphone,
   Save,
   MousePointerClick,
   Download,
@@ -50,6 +51,7 @@ import { SitemapGeneratorModal } from '../components/SitemapGeneratorModal';
 import { SeoHealthReportModal } from '../components/SeoHealthReportModal';
 import { BulkGovernmentDataImport } from '../components/BulkGovernmentDataImport';
 import { AdminPushNotificationTab } from '../components/AdminPushNotificationTab';
+import { AdminPromotionsTab } from '../components/AdminPromotionsTab';
 import { calculatePostStatus, getStatusBadgeConfig } from '../utils/statusCalculator';
 import {
   getClientPosts,
@@ -87,7 +89,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   } = useSettings();
 
   const [activeTab, setActiveTab] = useState<
-    'posts' | 'bulk_import' | 'push' | 'seo' | 'categories' | 'services' | 'announcements' | 'ads' | 'analytics' | 'settings'
+    'posts' | 'bulk_import' | 'push' | 'seo' | 'categories' | 'services' | 'announcements' | 'promotions' | 'ads' | 'analytics' | 'settings'
   >('posts');
 
   // Posts State
@@ -518,7 +520,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   });
 
   return (
-    <div id="admin-dashboard-root" className="bg-slate-100 min-h-screen pb-16">
+    <div id="admin-dashboard-root" className="bg-slate-100 dark:bg-slate-800/50 min-h-screen pb-16">
       {/* Top Admin Navigation Bar */}
       <header className="bg-[#0B2545] text-white border-b border-blue-900 sticky top-0 z-30 shadow-md">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
@@ -571,6 +573,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
               { id: 'categories', label: 'Exam Categories', icon: Layers },
               { id: 'services', label: 'Center Services', icon: Monitor },
               { id: 'announcements', label: 'Breaking Ticker', icon: Bell },
+              { id: 'promotions', label: 'प्रचार एवं विज्ञापन', icon: Megaphone },
               { id: 'ads', label: 'Advertisements', icon: Sparkles },
               { id: 'analytics', label: 'Clicks & Analytics', icon: BarChart3 },
               { id: 'settings', label: 'Portal Settings & Password', icon: SettingsIcon },
@@ -614,7 +617,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
         {activeTab === 'posts' && (
           <div className="space-y-4">
             {/* Action Bar */}
-            <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-3 flex-1">
                 {/* Search */}
                 <div className="relative flex-1 min-w-[200px] max-w-md">
@@ -624,7 +627,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                     value={postSearch}
                     onChange={(e) => setPostSearch(e.target.value)}
                     placeholder="Search posts by title, department..."
-                    className="w-full text-xs pl-9 pr-3 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                    className="w-full text-xs pl-9 pr-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
                   />
                 </div>
 
@@ -632,7 +635,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                 <select
                   value={postTypeFilter}
                   onChange={(e) => setPostTypeFilter(e.target.value)}
-                  className="text-xs p-2 bg-slate-50 border border-slate-300 rounded-lg font-bold text-slate-700"
+                  className="text-xs p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg font-bold text-slate-700 dark:text-slate-200"
                 >
                   <option value="all">All Types ({posts.length})</option>
                   <option value="job">Sarkari Naukri / Jobs</option>
@@ -674,7 +677,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             </div>
 
             {/* Posts Table */}
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead className="bg-[#0B2545] text-white font-bold uppercase tracking-wider text-[11px]">
@@ -708,10 +711,10 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                           <tr key={post.id} className="hover:bg-blue-50/40 transition-colors">
                             {/* Title */}
                             <td className="py-3 px-3 max-w-xs sm:max-w-md">
-                              <div className="font-bold text-slate-900 leading-snug line-clamp-2">
+                              <div className="font-bold text-slate-900 dark:text-white leading-snug line-clamp-2">
                                 {post.title}
                               </div>
-                              <div className="text-[11px] text-slate-500 flex items-center gap-2 mt-0.5">
+                              <div className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-2 mt-0.5">
                                 {post.department && <span>{post.department}</span>}
                                 {post.isPinned && (
                                   <span className="font-bold text-red-600 bg-red-50 px-1 py-0.2 rounded border border-red-200">
@@ -728,7 +731,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
 
                             {/* Type & Category */}
                             <td className="py-3 px-3">
-                              <span className="font-semibold text-slate-800 block">
+                              <span className="font-semibold text-slate-800 dark:text-slate-100 block">
                                 {post.category}
                               </span>
                               <span className="text-[10px] font-mono text-slate-400 uppercase">
@@ -737,7 +740,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                             </td>
 
                             {/* Dates */}
-                            <td className="py-3 px-3 text-[11px] text-slate-600">
+                            <td className="py-3 px-3 text-[11px] text-slate-600 dark:text-slate-300">
                               <div>Start: {post.startDate || 'N/A'}</div>
                               <div className="font-bold text-red-600">Last: {post.lastDate || 'N/A'}</div>
                             </td>
@@ -750,7 +753,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                             </td>
 
                             {/* Views */}
-                            <td className="py-3 px-3 text-center font-mono font-bold text-slate-700">
+                            <td className="py-3 px-3 text-center font-mono font-bold text-slate-700 dark:text-slate-200">
                               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 text-xs border border-blue-100">
                                 <Eye className="w-3 h-3 text-blue-600" />
                                 {(post.views || 0).toLocaleString('en-IN')}
@@ -770,7 +773,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                                 <button
                                   onClick={() => handleTogglePostPin(post)}
                                   title={post.isPinned ? 'Unpin' : 'Pin to Top'}
-                                  className={`p-1.5 rounded ${post.isPinned ? 'text-red-600 bg-red-50' : 'text-slate-400 hover:text-slate-700'}`}
+                                  className={`p-1.5 rounded ${post.isPinned ? 'text-red-600 bg-red-50' : 'text-slate-400 hover:text-slate-700 dark:text-slate-200'}`}
                                 >
                                   <Flame className="w-3.5 h-3.5" />
                                 </button>
@@ -868,8 +871,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
 
             {/* Top KPI Metrics Cards */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
-                <div className="flex items-center justify-between text-slate-500 text-xs font-bold mb-1">
+              <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+                <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-bold mb-1">
                   <span>Total Portal Posts</span>
                   <FileText className="w-4 h-4 text-blue-600" />
                 </div>
@@ -877,8 +880,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                 <div className="text-[10px] text-slate-400 mt-1">Recruitments & Notices</div>
               </div>
 
-              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
-                <div className="flex items-center justify-between text-slate-500 text-xs font-bold mb-1">
+              <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+                <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-bold mb-1">
                   <span>Ready for Indexing</span>
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 </div>
@@ -888,8 +891,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                 <div className="text-[10px] text-emerald-700 font-semibold mt-1">High Google SERP CTR</div>
               </div>
 
-              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
-                <div className="flex items-center justify-between text-slate-500 text-xs font-bold mb-1">
+              <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+                <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-bold mb-1">
                   <span>Needs Meta Description</span>
                   <AlertCircle className="w-4 h-4 text-amber-600" />
                 </div>
@@ -899,8 +902,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                 <div className="text-[10px] text-amber-700 font-semibold mt-1">Low SERP visibility</div>
               </div>
 
-              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
-                <div className="flex items-center justify-between text-slate-500 text-xs font-bold mb-1">
+              <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+                <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-bold mb-1">
                   <span>Missing Social Image</span>
                   <Share2 className="w-4 h-4 text-purple-600" />
                 </div>
@@ -912,7 +915,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             </div>
 
             {/* Filter & Search Bar */}
-            <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-2 flex-1">
                 {/* Search */}
                 <div className="relative flex-1 min-w-[220px] max-w-md">
@@ -922,7 +925,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                     value={seoSearch}
                     onChange={(e) => setSeoSearch(e.target.value)}
                     placeholder="Search posts to edit SEO meta tags..."
-                    className="w-full text-xs pl-9 pr-3 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                    className="w-full text-xs pl-9 pr-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
                   />
                 </div>
 
@@ -940,7 +943,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                       className={`px-3 py-1.5 rounded-lg font-bold text-[11px] whitespace-nowrap transition-colors ${
                         seoFilter === f.id
                           ? 'bg-[#0B2545] text-white shadow-xs'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                          : 'bg-slate-100 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
                       }`}
                     >
                       {f.label}
@@ -979,14 +982,14 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             </div>
 
             {/* Posts SEO Health Table */}
-            <div className="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden">
-              <div className="p-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs overflow-hidden">
+              <div className="p-4 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700 flex items-center justify-between">
                 <div>
                   <h3 className="font-black text-sm uppercase text-[#0B2545] tracking-wide flex items-center gap-2">
                     <Globe className="w-4 h-4 text-blue-600" />
                     <span>Search Engine Meta Tags & SERP Preview Index</span>
                   </h3>
-                  <p className="text-xs text-slate-500 mt-0.5">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                     Manage meta titles, search descriptions, keywords, and OpenGraph social cards for Google, Bing, WhatsApp & Telegram.
                   </p>
                 </div>
@@ -995,7 +998,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-100/75 text-slate-700 font-black uppercase text-[10px] tracking-wider border-b border-slate-200">
+                    <tr className="bg-slate-100 dark:bg-slate-800/50/75 text-slate-700 dark:text-slate-200 font-black uppercase text-[10px] tracking-wider border-b border-slate-200 dark:border-slate-700">
                       <th className="py-3 px-3">Post / Type</th>
                       <th className="py-3 px-3">SEO Title (&lt;title&gt;)</th>
                       <th className="py-3 px-3">Meta Description</th>
@@ -1054,14 +1057,14 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                           <tr key={p.id} className="hover:bg-blue-50/40 transition-colors">
                             {/* Post & Type */}
                             <td className="py-3 px-3 max-w-[220px]">
-                              <div className="font-bold text-slate-900 line-clamp-2 leading-snug">
+                              <div className="font-bold text-slate-900 dark:text-white line-clamp-2 leading-snug">
                                 {p.title}
                               </div>
                               <div className="flex items-center gap-1.5 mt-1">
                                 <span className="text-[10px] bg-red-100 text-red-800 font-bold px-1.5 py-0.5 rounded uppercase">
                                   {p.type}
                                 </span>
-                                <span className="text-[10px] bg-slate-100 text-slate-700 font-semibold px-1.5 py-0.5 rounded">
+                                <span className="text-[10px] bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 font-semibold px-1.5 py-0.5 rounded">
                                   {p.category}
                                 </span>
                               </div>
@@ -1069,7 +1072,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
 
                             {/* SEO Title */}
                             <td className="py-3 px-3 max-w-xs">
-                              <div className="font-medium text-slate-800 line-clamp-2 text-xs">
+                              <div className="font-medium text-slate-800 dark:text-slate-100 line-clamp-2 text-xs">
                                 {curTitle}
                               </div>
                               <div className="mt-1 flex items-center gap-1">
@@ -1087,7 +1090,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
 
                             {/* Meta Description */}
                             <td className="py-3 px-3 max-w-xs">
-                              <div className="text-slate-600 line-clamp-2 text-[11px] leading-relaxed">
+                              <div className="text-slate-600 dark:text-slate-300 line-clamp-2 text-[11px] leading-relaxed">
                                 {curDesc || <span className="text-red-500 italic">No description set</span>}
                               </div>
                               <div className="mt-1">
@@ -1107,8 +1110,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
 
                             {/* Keywords */}
                             <td className="py-3 px-3 text-center">
-                              <span className="inline-flex items-center gap-1 font-bold text-xs bg-slate-100 text-slate-800 px-2 py-0.5 rounded-full border border-slate-200">
-                                <Tag className="w-3 h-3 text-slate-500" />
+                              <span className="inline-flex items-center gap-1 font-bold text-xs bg-slate-100 dark:bg-slate-800/50 text-slate-800 dark:text-slate-100 px-2 py-0.5 rounded-full border border-slate-200 dark:border-slate-700">
+                                <Tag className="w-3 h-3 text-slate-500 dark:text-slate-400" />
                                 <span>{p.keywords?.length || 0}</span>
                               </span>
                             </td>
@@ -1116,7 +1119,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                             {/* Social Card */}
                             <td className="py-3 px-3 text-center">
                               {hasOg ? (
-                                <div className="w-12 h-8 rounded border border-slate-300 overflow-hidden mx-auto bg-slate-900 shadow-2xs">
+                                <div className="w-12 h-8 rounded border border-slate-300 dark:border-slate-600 overflow-hidden mx-auto bg-slate-900 shadow-2xs">
                                   <img
                                     src={p.ogImage || p.featuredImage}
                                     alt="OG"
@@ -1133,7 +1136,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                               <span className="block font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 mb-0.5">
                                 {p.robotsIndex || 'index, follow'}
                               </span>
-                              <span className="text-slate-500 font-mono">
+                              <span className="text-slate-500 dark:text-slate-400 font-mono">
                                 {p.schemaType || (p.type === 'job' ? 'JobPosting' : 'Article')}
                               </span>
                             </td>
@@ -1215,7 +1218,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                     href="/sitemap.xml"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-1.5 px-3 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-lg transition-colors border border-white/20"
+                    className="flex items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 text-white text-xs font-bold rounded-lg transition-colors border border-white/20"
                   >
                     <span>View /sitemap.xml</span>
                     <ExternalLink className="w-3 h-3" />
@@ -1226,27 +1229,27 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
               {/* Live Sitemap Metrics */}
               {sitemapStats && (
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2.5 pt-1">
-                  <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-center">
+                  <div className="bg-white dark:bg-slate-800/5 border border-white/10 rounded-lg p-2.5 text-center">
                     <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Total URLs</span>
                     <span className="text-lg font-black text-white">{sitemapStats.totalUrls || 0}</span>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-center">
+                  <div className="bg-white dark:bg-slate-800/5 border border-white/10 rounded-lg p-2.5 text-center">
                     <span className="text-[10px] text-blue-300 font-bold uppercase tracking-wider block">Jobs / Vacancies</span>
                     <span className="text-lg font-black text-blue-400">{sitemapStats.jobsCount || 0}</span>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-center">
+                  <div className="bg-white dark:bg-slate-800/5 border border-white/10 rounded-lg p-2.5 text-center">
                     <span className="text-[10px] text-orange-300 font-bold uppercase tracking-wider block">Admit Cards</span>
                     <span className="text-lg font-black text-orange-400">{sitemapStats.admitCardsCount || 0}</span>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-center">
+                  <div className="bg-white dark:bg-slate-800/5 border border-white/10 rounded-lg p-2.5 text-center">
                     <span className="text-[10px] text-emerald-300 font-bold uppercase tracking-wider block">Results</span>
                     <span className="text-lg font-black text-emerald-400">{sitemapStats.resultsCount || 0}</span>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-center">
+                  <div className="bg-white dark:bg-slate-800/5 border border-white/10 rounded-lg p-2.5 text-center">
                     <span className="text-[10px] text-purple-300 font-bold uppercase tracking-wider block">Sarkari Yojana</span>
                     <span className="text-lg font-black text-purple-400">{sitemapStats.schemesCount || 0}</span>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 text-center">
+                  <div className="bg-white dark:bg-slate-800/5 border border-white/10 rounded-lg p-2.5 text-center">
                     <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Last Crawled</span>
                     <span className="text-xs font-mono font-bold text-slate-200 block truncate mt-1">
                       {sitemapStats.lastGeneratedAt ? new Date(sitemapStats.lastGeneratedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }) : 'Ready'}
@@ -1302,7 +1305,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                 ].map((feed, idx) => (
                   <div
                     key={idx}
-                    className="p-3 bg-white/5 rounded-lg border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between"
+                    className="p-3 bg-white dark:bg-slate-800/5 rounded-lg border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-1">
@@ -1328,7 +1331,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                             navigator.clipboard.writeText(fullUrl);
                             showFeedback(`Copied ${feed.name} URL!`);
                           }}
-                          className="px-2 py-1 bg-white/10 hover:bg-white/20 text-white rounded text-[10px] font-bold transition-colors"
+                          className="px-2 py-1 bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 text-white rounded text-[10px] font-bold transition-colors"
                           title="Copy Full URL"
                         >
                           Copy
@@ -1355,30 +1358,30 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
         {activeTab === 'categories' && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Add Category Form */}
-            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-xs space-y-4">
-              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 pb-2">
+            <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 dark:border-slate-700 pb-2">
                 + Add New Exam Category
               </h3>
               <form onSubmit={handleAddCategory} className="space-y-3 text-xs">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Category Name *</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Category Name *</label>
                   <input
                     type="text"
                     required
                     value={newCatName}
                     onChange={(e) => setNewCatName(e.target.value)}
                     placeholder="e.g. Railway Recruitment Board (RRB)"
-                    className="w-full p-2 border border-slate-300 rounded-lg"
+                    className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                   />
                 </div>
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Short Description</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Short Description</label>
                   <textarea
                     rows={2}
                     value={newCatDesc}
                     onChange={(e) => setNewCatDesc(e.target.value)}
                     placeholder="Brief description of this board or exam stream..."
-                    className="w-full p-2 border border-slate-300 rounded-lg"
+                    className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg"
                   />
                 </div>
                 <button
@@ -1391,19 +1394,19 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             </div>
 
             {/* Categories List */}
-            <div className="md:col-span-2 bg-white rounded-xl border border-slate-200 shadow-xs p-5 space-y-3">
-              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 pb-2">
+            <div className="md:col-span-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs p-5 space-y-3">
+              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 dark:border-slate-700 pb-2">
                 Existing Categories ({categories.length})
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {categories.map((c) => (
                   <div
                     key={c.id}
-                    className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between gap-2"
+                    className="p-3 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between gap-2"
                   >
                     <div>
-                      <h4 className="font-bold text-xs text-slate-900">{c.name}</h4>
-                      <p className="text-[10px] text-slate-500 font-mono">slug: {c.slug}</p>
+                      <h4 className="font-bold text-xs text-slate-900 dark:text-white">{c.name}</h4>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">slug: {c.slug}</p>
                     </div>
                     <button
                       onClick={() => handleDeleteCategory(c.id)}
@@ -1422,8 +1425,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
         {/* TAB 3: SERVICES MANAGEMENT */}
         {activeTab === 'services' && (
           <div className="space-y-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-xs">
-              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 pb-2 mb-4">
+            <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 dark:border-slate-700 pb-2 mb-4">
                 Computer Center Services Catalog ({services.length})
               </h3>
 
@@ -1431,25 +1434,25 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                 {services.map((srv, idx) => (
                   <div
                     key={srv.id}
-                    className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3 flex flex-col justify-between"
+                    className="p-4 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3 flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="font-bold text-xs text-slate-900">{srv.name}</span>
+                        <span className="font-bold text-xs text-slate-900 dark:text-white">{srv.name}</span>
                         {srv.isPopular && (
                           <span className="px-1.5 py-0.2 text-[9px] font-black uppercase bg-red-600 text-white rounded">
                             Popular
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-600 line-clamp-2">{srv.description}</p>
-                      <div className="mt-2 text-[11px] text-slate-500 space-y-0.5">
+                      <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2">{srv.description}</p>
+                      <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400 space-y-0.5">
                         <p>Time: <strong>{srv.turnaroundTime}</strong></p>
                         <p>Fee: <strong className="text-emerald-700">{srv.feeRange}</strong></p>
                       </div>
                     </div>
 
-                    <div className="pt-2 border-t border-slate-200 flex items-center justify-between">
+                    <div className="pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
                       <span className="text-[10px] text-slate-400 font-mono">Icon: {srv.icon}</span>
                       <span className="text-xs font-bold text-blue-700">Active</span>
                     </div>
@@ -1463,17 +1466,17 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
         {/* TAB 4: ANNOUNCEMENTS / TICKER MANAGEMENT */}
         {activeTab === 'announcements' && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-xs space-y-4">
-              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 pb-2">
+            <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 dark:border-slate-700 pb-2">
                 + Broadcast Breaking Ticker
               </h3>
               <form onSubmit={handleAddAnnouncement} className="space-y-3 text-xs">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Badge Text</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Badge Text</label>
                   <select
                     value={newAnnBadge}
                     onChange={(e) => setNewAnnBadge(e.target.value)}
-                    className="w-full p-2 border border-slate-300 rounded-lg font-bold"
+                    className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg font-bold"
                   >
                     <option value="HOT UPDATE">HOT UPDATE</option>
                     <option value="ADMIT CARD">ADMIT CARD</option>
@@ -1484,24 +1487,24 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                   </select>
                 </div>
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Announcement Message *</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Announcement Message *</label>
                   <textarea
                     rows={3}
                     required
                     value={newAnnText}
                     onChange={(e) => setNewAnnText(e.target.value)}
                     placeholder="e.g. UP Police Constable Admit Card released. Exam starting from 15th."
-                    className="w-full p-2 border border-slate-300 rounded-lg font-medium"
+                    className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg font-medium"
                   />
                 </div>
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Target Link / URL</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Target Link / URL</label>
                   <input
                     type="text"
                     value={newAnnLink}
                     onChange={(e) => setNewAnnLink(e.target.value)}
                     placeholder="/category/admit-card or https://..."
-                    className="w-full p-2 border border-slate-300 rounded-lg font-mono text-[11px]"
+                    className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-[11px]"
                   />
                 </div>
                 <button
@@ -1513,8 +1516,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
               </form>
             </div>
 
-            <div className="md:col-span-2 bg-white rounded-xl border border-slate-200 shadow-xs p-5 space-y-3">
-              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 pb-2">
+            <div className="md:col-span-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs p-5 space-y-3">
+              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 dark:border-slate-700 pb-2">
                 Active Breaking Announcements ({announcements.length})
               </h3>
               <div className="space-y-2">
@@ -1527,7 +1530,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                       <span className="px-2 py-0.5 bg-red-600 text-white font-black text-[10px] rounded uppercase flex-shrink-0">
                         {a.badge}
                       </span>
-                      <span className="font-bold text-slate-900 truncate">{a.text}</span>
+                      <span className="font-bold text-slate-900 dark:text-white truncate">{a.text}</span>
                     </div>
                     <button
                       onClick={() => handleDeleteAnnouncement(a.id)}
@@ -1542,14 +1545,17 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
           </div>
         )}
 
+        {/* TAB: PROMOTIONS */}
+        {activeTab === 'promotions' && <AdminPromotionsTab />}
+
         {/* TAB 5: ADVERTISEMENTS PLACEMENTS MANAGER */}
         {activeTab === 'ads' && (
-          <div className="bg-white rounded-xl border border-slate-200 shadow-xs p-5 space-y-4">
-            <div className="border-b border-slate-200 pb-3">
+          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs p-5 space-y-4">
+            <div className="border-b border-slate-200 dark:border-slate-700 pb-3">
               <h3 className="font-black text-sm uppercase text-[#0B2545]">
                 Advertisement & Promotional Placements Manager
               </h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Configure HTML AdSense / custom banner code for various sections of the website
               </p>
             </div>
@@ -1558,10 +1564,10 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
               {ads.map((ad, idx) => (
                 <div
                   key={ad.id || idx}
-                  className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3 text-xs"
+                  className="p-4 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3 text-xs"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-slate-900 uppercase">
+                    <span className="font-bold text-slate-900 dark:text-white uppercase">
                       Placement: {ad.placement.replace(/_/g, ' ')}
                     </span>
                     <label className="flex items-center gap-1.5 font-bold cursor-pointer">
@@ -1579,7 +1585,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-600 mb-1">
+                    <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 mb-1">
                       HTML / AdSense Code / Custom Banner:
                     </label>
                     <textarea
@@ -1591,7 +1597,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                         setAds(copy);
                       }}
                       placeholder="Paste ad script or leave empty for default Computer Center promotion banner..."
-                      className="w-full p-2 border border-slate-300 rounded font-mono text-[11px] bg-white"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded font-mono text-[11px] bg-white dark:bg-slate-800"
                     />
                   </div>
 
@@ -1612,32 +1618,32 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
           <div className="space-y-6">
             {/* Stats Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                <div className="flex items-center justify-between text-slate-500 text-xs mb-1">
+              <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+                <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs mb-1">
                   <span>Total Posts</span>
                   <FileText className="w-4 h-4 text-blue-600" />
                 </div>
                 <div className="text-2xl font-black text-[#0B2545]">{analytics?.totalPosts || posts.length}</div>
               </div>
 
-              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                <div className="flex items-center justify-between text-slate-500 text-xs mb-1">
+              <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+                <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs mb-1">
                   <span>Total Page Views</span>
                   <Eye className="w-4 h-4 text-emerald-600" />
                 </div>
                 <div className="text-2xl font-black text-emerald-700">{analytics?.totalViews || 0}</div>
               </div>
 
-              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                <div className="flex items-center justify-between text-slate-500 text-xs mb-1">
+              <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+                <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs mb-1">
                   <span>Important Links Clicked</span>
                   <MousePointerClick className="w-4 h-4 text-red-600" />
                 </div>
                 <div className="text-2xl font-black text-red-600">{analytics?.totalClicks || 0}</div>
               </div>
 
-              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                <div className="flex items-center justify-between text-slate-500 text-xs mb-1">
+              <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+                <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs mb-1">
                   <span>Active Categories</span>
                   <Layers className="w-4 h-4 text-purple-600" />
                 </div>
@@ -1646,8 +1652,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             </div>
 
             {/* Click Activity Feed */}
-            <div className="bg-white rounded-xl border border-slate-200 shadow-xs p-5 space-y-3">
-              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 pb-2">
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs p-5 space-y-3">
+              <h3 className="font-black text-sm uppercase text-[#0B2545] border-b border-slate-200 dark:border-slate-700 pb-2">
                 Recent Important Links Click Log
               </h3>
               {analytics?.recentClicks && analytics.recentClicks.length > 0 ? (
@@ -1655,8 +1661,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                   {analytics.recentClicks.map((c: any) => (
                     <div key={c.id} className="py-2.5 flex items-center justify-between gap-3">
                       <div>
-                        <span className="font-bold text-slate-900">{c.linkName}</span>
-                        <span className="text-slate-500 text-[11px] block">{c.postTitle}</span>
+                        <span className="font-bold text-slate-900 dark:text-white">{c.linkName}</span>
+                        <span className="text-slate-500 dark:text-slate-400 text-[11px] block">{c.postTitle}</span>
                       </div>
                       <div className="text-right text-[11px] text-slate-400 font-mono">
                         {new Date(c.timestamp).toLocaleTimeString()}
@@ -1673,13 +1679,13 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
 
         {/* TAB 7: SETTINGS & PASSWORD */}
         {activeTab === 'settings' && settingsForm && (
-          <div className="bg-white rounded-xl border border-slate-200 shadow-xs p-5 sm:p-6 space-y-6">
-            <div className="border-b border-slate-200 pb-3 flex items-center justify-between">
+          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs p-5 sm:p-6 space-y-6">
+            <div className="border-b border-slate-200 dark:border-slate-700 pb-3 flex items-center justify-between">
               <div>
                 <h3 className="font-black text-sm uppercase text-[#0B2545]">
                   Site Information & Master Admin Settings
                 </h3>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   Update branding, contact numbers, official WhatsApp channels, and credentials
                 </p>
               </div>
@@ -1688,81 +1694,81 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             <form onSubmit={handleSaveSettings} className="space-y-4 text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Website Name</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Website Name</label>
                   <input
                     type="text"
                     value={settingsForm.websiteName}
                     onChange={(e) => setSettingsForm({ ...settingsForm, websiteName: e.target.value })}
-                    className="w-full p-2.5 border border-slate-300 rounded-lg font-bold"
+                    className="w-full p-2.5 border border-slate-300 dark:border-slate-600 rounded-lg font-bold"
                   />
                 </div>
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Tagline</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Tagline</label>
                   <input
                     type="text"
                     value={settingsForm.tagline}
                     onChange={(e) => setSettingsForm({ ...settingsForm, tagline: e.target.value })}
-                    className="w-full p-2.5 border border-slate-300 rounded-lg"
+                    className="w-full p-2.5 border border-slate-300 dark:border-slate-600 rounded-lg"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Official WhatsApp Channel URL</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Official WhatsApp Channel URL</label>
                   <input
                     type="text"
                     value={settingsForm.whatsAppUrl || ''}
                     onChange={(e) => setSettingsForm({ ...settingsForm, whatsAppUrl: e.target.value })}
-                    placeholder="https://whatsapp.com/channel/..."
-                    className="w-full p-2.5 border border-slate-300 rounded-lg font-mono text-[11px]"
+                    placeholder="https://whatsapp.com/channel/0029VbDh3ZP3QxRsUixBEU1P"
+                    className="w-full p-2.5 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-[11px]"
                   />
                 </div>
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">WhatsApp Phone Number</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">WhatsApp Phone Number</label>
                   <input
                     type="text"
                     value={settingsForm.whatsAppNumber || ''}
                     onChange={(e) => setSettingsForm({ ...settingsForm, whatsAppNumber: e.target.value })}
                     placeholder="+91 99560 78419"
-                    className="w-full p-2.5 border border-slate-300 rounded-lg"
+                    className="w-full p-2.5 border border-slate-300 dark:border-slate-600 rounded-lg"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Contact Phone Number</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Contact Phone Number</label>
                   <input
                     type="text"
                     value={settingsForm.contactNumber}
                     onChange={(e) => setSettingsForm({ ...settingsForm, contactNumber: e.target.value })}
-                    className="w-full p-2.5 border border-slate-300 rounded-lg"
+                    className="w-full p-2.5 border border-slate-300 dark:border-slate-600 rounded-lg"
                   />
                 </div>
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Contact Support Email</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Contact Support Email</label>
                   <input
                     type="email"
                     value={settingsForm.contactEmail}
                     onChange={(e) => setSettingsForm({ ...settingsForm, contactEmail: e.target.value })}
-                    className="w-full p-2.5 border border-slate-300 rounded-lg"
+                    className="w-full p-2.5 border border-slate-300 dark:border-slate-600 rounded-lg"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Center Operating Hours</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Center Operating Hours</label>
                   <input
                     type="text"
                     value={settingsForm.timing || ''}
                     onChange={(e) => setSettingsForm({ ...settingsForm, timing: e.target.value })}
                     placeholder="Mon-Sat: 8:00 AM - 8:30 PM"
-                    className="w-full p-2.5 border border-slate-300 rounded-lg"
+                    className="w-full p-2.5 border border-slate-300 dark:border-slate-600 rounded-lg"
                   />
                 </div>
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Center Physical Address</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Center Physical Address</label>
                   <input
                     type="text"
                     value={settingsForm.address}
                     onChange={(e) => setSettingsForm({ ...settingsForm, address: e.target.value })}
-                    className="w-full p-2.5 border border-slate-300 rounded-lg"
+                    className="w-full p-2.5 border border-slate-300 dark:border-slate-600 rounded-lg"
                   />
                 </div>
               </div>
@@ -1779,19 +1785,19 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
             </form>
 
             {/* DEDICATED ADMIN MASTER PASSWORD CARD */}
-            <div className="pt-6 border-t-2 border-slate-200">
-              <div className="bg-slate-50 rounded-2xl border-2 border-slate-300 p-5 space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+            <div className="pt-6 border-t-2 border-slate-200 dark:border-slate-700">
+              <div className="bg-slate-50 dark:bg-slate-700 rounded-2xl border-2 border-slate-300 dark:border-slate-600 p-5 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-700 pb-3">
                   <div className="flex items-center gap-2.5">
                     <div className="w-9 h-9 rounded-xl bg-red-600 text-white flex items-center justify-center font-black shadow-xs">
                       <Lock className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="font-black text-slate-900 text-sm uppercase">
+                      <h4 className="font-black text-slate-900 dark:text-white text-sm uppercase">
                         Admin Master Password & Access Security
                       </h4>
-                      <p className="text-[11px] text-slate-500">
-                        Primary Account: <span className="font-mono font-bold text-slate-700">{adminUser?.email}</span>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                        Primary Account: <span className="font-mono font-bold text-slate-700 dark:text-slate-200">{adminUser?.email}</span>
                       </p>
                     </div>
                   </div>
@@ -1821,7 +1827,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                 <form onSubmit={handleDirectPasswordUpdate} className="space-y-4 text-xs">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block font-bold text-slate-700 mb-1">
+                      <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
                         New Master Password <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
@@ -1830,12 +1836,12 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                           value={newPassword}
                           onChange={(e) => setNewPassword(e.target.value)}
                           placeholder="Enter new strong password (min. 6 characters)"
-                          className="w-full pl-3 pr-10 py-2.5 bg-white border border-slate-300 rounded-lg font-mono text-xs focus:ring-2 focus:ring-red-500 focus:outline-none"
+                          className="w-full pl-3 pr-10 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-xs focus:ring-2 focus:ring-red-500 focus:outline-none"
                         />
                         <button
                           type="button"
                           onClick={() => setShowNewPassword(!showNewPassword)}
-                          className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600"
+                          className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 dark:text-slate-300"
                         >
                           {showNewPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
@@ -1843,7 +1849,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                     </div>
 
                     <div>
-                      <label className="block font-bold text-slate-700 mb-1">
+                      <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">
                         Confirm New Password <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
@@ -1852,12 +1858,12 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                           value={confirmPassword}
                           onChange={(e) => setConfirmPassword(e.target.value)}
                           placeholder="Re-type new password"
-                          className="w-full pl-3 pr-10 py-2.5 bg-white border border-slate-300 rounded-lg font-mono text-xs focus:ring-2 focus:ring-red-500 focus:outline-none"
+                          className="w-full pl-3 pr-10 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg font-mono text-xs focus:ring-2 focus:ring-red-500 focus:outline-none"
                         />
                         <button
                           type="button"
                           onClick={() => setShowNewPassword(!showNewPassword)}
-                          className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600"
+                          className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 dark:text-slate-300"
                         >
                           {showNewPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
@@ -1866,7 +1872,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                   </div>
 
                   <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-                    <p className="text-[11px] text-slate-500">
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
                       Minimum 6 characters. Recommended: Include uppercase, lowercase, numbers &amp; special characters.
                     </p>
 

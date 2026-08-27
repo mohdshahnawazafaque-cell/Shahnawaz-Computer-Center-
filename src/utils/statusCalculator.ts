@@ -122,9 +122,9 @@ export function getStatusBadgeConfig(status: ComputedStatus): {
     case 'APPLICATION CLOSED':
       return {
         label: 'APPLICATIONS CLOSED',
-        bgClass: 'bg-slate-100 text-slate-700 border-slate-300',
-        textClass: 'text-slate-800',
-        borderClass: 'border-slate-300',
+        bgClass: 'bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 border-slate-300 dark:border-slate-600',
+        textClass: 'text-slate-800 dark:text-slate-100',
+        borderClass: 'border-slate-300 dark:border-slate-600',
         dotClass: 'bg-slate-400',
       };
     case 'ACTIVE':

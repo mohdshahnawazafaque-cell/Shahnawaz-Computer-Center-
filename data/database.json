@@ -5,7 +5,7 @@
     "passwordHash": "$2b$10$OQNimiwVgScXUj6RzkzuIejGXCaYwP7aHsNWBi.GDnU81Ua2hi7zu",
     "role": "superadmin",
     "createdAt": "2026-08-24T06:44:54.793Z",
-    "lastLogin": "2026-08-25T12:21:59.298Z"
+    "lastLogin": "2026-08-27T09:31:10.409Z"
   },
   "posts": [
     {
@@ -6422,7 +6422,7 @@
     "tagline": "Latest Jobs, Results, Admit Card, Sarkari Yojana & Online Form Updates",
     "description": "Mobile-first Government Jobs, Results, Admit Card, Answer Key, Sarkari Yojana, Scholarship, Admission and Online Information Portal.",
     "logoText": "SHAHNAWAZ COMPUTER CENTER",
-    "whatsAppUrl": "https://whatsapp.com/channel/0029VaShahnawazComputerCenter",
+    "whatsAppUrl": "https://whatsapp.com/channel/0029VbDh3ZP3QxRsUixBEU1P",
     "whatsAppNumber": "+91 99560 78419",
     "telegramUrl": "https://t.me/ShahnawazComputerCenter",
     "contactNumber": "+91 99560 78419",
@@ -6479,6 +6479,126 @@
       "path": "/post/up-police-constable-admit-card-2026",
       "timestamp": "2026-08-25T11:46:11.812Z",
       "ip": "127.0.0.1"
+    }
+  ],
+  "comments": [
+    {
+      "id": "cmt-1",
+      "postId": "post-1",
+      "postSlug": "ssc-cgl-recruitment-2026",
+      "authorName": "Shahnawaz Computer Center (Helpdesk)",
+      "authorBadge": "Staff • Verified Admin",
+      "authorLocation": "Tambour, Sitapur",
+      "tag": "update",
+      "content": "📌 Important Notice for SSC CGL 2026 Applicants: Live photo capture is mandatory through the SSC Official App. Please ensure clear lighting and plain light background. If you face camera alignment or OTP issues, visit our center for assisted form filling.",
+      "createdAt": "2026-08-20T10:30:00.000Z",
+      "likes": 28,
+      "isPinned": true,
+      "isStaff": true,
+      "replies": [
+        {
+          "id": "rep-1",
+          "authorName": "Vikas Mishra",
+          "authorBadge": "Aspirant • Sitapur",
+          "authorLocation": "Sitapur",
+          "isStaff": false,
+          "content": "Thank you bhaiya! Center timing kya hai form bharwane ke liye?",
+          "createdAt": "2026-08-20T11:15:00.000Z",
+          "likes": 5
+        },
+        {
+          "id": "rep-2",
+          "authorName": "Shahnawaz Computer Center",
+          "authorBadge": "Staff",
+          "authorLocation": "Tambour",
+          "isStaff": true,
+          "content": "Our center is open daily from 8:00 AM to 8:00 PM. You can also send documents directly on WhatsApp for online submission.",
+          "createdAt": "2026-08-20T11:20:00.000Z",
+          "likes": 9
+        }
+      ]
+    },
+    {
+      "id": "cmt-2",
+      "postId": "post-1",
+      "postSlug": "ssc-cgl-recruitment-2026",
+      "authorName": "Anjali Sharma",
+      "authorBadge": "Graduate Aspirant",
+      "authorLocation": "Lucknow",
+      "tag": "question",
+      "content": "Is final year appearing candidate eligible to apply for Assistant Section Officer (ASO) in CSS this year?",
+      "createdAt": "2026-08-21T09:12:00.000Z",
+      "likes": 14,
+      "isPinned": false,
+      "isStaff": false,
+      "replies": [
+        {
+          "id": "rep-3",
+          "authorName": "Rohan Gupta",
+          "authorBadge": "SSC Aspirant",
+          "authorLocation": "Prayagraj",
+          "isStaff": false,
+          "content": "Yes Anjali, as per notification, you must acquire the essential qualification on or before the crucial cutoff date (01-08-2026).",
+          "createdAt": "2026-08-21T10:05:00.000Z",
+          "likes": 12
+        }
+      ]
+    },
+    {
+      "id": "cmt-3",
+      "postId": "post-1",
+      "postSlug": "ssc-cgl-recruitment-2026",
+      "authorName": "Deepak Yadav",
+      "authorBadge": "OBC Candidate",
+      "authorLocation": "Kanpur",
+      "tag": "tip",
+      "content": "💡 Preparation Tip: Focus heavily on Reasoning & Math speed with sectional mock tests. Don’t skip Computer Knowledge & Typing test preparation, as qualifying marks in Tier-II computer paper are mandatory for all ministerial posts.",
+      "createdAt": "2026-08-22T14:40:00.000Z",
+      "likes": 31,
+      "isPinned": false,
+      "isStaff": false,
+      "replies": []
+    },
+    {
+      "id": "cmt-4",
+      "postId": "post-2",
+      "postSlug": "up-police-constable-admit-card-2026",
+      "authorName": "Shahnawaz Computer Center",
+      "authorBadge": "Staff • Verified Admin",
+      "authorLocation": "Tambour, Sitapur",
+      "tag": "update",
+      "content": "📢 Candidates please print at least 2 clean color copies of the Admit Card along with the self-declaration undertaking. Carry Original Aadhaar Card and 2 recent passport size photographs to the examination center.",
+      "createdAt": "2026-08-23T08:00:00.000Z",
+      "likes": 45,
+      "isPinned": true,
+      "isStaff": true,
+      "replies": []
+    },
+    {
+      "id": "cmt-5",
+      "postId": "post-2",
+      "postSlug": "up-police-constable-admit-card-2026",
+      "authorName": "Mohit Kumar",
+      "authorBadge": "Aspirant",
+      "authorLocation": "Lakhimpur",
+      "tag": "question",
+      "content": "My admit card has a slight spelling mistake in mother’s name. What should I do for the exam hall entry?",
+      "createdAt": "2026-08-23T12:30:00.000Z",
+      "likes": 8,
+      "isPinned": false,
+      "isStaff": false,
+      "replies": [
+        {
+          "id": "rep-4",
+          "authorName": "Shahnawaz Computer Center",
+          "authorBadge": "Staff",
+          "authorLocation": "Tambour",
+          "isStaff": true,
+          "content": "Carry your 10th marksheet original along with an Affidavit / valid ID card with correct details. Also contact board helpline or reach center 1 hour early for verification.",
+          "createdAt": "2026-08-23T12:45:00.000Z",
+          "likes": 16
+        }
+      ]
     }
   ]
 }

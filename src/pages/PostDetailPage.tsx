@@ -40,6 +40,7 @@ import { ImportantLinksTable } from '../components/ImportantLinksTable';
 import { AdPlacement } from '../components/AdPlacement';
 import { PostCommentSection } from '../components/PostCommentSection';
 import { ReadingProgressBar } from '../components/ReadingProgressBar';
+import { SEOHead } from '../components/SEOHead';
 import { useSettings } from '../context/SettingsContext';
 import { getClientPostBySlug, getClientPosts, incrementClientPostViews } from '../utils/clientStorage';
 
@@ -160,49 +161,6 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
         const ogImg = data.ogImage || data.featuredImage || 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80';
         const curUrl = data.canonicalUrl || window.location.href;
 
-        document.title = title;
-
-        // Helper to set or create meta tag
-        const setMeta = (nameAttr: string, nameVal: string, content: string) => {
-          let tag = document.querySelector(`meta[${nameAttr}="${nameVal}"]`) as HTMLMetaElement;
-          if (!tag) {
-            tag = document.createElement('meta');
-            tag.setAttribute(nameAttr, nameVal);
-            document.head.appendChild(tag);
-          }
-          tag.content = content;
-        };
-
-        setMeta('name', 'description', desc);
-        setMeta('name', 'keywords', kw);
-        setMeta('name', 'robots', data.robotsIndex || 'index, follow');
-        setMeta('name', 'author', data.authorName || 'Shahnawaz Computer Center');
-
-        // Open Graph
-        setMeta('property', 'og:title', data.ogTitle || title);
-        setMeta('property', 'og:description', data.ogDescription || desc);
-        setMeta('property', 'og:image', ogImg);
-        setMeta('property', 'og:url', curUrl);
-        setMeta('property', 'og:type', data.ogType || 'article');
-        setMeta('property', 'og:site_name', 'Shahnawaz Computer Center');
-
-        // Twitter Card
-        setMeta('name', 'twitter:card', data.twitterCard || 'summary_large_image');
-        setMeta('name', 'twitter:title', data.twitterTitle || data.ogTitle || title);
-        setMeta('name', 'twitter:description', data.twitterDescription || data.ogDescription || desc);
-        setMeta('name', 'twitter:image', data.twitterImage || ogImg);
-        setMeta('name', 'twitter:site', data.twitterSite || '@shahnawazcc');
-        setMeta('name', 'twitter:creator', data.twitterCreator || '@mohdshahnawaz');
-
-        // Canonical Link
-        let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-        if (!canonicalLink) {
-          canonicalLink = document.createElement('link');
-          canonicalLink.setAttribute('rel', 'canonical');
-          document.head.appendChild(canonicalLink);
-        }
-        canonicalLink.href = curUrl;
-
         // JSON-LD Structured Data for Google Jobs / Schema
         let schemaScript = document.getElementById('post-json-ld-schema') as HTMLScriptElement;
         if (!schemaScript) {
@@ -281,7 +239,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
     return (
       <div className="py-20 max-w-4xl mx-auto text-center">
         <div className="inline-block w-8 h-8 border-3 border-red-600 border-t-transparent rounded-full animate-spin mb-3"></div>
-        <p className="text-slate-600 text-sm font-semibold">Loading notification details...</p>
+        <p className="text-slate-600 dark:text-slate-300 text-sm font-semibold">Loading notification details...</p>
       </div>
     );
   }
@@ -290,8 +248,8 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
     return (
       <div className="py-20 max-w-md mx-auto text-center px-4">
         <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-3" />
-        <h2 className="text-lg font-bold text-slate-900">Post Not Found</h2>
-        <p className="text-xs text-slate-500 mt-1 mb-4">
+        <h2 className="text-lg font-bold text-slate-900 dark:text-white">Post Not Found</h2>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 mb-4">
           The requested recruitment or notice might have been removed or moved to another section.
         </p>
         <button
@@ -375,6 +333,14 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
 
   return (
     <div id="post-detail-container" className="pb-16 relative">
+      <SEOHead 
+        title={post.seoTitle || `${post.title} - Shahnawaz Computer Center`}
+        description={post.metaDescription || post.shortDescription || `Get full recruitment details for ${post.title} at Shahnawaz Computer Center.`}
+        keywords={post.keywords && post.keywords.length > 0 ? post.keywords.join(', ') : `${post.title}, Sarkari Result, Apply Online, Shahnawaz Computer Center`}
+        ogImage={post.ogImage || post.featuredImage || 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80'}
+        canonicalUrl={post.canonicalUrl || window.location.href}
+        type={post.ogType || 'article'}
+      />
       {/* Dynamic Reading Progress Bar with Quick Jump Anchors */}
       <ReadingProgressBar
         post={post}
@@ -414,15 +380,15 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
               <h2 className="text-xl font-black text-[#0B2545] uppercase tracking-tight">
                 SHAHNAWAZ COMPUTER CENTER
               </h2>
-              <p className="text-xs text-slate-800 font-bold">
+              <p className="text-xs text-slate-800 dark:text-slate-100 font-bold">
                 Government Recruitment Alerts & Online Form Filling Portal • Tambour (Sitapur, UP)
               </p>
-              <p className="text-[10px] text-slate-600 mt-0.5">
+              <p className="text-[10px] text-slate-600 dark:text-slate-300 mt-0.5">
                 Helpline / WhatsApp: +91 99560 78419 • Portal: {typeof window !== 'undefined' ? window.location.origin : 'https://shahnawaz-computer.web.app'}
               </p>
             </div>
-            <div className="text-right text-[10px] text-slate-600 shrink-0">
-              <span className="inline-block px-2 py-0.5 bg-slate-100 border border-slate-300 font-bold uppercase rounded text-slate-900">
+            <div className="text-right text-[10px] text-slate-600 dark:text-slate-300 shrink-0">
+              <span className="inline-block px-2 py-0.5 bg-slate-100 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-600 font-bold uppercase rounded text-slate-900 dark:text-white">
                 Official Job Notice
               </span>
               <p className="mt-1">Date: {new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
@@ -436,7 +402,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
         </div>
 
         {/* Main Post Header Card */}
-        <div className="bg-white rounded-2xl border-2 border-slate-200 shadow-sm p-4 sm:p-6 overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-sm p-4 sm:p-6 overflow-hidden">
           {/* Badges & Meta row */}
           <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
             <div className="flex flex-wrap items-center gap-2">
@@ -444,7 +410,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
                 <span className={`w-2 h-2 rounded-full ${badge.dotClass}`}></span>
                 {badge.label}
               </span>
-              <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-800 border border-slate-200">
+              <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 dark:bg-slate-800/50 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700">
                 {post.category}
               </span>
               {post.state && (
@@ -458,7 +424,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
               <span
                 id="post-header-views-badge"
                 title="Total candidates tracked in database"
-                className="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-800 border border-slate-200 flex items-center gap-1.5 shadow-2xs"
+                className="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 dark:bg-slate-800/50 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 shadow-2xs"
               >
                 <Eye className="w-3.5 h-3.5 text-blue-600" />
                 <span>{(post.views || 0).toLocaleString('en-IN')} Views</span>
@@ -482,12 +448,12 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
               </span>
             </div>
 
-            <div className="flex items-center gap-3 text-xs text-slate-500 flex-wrap">
+            <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 flex-wrap">
               <div className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5" />
                 <span>Posted: {new Date(post.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
               </div>
-              <div className="flex items-center gap-1.5 font-medium bg-slate-100 px-2 py-0.5 rounded-md">
+              <div className="flex items-center gap-1.5 font-medium bg-slate-100 dark:bg-slate-800/50 px-2 py-0.5 rounded-md">
                 <BookOpen className="w-3.5 h-3.5 text-slate-400" />
                 <span>{readingTime} min read</span>
               </div>
@@ -500,7 +466,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
           </h1>
 
           {/* Department / Organization & Vacancy summary */}
-          <div className="flex flex-wrap items-center gap-4 mt-3 pt-3 border-t border-slate-100 text-xs text-slate-700">
+          <div className="flex flex-wrap items-center gap-4 mt-3 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-200">
             {post.department && (
               <div className="flex items-center gap-1.5 font-bold">
                 <Building2 className="w-4 h-4 text-red-600" />
@@ -517,14 +483,14 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
 
           {/* Short Description */}
           {post.shortDescription && (
-            <div className="mt-4 p-3.5 bg-blue-50/70 rounded-xl border border-blue-200 text-xs sm:text-sm text-slate-800 leading-relaxed font-medium">
+            <div className="mt-4 p-3.5 bg-blue-50/70 rounded-xl border border-blue-200 text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-relaxed font-medium">
               <p>{post.shortDescription}</p>
             </div>
           )}
 
           {/* Social Share & Print Action Bar */}
-          <div className="no-print mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
-            <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+          <div className="no-print mt-4 pt-3 border-t border-slate-100 dark:border-slate-700 flex flex-wrap items-center justify-between gap-3">
+            <span className="text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
               <Share2 className="w-4 h-4 text-blue-600" />
               <span>Share or Save:</span>
             </span>
@@ -602,9 +568,9 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
                 id="copy-link-btn"
                 onClick={handleCopyLink}
                 title="Copy Direct URL"
-                className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-lg text-xs font-bold border border-slate-300 transition-colors"
+                className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 text-slate-800 dark:text-slate-100 rounded-lg text-xs font-bold border border-slate-300 dark:border-slate-600 transition-colors"
               >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-500" />}
+                {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />}
                 <span>{copied ? 'Copied!' : 'Copy Link'}</span>
               </button>
 
@@ -634,7 +600,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               {/* Left Title & Status */}
               <div className="flex items-start sm:items-center gap-3">
-                <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0 shadow-inner">
+                <div className="w-11 h-11 rounded-xl bg-white dark:bg-slate-800/10 border border-white/15 flex items-center justify-center shrink-0 shadow-inner">
                   {popularity.tier === 'viral' ? (
                     <Flame className="w-6 h-6 text-rose-400 animate-pulse" />
                   ) : popularity.tier === 'popular' ? (
@@ -667,7 +633,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
                     <span className="text-base sm:text-lg font-black text-amber-400">{(post.views || 0).toLocaleString('en-IN')}</span>
                   </div>
                 </div>
-                <div className="w-px h-8 bg-white/15"></div>
+                <div className="w-px h-8 bg-white dark:bg-slate-800/15"></div>
                 <div className="text-center px-1">
                   <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Estimated Today</span>
                   <div className="flex items-center justify-center gap-1 mt-0.5">
@@ -700,15 +666,15 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
         {/* 2-COLUMN DATES & FEE SECTION */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Important Dates Box */}
-          <div id="important-dates-section" className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div id="important-dates-section" className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <div className="bg-red-600 text-white px-4 py-2.5 flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               <h3 className="font-black text-sm uppercase tracking-wide">IMPORTANT DATES</h3>
             </div>
             <div className="p-4 divide-y divide-slate-150 text-xs">
               <div className="py-2 flex justify-between items-center">
-                <span className="text-slate-600 font-medium">Application Begin:</span>
-                <span className="font-bold text-slate-900">{post.startDate || 'Check Official Notification'}</span>
+                <span className="text-slate-600 dark:text-slate-300 font-medium">Application Begin:</span>
+                <span className="font-bold text-slate-900 dark:text-white">{post.startDate || 'Check Official Notification'}</span>
               </div>
               <div className="py-2 flex justify-between items-center bg-red-50/70 -mx-4 px-4 font-bold text-red-700">
                 <span>Last Date for Apply Online:</span>
@@ -716,14 +682,14 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
               </div>
               {post.feeLastDate && (
                 <div className="py-2 flex justify-between items-center">
-                  <span className="text-slate-600 font-medium">Last Date for Fee Payment:</span>
-                  <span className="font-bold text-slate-900">{post.feeLastDate}</span>
+                  <span className="text-slate-600 dark:text-slate-300 font-medium">Last Date for Fee Payment:</span>
+                  <span className="font-bold text-slate-900 dark:text-white">{post.feeLastDate}</span>
                 </div>
               )}
               {post.correctionDate && (
                 <div className="py-2 flex justify-between items-center">
-                  <span className="text-slate-600 font-medium">Correction Window:</span>
-                  <span className="font-bold text-slate-900">{post.correctionDate}</span>
+                  <span className="text-slate-600 dark:text-slate-300 font-medium">Correction Window:</span>
+                  <span className="font-bold text-slate-900 dark:text-white">{post.correctionDate}</span>
                 </div>
               )}
               {post.examDate && (
@@ -746,7 +712,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
               )}
               {post.answerKeyDate && (
                 <div className="py-2 flex justify-between items-center">
-                  <span className="text-slate-600 font-medium">Answer Key Date:</span>
+                  <span className="text-slate-600 dark:text-slate-300 font-medium">Answer Key Date:</span>
                   <span className="font-bold text-teal-800">{post.answerKeyDate}</span>
                 </div>
               )}
@@ -754,27 +720,27 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
           </div>
 
           {/* Application Fee Box */}
-          <div id="application-fee-section" className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div id="application-fee-section" className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <div className="bg-[#0B2545] text-white px-4 py-2.5 flex items-center gap-2">
               <DollarSign className="w-4 h-4 text-amber-400" />
               <h3 className="font-black text-sm uppercase tracking-wide">APPLICATION FEE</h3>
             </div>
             <div className="p-4 divide-y divide-slate-150 text-xs">
               <div className="py-2 flex justify-between items-center">
-                <span className="text-slate-600 font-medium">General / OBC / EWS:</span>
-                <span className="font-bold text-slate-900">{post.feeStructure?.general || '₹100/-'}</span>
+                <span className="text-slate-600 dark:text-slate-300 font-medium">General / OBC / EWS:</span>
+                <span className="font-bold text-slate-900 dark:text-white">{post.feeStructure?.general || '₹100/-'}</span>
               </div>
               <div className="py-2 flex justify-between items-center">
-                <span className="text-slate-600 font-medium">SC / ST / PH:</span>
+                <span className="text-slate-600 dark:text-slate-300 font-medium">SC / ST / PH:</span>
                 <span className="font-bold text-emerald-700">{post.feeStructure?.sc || '₹0/-'}</span>
               </div>
               <div className="py-2 flex justify-between items-center">
-                <span className="text-slate-600 font-medium">All Category Female:</span>
+                <span className="text-slate-600 dark:text-slate-300 font-medium">All Category Female:</span>
                 <span className="font-bold text-emerald-700">{post.feeStructure?.female || '₹0/- (Exempted)'}</span>
               </div>
               <div className="pt-3">
-                <p className="font-bold text-slate-700 mb-1">Payment Mode:</p>
-                <p className="text-[11px] text-slate-600 bg-slate-50 p-2 rounded border border-slate-200">
+                <p className="font-bold text-slate-700 dark:text-slate-200 mb-1">Payment Mode:</p>
+                <p className="text-[11px] text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-700 p-2 rounded border border-slate-200 dark:border-slate-700">
                   {post.feeStructure?.paymentMode || 'Pay the Examination Fee Through Debit Card, Credit Card, Net Banking, UPI or E Challan.'}
                 </p>
               </div>
@@ -784,7 +750,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
 
         {/* AGE LIMIT SECTION */}
         {post.ageLimit && (
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <div className="bg-slate-800 text-white px-4 py-2.5 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4 text-amber-400" />
@@ -794,16 +760,16 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
               </div>
             </div>
             <div className="p-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                <span className="text-slate-500 font-medium block">Minimum Age:</span>
+              <div className="p-3 bg-slate-50 dark:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-700">
+                <span className="text-slate-500 dark:text-slate-400 font-medium block">Minimum Age:</span>
                 <span className="font-black text-base text-[#0B2545]">{post.ageLimit.minAge || '18 Years'}</span>
               </div>
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                <span className="text-slate-500 font-medium block">Maximum Age:</span>
+              <div className="p-3 bg-slate-50 dark:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-700">
+                <span className="text-slate-500 dark:text-slate-400 font-medium block">Maximum Age:</span>
                 <span className="font-black text-base text-[#0B2545]">{post.ageLimit.maxAge || '27 - 30 Years'}</span>
               </div>
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                <span className="text-slate-500 font-medium block">Age Relaxation:</span>
+              <div className="p-3 bg-slate-50 dark:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-700">
+                <span className="text-slate-500 dark:text-slate-400 font-medium block">Age Relaxation:</span>
                 <span className="font-bold text-xs text-red-700">{post.ageLimit.ageRelaxation || 'Age Relaxation Extra as per Recruitment Rules.'}</span>
               </div>
             </div>
@@ -812,7 +778,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
 
         {/* VACANCIES & ELIGIBILITY DETAILS TABLE */}
         {post.vacancies && post.vacancies.length > 0 && (
-          <div id="vacancy-details-section" className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div id="vacancy-details-section" className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
             <div className="bg-[#0B2545] text-white px-4 py-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4 text-amber-400" />
@@ -824,23 +790,23 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
-                <thead className="bg-slate-100 text-slate-800 font-bold border-b border-slate-300">
+                <thead className="bg-slate-100 dark:bg-slate-800/50 text-slate-800 dark:text-slate-100 font-bold border-b border-slate-300 dark:border-slate-600">
                   <tr>
-                    <th className="py-2.5 px-3 border-r border-slate-200">Post Name</th>
-                    <th className="py-2.5 px-3 border-r border-slate-200 text-center">Total Posts</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 dark:border-slate-700">Post Name</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 dark:border-slate-700 text-center">Total Posts</th>
                     <th className="py-2.5 px-3">Educational Qualification & Eligibility</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200">
                   {post.vacancies.map((v, i) => (
-                    <tr key={v.id || i} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50/60'}>
-                      <td className="py-3 px-3 font-bold text-slate-900 border-r border-slate-200">
+                    <tr key={v.id || i} className={i % 2 === 0 ? 'bg-white dark:bg-slate-800' : 'bg-slate-50 dark:bg-slate-700/60'}>
+                      <td className="py-3 px-3 font-bold text-slate-900 dark:text-white border-r border-slate-200 dark:border-slate-700">
                         {v.postName}
                       </td>
-                      <td className="py-3 px-3 font-black text-emerald-800 text-center border-r border-slate-200 bg-emerald-50/40">
+                      <td className="py-3 px-3 font-black text-emerald-800 text-center border-r border-slate-200 dark:border-slate-700 bg-emerald-50/40">
                         {v.total}
                       </td>
-                      <td className="py-3 px-3 text-slate-700 font-medium leading-relaxed">
+                      <td className="py-3 px-3 text-slate-700 dark:text-slate-200 font-medium leading-relaxed">
                         {v.qualification || post.educationalQualification || 'As per notification criteria.'}
                       </td>
                     </tr>
@@ -855,15 +821,15 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Selection Process */}
           {post.selectionProcess && post.selectionProcess.length > 0 && (
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 space-y-3">
-              <h3 className="font-black text-sm text-[#0B2545] uppercase tracking-wide border-b border-slate-200 pb-2 flex items-center gap-2">
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm p-4 space-y-3">
+              <h3 className="font-black text-sm text-[#0B2545] uppercase tracking-wide border-b border-slate-200 dark:border-slate-700 pb-2 flex items-center gap-2">
                 <Layers className="w-4 h-4 text-blue-600" />
                 <span>SELECTION PROCESS</span>
               </h3>
-              <ol className="space-y-2 text-xs text-slate-700 list-decimal list-inside font-medium">
+              <ol className="space-y-2 text-xs text-slate-700 dark:text-slate-200 list-decimal list-inside font-medium">
                 {post.selectionProcess.map((step, idx) => (
                   <li key={idx} className="leading-relaxed">
-                    <span className="text-slate-900 font-semibold">{step}</span>
+                    <span className="text-slate-900 dark:text-white font-semibold">{step}</span>
                   </li>
                 ))}
               </ol>
@@ -872,12 +838,12 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
 
           {/* Required Documents */}
           {post.requiredDocuments && post.requiredDocuments.length > 0 && (
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 space-y-3">
-              <h3 className="font-black text-sm text-[#0B2545] uppercase tracking-wide border-b border-slate-200 pb-2 flex items-center gap-2">
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm p-4 space-y-3">
+              <h3 className="font-black text-sm text-[#0B2545] uppercase tracking-wide border-b border-slate-200 dark:border-slate-700 pb-2 flex items-center gap-2">
                 <FileText className="w-4 h-4 text-emerald-600" />
                 <span>REQUIRED DOCUMENTS FOR FORM FILLING</span>
               </h3>
-              <ul className="space-y-1.5 text-xs text-slate-700 font-medium">
+              <ul className="space-y-1.5 text-xs text-slate-700 dark:text-slate-200 font-medium">
                 {post.requiredDocuments.map((doc, idx) => (
                   <li key={idx} className="flex items-start gap-2 leading-relaxed">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" />
@@ -1032,7 +998,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
             {settings?.contactNumber && (
               <a
                 href={`tel:${settings.contactNumber}`}
-                className="px-3.5 py-2.5 bg-white hover:bg-slate-100 text-[#0B2545] font-black text-xs uppercase rounded-xl transition-all flex items-center gap-1"
+                className="px-3.5 py-2.5 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:bg-slate-800/50 text-[#0B2545] font-black text-xs uppercase rounded-xl transition-all flex items-center gap-1"
               >
                 <Phone className="w-4 h-4 text-red-600" />
                 <span className="hidden sm:inline">Call</span>
@@ -1043,14 +1009,14 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
 
         {/* OFFICIAL SOURCE VERIFICATION DISCLAIMER BOX */}
         {post.officialSource && (
-          <div className="bg-slate-100 rounded-xl p-4 border border-slate-300 text-xs text-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-300 dark:border-slate-600 text-xs text-slate-700 dark:text-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-start gap-2.5">
               <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold text-slate-900">
+                <p className="font-bold text-slate-900 dark:text-white">
                   Official Verification Source: {post.officialSource.websiteName}
                 </p>
-                <p className="text-[11px] text-slate-500 mt-0.5">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                   Information compiled from official notification PDFs released on government recruitment portals.
                 </p>
               </div>
@@ -1082,7 +1048,7 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
 
         {/* RELATED RECRUITMENTS */}
         {relatedPosts.length > 0 && (
-          <div className="no-print pt-6 border-t border-slate-200">
+          <div className="no-print pt-6 border-t border-slate-200 dark:border-slate-700">
             <h3 className="text-base font-black text-[#0B2545] uppercase tracking-wide mb-4 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-red-600" />
               <span>Related {post.category} Updates</span>
@@ -1093,15 +1059,15 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
                 <div
                   key={rel.id}
                   onClick={() => onSelectPost(rel.slug, rel.type)}
-                  className="p-3 bg-white hover:bg-blue-50/50 border border-slate-200 rounded-xl cursor-pointer transition-all flex flex-col justify-between group shadow-xs"
+                  className="p-3 bg-white dark:bg-slate-800 hover:bg-blue-50/50 border border-slate-200 dark:border-slate-700 rounded-xl cursor-pointer transition-all flex flex-col justify-between group shadow-xs"
                 >
                   <div>
-                    <span className="text-[10px] font-bold text-slate-500">{rel.category}</span>
-                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-blue-900 line-clamp-2 mt-1">
+                    <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400">{rel.category}</span>
+                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-900 line-clamp-2 mt-1">
                       {rel.title}
                     </h4>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                  <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between text-[11px]">
                     <span className="text-slate-400">{rel.lastDate ? `Last: ${rel.lastDate}` : 'Active'}</span>
                     <span className="text-blue-700 font-bold flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
                       <span>View</span>
@@ -1115,14 +1081,14 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
         )}
 
         {/* PRINT-ONLY FOOTER */}
-        <div className="print-only mt-8 pt-4 border-t border-slate-400 text-center text-[9pt] text-slate-600 space-y-1">
-          <p className="font-bold text-slate-900">
+        <div className="print-only mt-8 pt-4 border-t border-slate-400 text-center text-[9pt] text-slate-600 dark:text-slate-300 space-y-1">
+          <p className="font-bold text-slate-900 dark:text-white">
             SHAHNAWAZ COMPUTER CENTER • TAMBOUR (SITAPUR, U.P.)
           </p>
           <p>
             Online Form Filling • Admit Card Printing • Corrections • PVC Smart Card Printing • Result & Scorecard Downloads
           </p>
-          <p className="text-[8pt] text-slate-500">
+          <p className="text-[8pt] text-slate-500 dark:text-slate-400">
             Direct Helpline: +91 99560 78419 • Portal Link: {pageUrl}
           </p>
         </div>

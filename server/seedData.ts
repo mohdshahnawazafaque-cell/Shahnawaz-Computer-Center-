@@ -1,4 +1,4 @@
-import { Post, Category, Announcement, ComputerService, Advertisement, SiteSettings, PostComment } from '../src/types';
+import { Post, Category, Announcement, ComputerService, Advertisement, SiteSettings, PostComment, Promotion } from '../src/types';
 
 export const INITIAL_CATEGORIES: Category[] = [
   { id: 'cat-1', name: 'Sarkari Naukri', slug: 'sarkari-naukri', type: 'job', displayOrder: 1, badgeColor: 'blue', enabled: true, iconName: 'Briefcase' },
@@ -684,7 +684,7 @@ export const INITIAL_SETTINGS: SiteSettings = {
   tagline: 'Latest Jobs, Results, Admit Card, Sarkari Yojana & Online Form Updates',
   description: 'Mobile-first Government Jobs, Results, Admit Card, Answer Key, Sarkari Yojana, Scholarship, Admission and Online Information Portal.',
   logoText: 'SHAHNAWAZ COMPUTER CENTER',
-  whatsAppUrl: 'https://whatsapp.com/channel/0029VaShahnawazComputerCenter',
+  whatsAppUrl: 'https://whatsapp.com/channel/0029VbDh3ZP3QxRsUixBEU1P',
   whatsAppNumber: '+91 99560 78419',
   telegramUrl: 'https://t.me/ShahnawazComputerCenter',
   contactNumber: '+91 99560 78419',
@@ -893,5 +893,18 @@ export const INITIAL_COMMENTS: PostComment[] = [
         likes: 16,
       }
     ]
+  }
+];
+export const INITIAL_PROMOTIONS: Promotion[] = [
+  {
+    id: 'promo-1',
+    title: 'Welcome to Shahnawaz Computer Center',
+    description: 'Get all your online forms, results, and computer services done with high quality.',
+    imageUrl: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200',
+    contactNumber: '919876543210',
+    whatsAppNumber: '919876543210',
+    promotionalLink: '/services',
+    isActive: true,
+    order: 1
   }
 ];

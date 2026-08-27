@@ -90,7 +90,7 @@ export const SharePortalButton: React.FC<SharePortalButtonProps> = ({
       <button
         id="header-share-portal-btn"
         onClick={handleShare}
-        className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 text-xs font-bold transition-all shadow-xs ${className}`}
+        className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 text-xs font-bold transition-all shadow-xs ${className}`}
         title="Share This Portal with Friends & Family"
         aria-label="Share This Portal"
       >

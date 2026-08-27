@@ -451,7 +451,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
       id="universal-post-builder-modal"
       className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto"
     >
-      <div className="bg-white w-full max-w-5xl rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="bg-white dark:bg-slate-800 w-full max-w-5xl rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Top Header */}
         <div className="bg-[#0B2545] text-white p-4 flex items-center justify-between border-b border-blue-900">
           <div className="flex items-center gap-3">
@@ -493,7 +493,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
 
             <button
               onClick={onClose}
-              className="p-1.5 hover:bg-white/10 rounded-lg text-slate-300 hover:text-white transition-colors"
+              className="p-1.5 hover:bg-white dark:bg-slate-800/10 rounded-lg text-slate-300 hover:text-white transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
@@ -507,12 +507,12 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
         )}
 
         {/* Modal Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-slate-50">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-slate-50 dark:bg-slate-700">
           {activeTab === 'form' ? (
             <div className="space-y-6">
               {/* Type & Basic Classification */}
-              <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-xs space-y-4">
-                <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 pb-2 flex items-center gap-2">
+              <div className="bg-white dark:bg-slate-800 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+                <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 dark:border-slate-700 pb-2 flex items-center gap-2">
                   <Building2 className="w-4 h-4 text-red-600" />
                   <span>1. Select Post Type & Category</span>
                 </h3>
@@ -538,7 +538,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                       className={`p-2.5 rounded-lg text-xs font-black uppercase border text-center transition-all ${
                         type === t.val
                           ? 'bg-[#0B2545] text-white border-[#0B2545] shadow'
-                          : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border-slate-200'
+                          : 'bg-slate-50 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700'
                       }`}
                     >
                       {t.label}
@@ -548,31 +548,31 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Category</label>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">Category</label>
                     <input
                       type="text"
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
                       placeholder="e.g. SSC Jobs, UP Police, PM Schemes..."
-                      className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-medium"
+                      className="w-full text-xs p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white dark:bg-slate-800 font-medium"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Department / Board</label>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">Department / Board</label>
                     <input
                       type="text"
                       value={department}
                       onChange={(e) => setDepartment(e.target.value)}
                       placeholder="e.g. Staff Selection Commission (SSC)"
-                      className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-medium"
+                      className="w-full text-xs p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white dark:bg-slate-800 font-medium"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">State / Scope</label>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">State / Scope</label>
                     <select
                       value={state}
                       onChange={(e) => setState(e.target.value)}
-                      className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-medium"
+                      className="w-full text-xs p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white dark:bg-slate-800 font-medium"
                     >
                       <option value="All India">All India</option>
                       <option value="Uttar Pradesh">Uttar Pradesh</option>
@@ -588,14 +588,14 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
               </div>
 
               {/* Title & Short Description */}
-              <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-xs space-y-4">
-                <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 pb-2 flex items-center gap-2">
+              <div className="bg-white dark:bg-slate-800 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+                <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 dark:border-slate-700 pb-2 flex items-center gap-2">
                   <FileText className="w-4 h-4 text-red-600" />
                   <span>2. Title, Slug & Summary</span>
                 </h3>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">
                     Post Title <span className="text-red-600">*</span>
                   </label>
                   <input
@@ -603,64 +603,64 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                     value={title}
                     onChange={(e) => handleTitleChange(e.target.value)}
                     placeholder="e.g. SSC CGL 2026 Notification, Apply Online for 14582 Posts"
-                    className="w-full text-sm p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-bold text-slate-900"
+                    className="w-full text-sm p-3 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">SEO URL Slug</label>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">SEO URL Slug</label>
                     <input
                       type="text"
                       value={slug}
                       onChange={(e) => setSlug(e.target.value)}
                       placeholder="e.g. ssc-cgl-recruitment-2026"
-                      className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-mono"
+                      className="w-full text-xs p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white dark:bg-slate-800 font-mono"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Total Vacancies / Capacity</label>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">Total Vacancies / Capacity</label>
                     <input
                       type="text"
                       value={totalVacancy}
                       onChange={(e) => setTotalVacancy(e.target.value)}
                       placeholder="e.g. 14,582 Posts or 60,244 Posts"
-                      className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-semibold text-emerald-700"
+                      className="w-full text-xs p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white dark:bg-slate-800 font-semibold text-emerald-700"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Short Description / Key Highlights</label>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">Short Description / Key Highlights</label>
                   <textarea
                     rows={3}
                     value={shortDescription}
                     onChange={(e) => setShortDescription(e.target.value)}
                     placeholder="Brief 2-3 sentence overview of this notification..."
-                    className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white font-medium text-slate-700"
+                    className="w-full text-xs p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white dark:bg-slate-800 font-medium text-slate-700 dark:text-slate-200"
                   />
                 </div>
               </div>
 
               {/* Important Dates */}
-              <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-xs space-y-4">
-                <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 pb-2 flex items-center gap-2">
+              <div className="bg-white dark:bg-slate-800 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+                <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 dark:border-slate-700 pb-2 flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-red-600" />
                   <span>3. Important Dates Matrix</span>
                 </h3>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Application Start</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Application Start</label>
                     <input
                       type="date"
                       value={startDate}
                       onChange={(e) => setStartDate(e.target.value)}
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-medium"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-medium"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1 text-red-700">Last Date to Apply</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1 text-red-700">Last Date to Apply</label>
                     <input
                       type="date"
                       value={lastDate}
@@ -669,26 +669,26 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Fee Last Date</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Fee Last Date</label>
                     <input
                       type="date"
                       value={feeLastDate}
                       onChange={(e) => setFeeLastDate(e.target.value)}
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-medium"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-medium"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Correction Date</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Correction Date</label>
                     <input
                       type="text"
                       value={correctionDate}
                       onChange={(e) => setCorrectionDate(e.target.value)}
                       placeholder="e.g. 05-08 Oct 2026"
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-medium"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-medium"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1 text-blue-800">Exam Date</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1 text-blue-800">Exam Date</label>
                     <input
                       type="text"
                       value={examDate}
@@ -698,7 +698,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1 text-amber-800">Admit Card Date</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1 text-amber-800">Admit Card Date</label>
                     <input
                       type="text"
                       value={admitCardDate}
@@ -708,23 +708,23 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Result Date</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Result Date</label>
                     <input
                       type="text"
                       value={resultDate}
                       onChange={(e) => setResultDate(e.target.value)}
                       placeholder="e.g. Dec 2026"
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-medium"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-medium"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Answer Key Date</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Answer Key Date</label>
                     <input
                       type="text"
                       value={answerKeyDate}
                       onChange={(e) => setAnswerKeyDate(e.target.value)}
                       placeholder="e.g. 20 Nov 2026"
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-medium"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-medium"
                     />
                   </div>
                 </div>
@@ -733,92 +733,92 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
               {/* Application Fee & Age Limits */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Fee Structure */}
-                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-3">
-                  <h3 className="text-xs font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 pb-1.5 flex items-center gap-1.5">
+                <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-3">
+                  <h3 className="text-xs font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 dark:border-slate-700 pb-1.5 flex items-center gap-1.5">
                     <DollarSign className="w-3.5 h-3.5 text-emerald-600" />
                     <span>Application Fee</span>
                   </h3>
                   <div className="grid grid-cols-3 gap-2 text-xs">
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-600">General</label>
+                      <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300">General</label>
                       <input
                         type="text"
                         value={feeGeneral}
                         onChange={(e) => setFeeGeneral(e.target.value)}
-                        className="w-full p-1.5 border border-slate-300 rounded"
+                        className="w-full p-1.5 border border-slate-300 dark:border-slate-600 rounded"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-600">OBC / EWS</label>
+                      <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300">OBC / EWS</label>
                       <input
                         type="text"
                         value={feeObc}
                         onChange={(e) => setFeeObc(e.target.value)}
-                        className="w-full p-1.5 border border-slate-300 rounded"
+                        className="w-full p-1.5 border border-slate-300 dark:border-slate-600 rounded"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-600">SC / ST / PH</label>
+                      <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300">SC / ST / PH</label>
                       <input
                         type="text"
                         value={feeSc}
                         onChange={(e) => setFeeSc(e.target.value)}
-                        className="w-full p-1.5 border border-slate-300 rounded"
+                        className="w-full p-1.5 border border-slate-300 dark:border-slate-600 rounded"
                       />
                     </div>
                     <div className="col-span-3">
-                      <label className="block text-[11px] font-bold text-slate-600">Payment Modes</label>
+                      <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300">Payment Modes</label>
                       <input
                         type="text"
                         value={paymentMode}
                         onChange={(e) => setPaymentMode(e.target.value)}
-                        className="w-full p-1.5 border border-slate-300 rounded"
+                        className="w-full p-1.5 border border-slate-300 dark:border-slate-600 rounded"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Age Limits */}
-                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-3">
-                  <h3 className="text-xs font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 pb-1.5 flex items-center gap-1.5">
+                <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-3">
+                  <h3 className="text-xs font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 dark:border-slate-700 pb-1.5 flex items-center gap-1.5">
                     <Users className="w-3.5 h-3.5 text-indigo-600" />
                     <span>Age Limit & Relaxation</span>
                   </h3>
                   <div className="grid grid-cols-3 gap-2 text-xs">
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-600">Minimum Age</label>
+                      <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300">Minimum Age</label>
                       <input
                         type="text"
                         value={minAge}
                         onChange={(e) => setMinAge(e.target.value)}
-                        className="w-full p-1.5 border border-slate-300 rounded"
+                        className="w-full p-1.5 border border-slate-300 dark:border-slate-600 rounded"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-600">Maximum Age</label>
+                      <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300">Maximum Age</label>
                       <input
                         type="text"
                         value={maxAge}
                         onChange={(e) => setMaxAge(e.target.value)}
-                        className="w-full p-1.5 border border-slate-300 rounded"
+                        className="w-full p-1.5 border border-slate-300 dark:border-slate-600 rounded"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-600">As On Date</label>
+                      <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300">As On Date</label>
                       <input
                         type="text"
                         value={asOnDate}
                         onChange={(e) => setAsOnDate(e.target.value)}
-                        className="w-full p-1.5 border border-slate-300 rounded"
+                        className="w-full p-1.5 border border-slate-300 dark:border-slate-600 rounded"
                       />
                     </div>
                     <div className="col-span-3">
-                      <label className="block text-[11px] font-bold text-slate-600">Age Relaxation</label>
+                      <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300">Age Relaxation</label>
                       <input
                         type="text"
                         value={ageRelaxation}
                         onChange={(e) => setAgeRelaxation(e.target.value)}
-                        className="w-full p-1.5 border border-slate-300 rounded"
+                        className="w-full p-1.5 border border-slate-300 dark:border-slate-600 rounded"
                       />
                     </div>
                   </div>
@@ -826,8 +826,8 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
               </div>
 
               {/* Vacancies Matrix */}
-              <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-xs space-y-3">
-                <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+              <div className="bg-white dark:bg-slate-800 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-3">
+                <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
                   <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider flex items-center gap-2">
                     <Users className="w-4 h-4 text-emerald-600" />
                     <span>4. Vacancy Details Table</span>
@@ -846,10 +846,10 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                   {vacancies.map((v, i) => (
                     <div
                       key={v.id || i}
-                      className="p-3 bg-slate-50 rounded-lg border border-slate-200 grid grid-cols-1 sm:grid-cols-6 gap-2 text-xs items-center"
+                      className="p-3 bg-slate-50 dark:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-700 grid grid-cols-1 sm:grid-cols-6 gap-2 text-xs items-center"
                     >
                       <div className="sm:col-span-2">
-                        <label className="block text-[10px] font-bold text-slate-500">Post Name</label>
+                        <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400">Post Name</label>
                         <input
                           type="text"
                           value={v.postName}
@@ -858,11 +858,11 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                             updated[i].postName = e.target.value;
                             setVacancies(updated);
                           }}
-                          className="w-full p-1.5 bg-white border border-slate-300 rounded font-bold"
+                          className="w-full p-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded font-bold"
                         />
                       </div>
                       <div>
-                        <label className="block text-[10px] font-bold text-slate-500">Total Posts</label>
+                        <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400">Total Posts</label>
                         <input
                           type="text"
                           value={v.total}
@@ -871,11 +871,11 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                             updated[i].total = e.target.value;
                             setVacancies(updated);
                           }}
-                          className="w-full p-1.5 bg-white border border-slate-300 rounded font-bold text-emerald-700"
+                          className="w-full p-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded font-bold text-emerald-700"
                         />
                       </div>
                       <div className="sm:col-span-2">
-                        <label className="block text-[10px] font-bold text-slate-500">Qualification</label>
+                        <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400">Qualification</label>
                         <input
                           type="text"
                           value={v.qualification || ''}
@@ -884,7 +884,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                             updated[i].qualification = e.target.value;
                             setVacancies(updated);
                           }}
-                          className="w-full p-1.5 bg-white border border-slate-300 rounded"
+                          className="w-full p-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded"
                         />
                       </div>
                       <div className="text-right">
@@ -902,80 +902,80 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
               </div>
 
               {/* Qualifications, Selection, Syllabus, Instructions */}
-              <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-xs space-y-4">
-                <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 pb-2 flex items-center gap-2">
+              <div className="bg-white dark:bg-slate-800 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+                <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 dark:border-slate-700 pb-2 flex items-center gap-2">
                   <BookOpen className="w-4 h-4 text-indigo-600" />
                   <span>5. Qualifications & Detailed Sections</span>
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Educational Qualification</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Educational Qualification</label>
                     <textarea
                       rows={3}
                       value={educationalQualification}
                       onChange={(e) => setEducationalQualification(e.target.value)}
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Salary / Pay Scale</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Salary / Pay Scale</label>
                     <textarea
                       rows={3}
                       value={salaryPayScale}
                       onChange={(e) => setSalaryPayScale(e.target.value)}
                       placeholder="e.g. Level 4 (₹25,500 - ₹81,100)"
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Selection Process (1 per line)</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Selection Process (1 per line)</label>
                     <textarea
                       rows={4}
                       value={selectionProcessText}
                       onChange={(e) => setSelectionProcessText(e.target.value)}
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-mono text-[11px]"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-mono text-[11px]"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Required Documents (1 per line)</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Required Documents (1 per line)</label>
                     <textarea
                       rows={4}
                       value={requiredDocsText}
                       onChange={(e) => setRequiredDocsText(e.target.value)}
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-mono text-[11px]"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-mono text-[11px]"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Exam Pattern Summary</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Exam Pattern Summary</label>
                     <textarea
                       rows={3}
                       value={examPattern}
                       onChange={(e) => setExamPattern(e.target.value)}
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Important Instructions (1 per line)</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Important Instructions (1 per line)</label>
                     <textarea
                       rows={3}
                       value={importantInstructionsText}
                       onChange={(e) => setImportantInstructionsText(e.target.value)}
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-mono text-[11px]"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-mono text-[11px]"
                     />
                   </div>
                 </div>
               </div>
 
               {/* SOME USEFUL IMPORTANT LINKS BUILDER */}
-              <div className="bg-white p-4 sm:p-5 rounded-xl border-2 border-red-600 shadow-sm space-y-3">
-                <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+              <div className="bg-white dark:bg-slate-800 p-4 sm:p-5 rounded-xl border-2 border-red-600 shadow-sm space-y-3">
+                <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
                   <div>
                     <h3 className="text-sm font-black uppercase text-red-700 tracking-wider flex items-center gap-2">
                       <LinkIcon className="w-4 h-4" />
                       <span>6. SOME USEFUL IMPORTANT LINKS (2-Column Table)</span>
                     </h3>
-                    <p className="text-[11px] text-slate-500">
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
                       Add links like Apply Online, Notification, Admit Card, Result, Official Portal
                     </p>
                   </div>
@@ -993,10 +993,10 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                   {links.map((lnk, i) => (
                     <div
                       key={lnk.id || i}
-                      className="p-3 bg-slate-50 rounded-lg border border-slate-300 grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs items-center"
+                      className="p-3 bg-slate-50 dark:bg-slate-700 rounded-lg border border-slate-300 dark:border-slate-600 grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs items-center"
                     >
                       <div className="sm:col-span-4">
-                        <label className="block text-[10px] font-bold text-slate-600">Link Name</label>
+                        <label className="block text-[10px] font-bold text-slate-600 dark:text-slate-300">Link Name</label>
                         <input
                           type="text"
                           value={lnk.name}
@@ -1005,11 +1005,11 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                             updated[i].name = e.target.value;
                             setLinks(updated);
                           }}
-                          className="w-full p-1.5 bg-white border border-slate-300 rounded font-bold text-slate-900"
+                          className="w-full p-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded font-bold text-slate-900 dark:text-white"
                         />
                       </div>
                       <div className="sm:col-span-2">
-                        <label className="block text-[10px] font-bold text-slate-600">Button Text</label>
+                        <label className="block text-[10px] font-bold text-slate-600 dark:text-slate-300">Button Text</label>
                         <input
                           type="text"
                           value={lnk.btnText}
@@ -1018,11 +1018,11 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                             updated[i].btnText = e.target.value;
                             setLinks(updated);
                           }}
-                          className="w-full p-1.5 bg-white border border-slate-300 rounded font-black text-red-600 text-center"
+                          className="w-full p-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded font-black text-red-600 text-center"
                         />
                       </div>
                       <div className="sm:col-span-5">
-                        <label className="block text-[10px] font-bold text-slate-600">Target URL</label>
+                        <label className="block text-[10px] font-bold text-slate-600 dark:text-slate-300">Target URL</label>
                         <input
                           type="text"
                           value={lnk.url}
@@ -1031,7 +1031,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                             updated[i].url = e.target.value;
                             setLinks(updated);
                           }}
-                          className="w-full p-1.5 bg-white border border-slate-300 rounded font-mono text-[11px]"
+                          className="w-full p-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded font-mono text-[11px]"
                         />
                       </div>
                       <div className="sm:col-span-1 text-right">
@@ -1049,8 +1049,8 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
               </div>
 
               {/* Official Source & SEO */}
-              <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-xs space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+              <div className="bg-white dark:bg-slate-800 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
                   <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-blue-600" />
                     <span>7. Official Source & SEO Meta Tags</span>
@@ -1077,29 +1077,29 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Official Website Name</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Official Website Name</label>
                     <input
                       type="text"
                       value={officialWebsiteName}
                       onChange={(e) => setOfficialWebsiteName(e.target.value)}
                       placeholder="e.g. Staff Selection Commission"
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Official Website URL</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Official Website URL</label>
                     <input
                       type="text"
                       value={officialWebsiteUrl}
                       onChange={(e) => setOfficialWebsiteUrl(e.target.value)}
                       placeholder="https://ssc.gov.in"
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-mono"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-mono"
                     />
                   </div>
 
                   <div className="sm:col-span-2">
                     <div className="flex justify-between items-center mb-1">
-                      <label className="font-bold text-slate-700">SEO / Meta Title (&lt;title&gt;)</label>
+                      <label className="font-bold text-slate-700 dark:text-slate-200">SEO / Meta Title (&lt;title&gt;)</label>
                       <span className="text-[10px] text-slate-400 font-mono">{seoTitle.length}/60 chars</span>
                     </div>
                     <input
@@ -1107,13 +1107,13 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                       value={seoTitle}
                       onChange={(e) => setSeoTitle(e.target.value)}
                       placeholder="Leave empty to use Post Title"
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-medium"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-medium"
                     />
                   </div>
 
                   <div className="sm:col-span-2">
                     <div className="flex justify-between items-center mb-1">
-                      <label className="font-bold text-slate-700">Meta Description (&lt;meta name="description"&gt;)</label>
+                      <label className="font-bold text-slate-700 dark:text-slate-200">Meta Description (&lt;meta name="description"&gt;)</label>
                       <span className="text-[10px] text-slate-400 font-mono">{metaDescription.length}/160 chars</span>
                     </div>
                     <textarea
@@ -1121,23 +1121,23 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                       value={metaDescription}
                       onChange={(e) => setMetaDescription(e.target.value)}
                       placeholder="Leave empty to use Short Description"
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-medium"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-medium"
                     />
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block font-bold text-slate-700 mb-1">Meta Keywords (comma separated)</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Meta Keywords (comma separated)</label>
                     <input
                       type="text"
                       value={keywordsText}
                       onChange={(e) => setKeywordsText(e.target.value)}
                       placeholder="SSC CGL 2026, Apply Online SSC, Sarkari Naukri, Sarkari Result"
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Social Card Image (og:image URL)</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Social Card Image (og:image URL)</label>
                     <input
                       type="text"
                       value={ogImage}
@@ -1146,16 +1146,16 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                         if (!twitterImage) setTwitterImage(e.target.value);
                       }}
                       placeholder="https://..."
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-mono text-[11px]"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-mono text-[11px]"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Twitter Card Format</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Twitter Card Format</label>
                     <select
                       value={twitterCard}
                       onChange={(e) => setTwitterCard(e.target.value as any)}
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-semibold"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-semibold"
                     >
                       <option value="summary_large_image">summary_large_image (Large Hero Banner)</option>
                       <option value="summary">summary (Compact Square Thumbnail)</option>
@@ -1163,22 +1163,22 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Twitter Account (@site)</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Twitter Account (@site)</label>
                     <input
                       type="text"
                       value={twitterSite}
                       onChange={(e) => setTwitterSite(e.target.value)}
                       placeholder="@shahnawazcc"
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-mono text-xs"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-mono text-xs"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Robots Indexing</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Robots Indexing</label>
                     <select
                       value={robotsIndex}
                       onChange={(e) => setRobotsIndex(e.target.value)}
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-semibold"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-semibold"
                     >
                       <option value="index, follow">index, follow (Allow Search Indexing)</option>
                       <option value="noindex, follow">noindex, follow</option>
@@ -1189,18 +1189,18 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
               </div>
 
               {/* Publishing Controls */}
-              <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-xs space-y-3">
-                <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 pb-2">
+              <div className="bg-white dark:bg-slate-800 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-3">
+                <h3 className="text-sm font-black uppercase text-[#0B2545] tracking-wider border-b border-slate-200 dark:border-slate-700 pb-2">
                   8. Post Status & Visibility
                 </h3>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Post Status</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Post Status</label>
                     <select
                       value={status}
                       onChange={(e) => setStatus(e.target.value as PostStatus)}
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white font-bold"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 font-bold"
                     >
                       <option value="published">Published</option>
                       <option value="draft">Draft</option>
@@ -1209,11 +1209,11 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                     </select>
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Manual Status Override</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Manual Status Override</label>
                     <select
                       value={manualStatusOverride}
                       onChange={(e) => setManualStatusOverride(e.target.value as ComputedStatus | '')}
-                      className="w-full p-2 border border-slate-300 rounded-lg bg-white"
+                      className="w-full p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800"
                     >
                       <option value="">Auto Calculated from Dates</option>
                       <option value="APPLY NOW">APPLY NOW</option>
@@ -1234,7 +1234,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                       onChange={(e) => setIsFeatured(e.target.checked)}
                       className="w-4 h-4 rounded text-blue-600"
                     />
-                    <label htmlFor="isFeaturedCb" className="font-bold text-slate-800">
+                    <label htmlFor="isFeaturedCb" className="font-bold text-slate-800 dark:text-slate-100">
                       Feature on Homepage
                     </label>
                   </div>
@@ -1255,7 +1255,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
             </div>
           ) : (
             /* Live Preview Tab */
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm max-w-4xl mx-auto space-y-6">
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm max-w-4xl mx-auto space-y-6">
               <div className="p-3 bg-amber-50 border border-amber-300 rounded-lg text-xs text-amber-900 font-bold text-center">
                 👀 Live Post Preview — Exact rendering as normal visitors will see on Shahnawaz Computer Center
               </div>
@@ -1272,7 +1272,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                       </span>
                     );
                   })()}
-                  <span className="px-2.5 py-1 rounded text-xs font-bold bg-slate-100 text-slate-700">
+                  <span className="px-2.5 py-1 rounded text-xs font-bold bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200">
                     {previewPost.category}
                   </span>
                   {previewPost.state && (
@@ -1286,7 +1286,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                   {previewPost.title || 'Untitled Post Title'}
                 </h1>
                 {previewPost.shortDescription && (
-                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                     {previewPost.shortDescription}
                   </p>
                 )}
@@ -1294,13 +1294,13 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
 
               {/* Dates & Fee preview */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                  <h4 className="font-black text-red-700 uppercase tracking-wider border-b border-slate-200 pb-1">
+                <div className="p-4 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-700 space-y-2">
+                  <h4 className="font-black text-red-700 uppercase tracking-wider border-b border-slate-200 dark:border-slate-700 pb-1">
                     IMPORTANT DATES
                   </h4>
                   <div className="space-y-1.5">
                     <div className="flex justify-between">
-                      <span className="text-slate-600">Application Begin:</span>
+                      <span className="text-slate-600 dark:text-slate-300">Application Begin:</span>
                       <span className="font-bold">{previewPost.startDate || 'Announced'}</span>
                     </div>
                     <div className="flex justify-between text-red-700 font-bold">
@@ -1316,17 +1316,17 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                   </div>
                 </div>
 
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                  <h4 className="font-black text-emerald-700 uppercase tracking-wider border-b border-slate-200 pb-1">
+                <div className="p-4 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-700 space-y-2">
+                  <h4 className="font-black text-emerald-700 uppercase tracking-wider border-b border-slate-200 dark:border-slate-700 pb-1">
                     APPLICATION FEE
                   </h4>
                   <div className="space-y-1.5">
                     <div className="flex justify-between">
-                      <span className="text-slate-600">General / OBC / EWS:</span>
+                      <span className="text-slate-600 dark:text-slate-300">General / OBC / EWS:</span>
                       <span className="font-bold">{previewPost.feeStructure?.general}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-600">SC / ST / Female:</span>
+                      <span className="text-slate-600 dark:text-slate-300">SC / ST / Female:</span>
                       <span className="font-bold">{previewPost.feeStructure?.sc}</span>
                     </div>
                   </div>
@@ -1336,7 +1336,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
               {/* Vacancies table preview */}
               {previewPost.vacancies && previewPost.vacancies.length > 0 && (
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs border border-slate-200">
+                  <table className="w-full text-left text-xs border border-slate-200 dark:border-slate-700">
                     <thead className="bg-[#0B2545] text-white">
                       <tr>
                         <th className="p-2.5">Post Name</th>
@@ -1349,7 +1349,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
                         <tr key={i}>
                           <td className="p-2.5 font-bold">{v.postName}</td>
                           <td className="p-2.5 text-center font-bold text-emerald-700">{v.total}</td>
-                          <td className="p-2.5 text-slate-600">{v.qualification}</td>
+                          <td className="p-2.5 text-slate-600 dark:text-slate-300">{v.qualification}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -1368,11 +1368,11 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
         </div>
 
         {/* Modal Footer Controls */}
-        <div className="p-4 bg-white border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        <div className="p-4 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 flex flex-wrap items-center justify-between gap-3">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-100 rounded-lg border border-slate-300"
+            className="px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:bg-slate-800/50 rounded-lg border border-slate-300 dark:border-slate-600"
           >
             Cancel
           </button>
@@ -1382,7 +1382,7 @@ export const UniversalPostBuilder: React.FC<UniversalPostBuilderProps> = ({
               type="button"
               disabled={isSubmitting}
               onClick={() => handleSave('draft')}
-              className="px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-100 rounded-lg border border-slate-300"
+              className="px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:bg-slate-800/50 rounded-lg border border-slate-300 dark:border-slate-600"
             >
               Save as Draft
             </button>

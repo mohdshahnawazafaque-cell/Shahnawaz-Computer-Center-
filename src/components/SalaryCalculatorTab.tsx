@@ -514,7 +514,7 @@ Calculated via SarkariResult Tools Portal`;
             <button
               type="button"
               onClick={handleCopyBreakdown}
-              className="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 border border-white/20 transition-all cursor-pointer"
+              className="px-3.5 py-2 bg-white dark:bg-slate-800/10 hover:bg-white dark:bg-slate-800/20 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 border border-white/20 transition-all cursor-pointer"
             >
               {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
               <span>{copied ? 'Copied!' : 'Copy Summary'}</span>
@@ -524,12 +524,12 @@ Calculated via SarkariResult Tools Portal`;
       </div>
 
       {/* Quick 1-Click Job Preset Shortcuts */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs space-y-2.5">
+      <div className="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2.5">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-black text-slate-800 uppercase tracking-tight flex items-center gap-1.5">
+          <span className="text-xs font-black text-slate-800 dark:text-slate-100 uppercase tracking-tight flex items-center gap-1.5">
             <Zap className="w-3.5 h-3.5 text-amber-500" /> 1-Click Popular Sarkari Job Presets:
           </span>
-          <span className="text-[11px] text-slate-500 hidden sm:inline">
+          <span className="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:inline">
             Click to auto-configure Pay Level & Basic Pay
           </span>
         </div>
@@ -540,12 +540,12 @@ Calculated via SarkariResult Tools Portal`;
               key={idx}
               type="button"
               onClick={() => applyJobShortcut(item)}
-              className="p-2 rounded-xl bg-slate-50 hover:bg-red-50/70 border border-slate-200 hover:border-[#800000] text-slate-800 text-left transition-all cursor-pointer group"
+              className="p-2 rounded-xl bg-slate-50 dark:bg-slate-700 hover:bg-red-50/70 border border-slate-200 dark:border-slate-700 hover:border-[#800000] text-slate-800 dark:text-slate-100 text-left transition-all cursor-pointer group"
             >
-              <div className="font-bold text-slate-900 group-hover:text-[#800000] truncate">
+              <div className="font-bold text-slate-900 dark:text-white group-hover:text-[#800000] truncate">
                 {item.label}
               </div>
-              <div className="text-[10px] text-slate-500 mt-0.5">
+              <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
                 Basic ₹{item.basic.toLocaleString('en-IN')} • City {item.city}
               </div>
             </button>
@@ -558,28 +558,28 @@ Calculated via SarkariResult Tools Portal`;
         {/* Left Column: Input Configurations (7 Cols) */}
         <div className="lg:col-span-7 space-y-5">
           {/* 1. Pay Scale & Basic Pay Card */}
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
-            <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs space-y-4">
+            <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-700 pb-3">
               <div className="w-8 h-8 rounded-lg bg-red-50 text-[#800000] flex items-center justify-center font-bold">
                 1
               </div>
               <div>
-                <h4 className="text-sm font-black text-slate-900 uppercase tracking-tight">
+                <h4 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">
                   Pay Matrix Level & Basic Pay
                 </h4>
-                <p className="text-[11px] text-slate-500">7th Central Pay Commission Matrix Scale</p>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">7th Central Pay Commission Matrix Scale</p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">
                   Select Pay Matrix Level:
                 </label>
                 <select
                   value={selectedLevelId}
                   onChange={(e) => handleLevelChange(e.target.value)}
-                  className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-[#800000]"
+                  className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-xl text-xs font-bold text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#800000]"
                 >
                   {PAY_LEVELS.map((lvl) => (
                     <option key={lvl.level} value={lvl.level}>
@@ -587,13 +587,13 @@ Calculated via SarkariResult Tools Portal`;
                     </option>
                   ))}
                 </select>
-                <div className="text-[10px] text-slate-500 mt-1 italic line-clamp-1">
+                <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 italic line-clamp-1">
                   Ex: {activeLevelPreset.popularPosts}
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">
                   Monthly Basic Pay (₹):
                 </label>
                 <div className="relative">
@@ -602,18 +602,18 @@ Calculated via SarkariResult Tools Portal`;
                     type="number"
                     value={basicPay}
                     onChange={(e) => setBasicPay(Math.max(0, Number(e.target.value)))}
-                    className="w-full pl-7 pr-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-black text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-[#800000]"
+                    className="w-full pl-7 pr-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-xl text-xs font-black text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#800000]"
                   />
                 </div>
-                <div className="text-[10px] text-slate-500 mt-1">
+                <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
                   Entry Level: ₹{activeLevelPreset.entryBasic.toLocaleString('en-IN')} (editable for increments)
                 </div>
               </div>
             </div>
 
             {/* Dearness Allowance Slider */}
-            <div className="pt-2 border-t border-slate-100 space-y-1.5">
-              <div className="flex justify-between text-xs font-bold text-slate-700">
+            <div className="pt-2 border-t border-slate-100 dark:border-slate-700 space-y-1.5">
+              <div className="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-200">
                 <span>Dearness Allowance (DA %):</span>
                 <span className="text-[#800000] font-black">{daPercent}% (= ₹{daAmount.toLocaleString('en-IN')})</span>
               </div>
@@ -635,16 +635,16 @@ Calculated via SarkariResult Tools Portal`;
           </div>
 
           {/* 2. City Class & Allowances Card */}
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
-            <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs space-y-4">
+            <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-700 pb-3">
               <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold">
                 2
               </div>
               <div>
-                <h4 className="text-sm font-black text-slate-900 uppercase tracking-tight">
+                <h4 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">
                   City Posting & House Rent Allowance (HRA)
                 </h4>
-                <p className="text-[11px] text-slate-500">HRA rates revised to 30%, 20%, 10% after 50% DA</p>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">HRA rates revised to 30%, 20%, 10% after 50% DA</p>
               </div>
             </div>
 
@@ -662,24 +662,24 @@ Calculated via SarkariResult Tools Portal`;
                   className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
                     cityClass === c.id
                       ? 'bg-red-50 border-[#800000] text-[#800000] font-bold shadow-2xs'
-                      : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
+                      : 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:bg-slate-800/50'
                   }`}
                 >
                   <div className="font-bold">{c.label}</div>
-                  <div className="text-[10px] text-slate-500 font-normal mt-0.5">{c.sub}</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400 font-normal mt-0.5">{c.sub}</div>
                 </button>
               ))}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">
                   Transport Allowance (TPTA):
                 </label>
                 <select
                   value={tptaCityType}
                   onChange={(e) => setTptaCityType(e.target.value as any)}
-                  className="w-full p-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-800"
+                  className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-xl text-xs font-semibold text-slate-800 dark:text-slate-100"
                 >
                   <option value="higher">
                     Higher TPTA City (₹{activeLevelPreset.defaultTaHigher} + DA)
@@ -689,13 +689,13 @@ Calculated via SarkariResult Tools Portal`;
                   </option>
                   <option value="custom">Custom Transport Amount</option>
                 </select>
-                <div className="text-[10px] text-slate-500 mt-1">
-                  TA: ₹{effectiveTa} + DA on TA (50%): ₹{daOnTaAmount} = <strong className="text-slate-800">₹{(effectiveTa + daOnTaAmount).toLocaleString('en-IN')}</strong>
+                <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
+                  TA: ₹{effectiveTa} + DA on TA (50%): ₹{daOnTaAmount} = <strong className="text-slate-800 dark:text-slate-100">₹{(effectiveTa + daOnTaAmount).toLocaleString('en-IN')}</strong>
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">
                   Other / Special Allowances (₹):
                 </label>
                 <div className="relative">
@@ -705,10 +705,10 @@ Calculated via SarkariResult Tools Portal`;
                     value={otherAllowances}
                     onChange={(e) => setOtherAllowances(Math.max(0, Number(e.target.value)))}
                     placeholder="0"
-                    className="w-full pl-7 pr-3 py-1.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold text-slate-800"
+                    className="w-full pl-7 pr-3 py-1.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-xl text-xs font-bold text-slate-800 dark:text-slate-100"
                   />
                 </div>
-                <div className="text-[10px] text-slate-500 mt-1">
+                <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
                   Uniform, NPA, Risk, Night Duty or Hard Area allowance
                 </div>
               </div>
@@ -716,66 +716,66 @@ Calculated via SarkariResult Tools Portal`;
           </div>
 
           {/* 3. Statutory Government Deductions Card */}
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
-            <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs space-y-4">
+            <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-700 pb-3">
               <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-700 flex items-center justify-center font-bold">
                 3
               </div>
               <div>
-                <h4 className="text-sm font-black text-slate-900 uppercase tracking-tight">
+                <h4 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">
                   Standard Statutory Deductions
                 </h4>
-                <p className="text-[11px] text-slate-500">NPS Pension, CGHS Health Scheme & Insurance</p>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">NPS Pension, CGHS Health Scheme & Insurance</p>
               </div>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                <span className="text-[11px] font-bold text-slate-600 block">NPS Tier-1 (10%)</span>
-                <span className="text-sm font-black text-slate-900 block mt-0.5">
+              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-700">
+                <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300 block">NPS Tier-1 (10%)</span>
+                <span className="text-sm font-black text-slate-900 dark:text-white block mt-0.5">
                   ₹{npsTier1Amount.toLocaleString('en-IN')}
                 </span>
                 <span className="text-[10px] text-slate-400">10% of (BP + DA)</span>
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-600 mb-1">
+                <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 mb-1">
                   CGHS / Medical (₹):
                 </label>
                 <input
                   type="number"
                   value={cghsAmount}
                   onChange={(e) => setCghsAmount(Math.max(0, Number(e.target.value)))}
-                  className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-bold"
+                  className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-bold"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-600 mb-1">
+                <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 mb-1">
                   CGEGIS Insurance (₹):
                 </label>
                 <input
                   type="number"
                   value={cgegisAmount}
                   onChange={(e) => setCgegisAmount(Math.max(0, Number(e.target.value)))}
-                  className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-bold"
+                  className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-bold"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-600 mb-1">
+                <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 mb-1">
                   Professional Tax (₹):
                 </label>
                 <input
                   type="number"
                   value={profTaxAmount}
                   onChange={(e) => setProfTaxAmount(Math.max(0, Number(e.target.value)))}
-                  className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-bold"
+                  className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-bold"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-600 mb-1">
+                <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 mb-1">
                   Monthly TDS / Tax (₹):
                 </label>
                 <input
@@ -783,12 +783,12 @@ Calculated via SarkariResult Tools Portal`;
                   value={monthlyTds}
                   onChange={(e) => setMonthlyTds(Math.max(0, Number(e.target.value)))}
                   placeholder="0"
-                  className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-bold"
+                  className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-bold"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-600 mb-1">
+                <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 mb-1">
                   Other Deductions (₹):
                 </label>
                 <input
@@ -796,7 +796,7 @@ Calculated via SarkariResult Tools Portal`;
                   value={otherDeductions}
                   onChange={(e) => setOtherDeductions(Math.max(0, Number(e.target.value)))}
                   placeholder="0"
-                  className="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-bold"
+                  className="w-full p-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-bold"
                 />
               </div>
             </div>
@@ -824,7 +824,7 @@ Calculated via SarkariResult Tools Portal`;
                 </span>
                 <h3 className="text-xs text-white/90 font-medium">Monthly Bank Account Credit</h3>
               </div>
-              <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center font-bold text-emerald-200">
+              <div className="w-9 h-9 rounded-xl bg-white dark:bg-slate-800/10 flex items-center justify-center font-bold text-emerald-200">
                 <IndianRupee className="w-5 h-5" />
               </div>
             </div>
@@ -839,14 +839,14 @@ Calculated via SarkariResult Tools Portal`;
             </div>
 
             <div className="grid grid-cols-2 gap-3 pt-2 border-t border-emerald-600/60 text-xs">
-              <div className="bg-white/10 p-3 rounded-xl backdrop-blur-xs">
+              <div className="bg-white dark:bg-slate-800/10 p-3 rounded-xl backdrop-blur-xs">
                 <div className="text-[11px] text-emerald-200">Annual In-Hand</div>
                 <div className="text-base font-black text-white mt-0.5">
                   ₹{annualInHand.toLocaleString('en-IN')}
                 </div>
               </div>
 
-              <div className="bg-white/10 p-3 rounded-xl backdrop-blur-xs">
+              <div className="bg-white dark:bg-slate-800/10 p-3 rounded-xl backdrop-blur-xs">
                 <div className="text-[11px] text-emerald-200">Annual Total CTC</div>
                 <div className="text-base font-black text-white mt-0.5">
                   ₹{annualCtcWithGovtNps.toLocaleString('en-IN')}
@@ -856,13 +856,13 @@ Calculated via SarkariResult Tools Portal`;
           </div>
 
           {/* Salary Breakdown Progress Bar */}
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
-            <div className="text-xs font-black text-slate-900 uppercase tracking-tight flex items-center justify-between">
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs space-y-3">
+            <div className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-tight flex items-center justify-between">
               <span>Gross Salary Composition</span>
               <span className="text-[#800000]">₹{grossMonthlySalary.toLocaleString('en-IN')}</span>
             </div>
 
-            <div className="w-full h-3.5 bg-slate-100 rounded-full overflow-hidden flex shadow-inner">
+            <div className="w-full h-3.5 bg-slate-100 dark:bg-slate-800/50 rounded-full overflow-hidden flex shadow-inner">
               <div
                 style={{ width: `${basicShare}%` }}
                 className="bg-[#800000] h-full"
@@ -885,7 +885,7 @@ Calculated via SarkariResult Tools Portal`;
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-600 pt-1">
+            <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-600 dark:text-slate-300 pt-1">
               <div className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#800000] shrink-0" />
                 <span>Basic: <strong>{basicShare}%</strong></span>
@@ -906,45 +906,45 @@ Calculated via SarkariResult Tools Portal`;
           </div>
 
           {/* Itemized Table Breakdown */}
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-3 text-xs">
-            <h4 className="font-black text-slate-900 uppercase tracking-tight border-b border-slate-100 pb-2">
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs space-y-3 text-xs">
+            <h4 className="font-black text-slate-900 dark:text-white uppercase tracking-tight border-b border-slate-100 dark:border-slate-700 pb-2">
               Itemized Earnings & Deductions
             </h4>
 
             <div className="space-y-2">
               <div className="flex justify-between py-1 border-b border-slate-50">
-                <span className="text-slate-600">Basic Pay</span>
-                <span className="font-bold text-slate-900">₹{basicPay.toLocaleString('en-IN')}</span>
+                <span className="text-slate-600 dark:text-slate-300">Basic Pay</span>
+                <span className="font-bold text-slate-900 dark:text-white">₹{basicPay.toLocaleString('en-IN')}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-50">
-                <span className="text-slate-600">Dearness Allowance (DA @ {daPercent}%)</span>
-                <span className="font-bold text-slate-900">₹{daAmount.toLocaleString('en-IN')}</span>
+                <span className="text-slate-600 dark:text-slate-300">Dearness Allowance (DA @ {daPercent}%)</span>
+                <span className="font-bold text-slate-900 dark:text-white">₹{daAmount.toLocaleString('en-IN')}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-50">
-                <span className="text-slate-600">House Rent Allowance (HRA @ {effectiveHraPercent}%)</span>
-                <span className="font-bold text-slate-900">₹{hraAmount.toLocaleString('en-IN')}</span>
+                <span className="text-slate-600 dark:text-slate-300">House Rent Allowance (HRA @ {effectiveHraPercent}%)</span>
+                <span className="font-bold text-slate-900 dark:text-white">₹{hraAmount.toLocaleString('en-IN')}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-50">
-                <span className="text-slate-600">Transport Allowance (TA + DA)</span>
-                <span className="font-bold text-slate-900">₹{(effectiveTa + daOnTaAmount).toLocaleString('en-IN')}</span>
+                <span className="text-slate-600 dark:text-slate-300">Transport Allowance (TA + DA)</span>
+                <span className="font-bold text-slate-900 dark:text-white">₹{(effectiveTa + daOnTaAmount).toLocaleString('en-IN')}</span>
               </div>
               {otherAllowances > 0 && (
                 <div className="flex justify-between py-1 border-b border-slate-50">
-                  <span className="text-slate-600">Other Allowances</span>
-                  <span className="font-bold text-slate-900">₹{otherAllowances.toLocaleString('en-IN')}</span>
+                  <span className="text-slate-600 dark:text-slate-300">Other Allowances</span>
+                  <span className="font-bold text-slate-900 dark:text-white">₹{otherAllowances.toLocaleString('en-IN')}</span>
                 </div>
               )}
-              <div className="flex justify-between py-1.5 bg-slate-50 px-2 rounded-lg font-black text-slate-900">
+              <div className="flex justify-between py-1.5 bg-slate-50 dark:bg-slate-700 px-2 rounded-lg font-black text-slate-900 dark:text-white">
                 <span>TOTAL GROSS SALARY:</span>
                 <span className="text-[#800000]">₹{grossMonthlySalary.toLocaleString('en-IN')}</span>
               </div>
 
               <div className="pt-2 space-y-1.5">
-                <div className="flex justify-between text-slate-500">
+                <div className="flex justify-between text-slate-500 dark:text-slate-400">
                   <span>NPS Deduction (10% BP+DA):</span>
                   <span className="text-red-700 font-semibold">- ₹{npsTier1Amount.toLocaleString('en-IN')}</span>
                 </div>
-                <div className="flex justify-between text-slate-500">
+                <div className="flex justify-between text-slate-500 dark:text-slate-400">
                   <span>CGHS + CGEGIS + PT + Tax:</span>
                   <span className="text-red-700 font-semibold">
                     - ₹{(cghsAmount + cgegisAmount + profTaxAmount + monthlyTds + otherDeductions).toLocaleString('en-IN')}

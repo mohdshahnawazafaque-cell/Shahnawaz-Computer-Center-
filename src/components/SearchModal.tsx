@@ -95,7 +95,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-white w-full max-w-3xl rounded-2xl shadow-2xl border border-slate-200 overflow-hidden mt-4 sm:mt-12 flex flex-col max-h-[85vh]">
+      <div className="bg-white dark:bg-slate-800 w-full max-w-3xl rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden mt-4 sm:mt-12 flex flex-col max-h-[85vh]">
         {/* Search Input Bar */}
         <div className="p-4 bg-[#0B2545] text-white flex items-center gap-3 border-b border-[#183d6a]">
           <Search className="w-5 h-5 text-red-400 flex-shrink-0" />
@@ -111,7 +111,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="p-1 hover:bg-white/10 rounded text-slate-300 hover:text-white"
+              className="p-1 hover:bg-white dark:bg-slate-800/10 rounded text-slate-300 hover:text-white"
             >
               <X className="w-4 h-4" />
             </button>
@@ -126,10 +126,10 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
         </div>
 
         {/* Filters bar */}
-        <div className="p-3 bg-slate-50 border-b border-slate-200 space-y-2">
+        <div className="p-3 bg-slate-50 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-700 space-y-2">
           {/* Type filters */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-xs">
-            <span className="text-[11px] font-bold text-slate-500 uppercase flex items-center gap-1 pl-1 pr-1 flex-shrink-0">
+            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase flex items-center gap-1 pl-1 pr-1 flex-shrink-0">
               <Filter className="w-3 h-3 text-red-600" /> Type:
             </span>
             {typeTabs.map((tab) => (
@@ -139,7 +139,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
                 className={`px-2.5 py-1 rounded-full whitespace-nowrap text-xs font-semibold transition-all ${
                   selectedType === tab.value
                     ? 'bg-[#0B2545] text-white shadow-sm'
-                    : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
+                    : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 border border-slate-200 dark:border-slate-700'
                 }`}
               >
                 {tab.label}
@@ -149,7 +149,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
 
           {/* State filter */}
           <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none text-xs">
-            <span className="text-[11px] font-bold text-slate-500 uppercase flex items-center gap-1 pl-1 pr-1 flex-shrink-0">
+            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase flex items-center gap-1 pl-1 pr-1 flex-shrink-0">
               <MapPin className="w-3 h-3 text-blue-600" /> State:
             </span>
             {stateOptions.map((st) => (
@@ -159,7 +159,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
                 className={`px-2 py-0.5 rounded text-[11px] font-medium transition-all ${
                   selectedState === st
                     ? 'bg-red-600 text-white font-bold'
-                    : 'bg-slate-200/70 text-slate-700 hover:bg-slate-300'
+                    : 'bg-slate-200/70 text-slate-700 dark:text-slate-200 hover:bg-slate-300'
                 }`}
               >
                 {st}
@@ -171,21 +171,21 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
         {/* Results List */}
         <div className="flex-1 overflow-y-auto p-4 divide-y divide-slate-100">
           {isLoading ? (
-            <div className="py-12 text-center text-slate-500 text-sm">
+            <div className="py-12 text-center text-slate-500 dark:text-slate-400 text-sm">
               <div className="inline-block w-6 h-6 border-2 border-red-600 border-t-transparent rounded-full animate-spin mb-2"></div>
               <p>Searching database records...</p>
             </div>
           ) : results.length === 0 ? (
-            <div className="py-12 text-center text-slate-500">
+            <div className="py-12 text-center text-slate-500 dark:text-slate-400">
               <Sparkles className="w-8 h-8 text-slate-300 mx-auto mb-2" />
-              <p className="font-semibold text-slate-700">No matching updates found</p>
+              <p className="font-semibold text-slate-700 dark:text-slate-200">No matching updates found</p>
               <p className="text-xs text-slate-400 mt-1">
                 Try searching with different keywords like &quot;SSC&quot;, &quot;Police&quot;, &quot;Railway&quot;, &quot;Scholarship&quot;, &quot;Yojana&quot;
               </p>
             </div>
           ) : (
             <div className="space-y-3">
-              <div className="text-[11px] font-bold text-slate-500 uppercase flex justify-between items-center px-1">
+              <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase flex justify-between items-center px-1">
                 <span>Found {results.length} results</span>
                 <span>Click any item to view complete details</span>
               </div>
@@ -200,40 +200,40 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
                       onSelectPost(post.slug, post.type);
                       onClose();
                     }}
-                    className="p-3 sm:p-4 rounded-xl hover:bg-blue-50/50 border border-slate-200 hover:border-blue-400 transition-all cursor-pointer group bg-white shadow-xs"
+                    className="p-3 sm:p-4 rounded-xl hover:bg-blue-50/50 border border-slate-200 dark:border-slate-700 hover:border-blue-400 transition-all cursor-pointer group bg-white dark:bg-slate-800 shadow-xs"
                   >
                     <div className="flex flex-wrap items-center gap-2 mb-1.5">
                       <span className={`px-2 py-0.5 rounded text-[10px] font-black border ${badge.bgClass} ${badge.borderClass}`}>
                         {badge.label}
                       </span>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
                         {post.category}
                       </span>
                       {post.state && (
-                        <span className="px-2 py-0.5 rounded text-[10px] font-medium text-slate-600 bg-slate-50 flex items-center gap-0.5">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-medium text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-700 flex items-center gap-0.5">
                           <MapPin className="w-2.5 h-2.5" /> {post.state}
                         </span>
                       )}
                       {post.lastDate && (
-                        <span className="text-[11px] text-slate-500 flex items-center gap-1 ml-auto">
+                        <span className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1 ml-auto">
                           <Calendar className="w-3 h-3 text-red-500" />
                           <span>Last Date: <strong>{post.lastDate}</strong></span>
                         </span>
                       )}
                     </div>
 
-                    <h4 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-blue-900 leading-snug">
+                    <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-900 leading-snug">
                       {post.title}
                     </h4>
 
                     {post.shortDescription && (
-                      <p className="text-xs text-slate-600 mt-1 line-clamp-2">
+                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 line-clamp-2">
                         {post.shortDescription}
                       </p>
                     )}
 
-                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-2 text-slate-500 text-[11px]">
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between text-xs">
+                      <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-[11px]">
                         {post.department && (
                           <span className="flex items-center gap-1 truncate max-w-xs">
                             <Building2 className="w-3 h-3" /> {post.department}
@@ -258,9 +258,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSel
         </div>
 
         {/* Footer */}
-        <div className="p-3 bg-slate-100 border-t border-slate-200 text-center text-xs text-slate-500 flex justify-between items-center">
+        <div className="p-3 bg-slate-100 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-700 text-center text-xs text-slate-500 dark:text-slate-400 flex justify-between items-center">
           <span>Search Shahnawaz Computer Center Portal</span>
-          <span className="font-medium text-slate-600">Updated Daily</span>
+          <span className="font-medium text-slate-600 dark:text-slate-300">Updated Daily</span>
         </div>
       </div>
     </div>

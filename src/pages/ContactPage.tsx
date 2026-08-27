@@ -12,6 +12,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { SEOHead } from '../components/SEOHead';
 import { useSettings } from '../context/SettingsContext';
 
 interface ContactPageProps {
@@ -43,6 +44,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
 
   return (
     <div id="contact-page-container" className="pb-16">
+      <SEOHead 
+        title="Contact Us & Center Location | Shahnawaz Computer Center"
+        description="Get in touch with Shahnawaz Computer Center for government job application assistance, admit cards, online form filling, and more. Visit our physical center."
+        keywords="Contact Shahnawaz Computer Center, CSC center near me, Online form filling center, Job application help, Cyber cafe"
+        canonicalUrl={window.location.origin + '/contact'}
+      />
       <Breadcrumbs items={[{ label: 'Contact Us & Center Location' }]} onNavigate={onNavigate} />
 
       <div className="max-w-7xl mx-auto px-4 space-y-8">
@@ -64,17 +71,17 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
         {/* Contact Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {/* Card 1: WhatsApp & Phone */}
-          <div className="bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs flex flex-col justify-between space-y-4">
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-xs flex flex-col justify-between space-y-4">
             <div className="space-y-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
                 <MessageCircle className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-slate-900">Direct WhatsApp & Call</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h3 className="text-base font-bold text-slate-900 dark:text-white">Direct WhatsApp & Call</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                 Connect directly for instant form filling queries, document submission, or fees info.
               </p>
               <div className="space-y-1.5 text-xs">
-                <p className="font-bold text-slate-900">Phone: {contactPhone}</p>
+                <p className="font-bold text-slate-900 dark:text-white">Phone: {contactPhone}</p>
                 <p className="font-bold text-emerald-700">WhatsApp: {settings?.whatsAppNumber || contactPhone}</p>
               </div>
             </div>
@@ -90,17 +97,17 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Card 2: Center Address & Timing */}
-          <div className="bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs flex flex-col justify-between space-y-4">
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-xs flex flex-col justify-between space-y-4">
             <div className="space-y-3">
               <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0B2545] flex items-center justify-center">
                 <MapPin className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-slate-900">Center Location</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h3 className="text-base font-bold text-slate-900 dark:text-white">Center Location</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                 {settings?.address || 'Shahnawaz Computer Center, Tambour, District Sitapur, Uttar Pradesh, India'}
               </p>
               <div className="space-y-1 text-xs">
-                <div className="flex items-center gap-1.5 text-slate-700 font-medium">
+                <div className="flex items-center gap-1.5 text-slate-700 dark:text-slate-200 font-medium">
                   <Clock className="w-3.5 h-3.5 text-amber-600" />
                   <span>{settings?.timing || 'Mon - Sat: 8:00 AM to 8:30 PM'}</span>
                 </div>
@@ -116,18 +123,18 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Card 3: Email & Social */}
-          <div className="bg-white p-5 rounded-2xl border-2 border-slate-200 shadow-xs flex flex-col justify-between space-y-4">
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-xs flex flex-col justify-between space-y-4">
             <div className="space-y-3">
               <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center">
                 <Mail className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-slate-900">Email & Channels</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h3 className="text-base font-bold text-slate-900 dark:text-white">Email & Channels</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                 Official support email and daily alerts broadcast channels.
               </p>
-              <div className="space-y-1.5 text-xs text-slate-800">
+              <div className="space-y-1.5 text-xs text-slate-800 dark:text-slate-100">
                 <p className="font-semibold truncate">Email: {contactEmail}</p>
-                <p className="text-slate-500">Fast response within 24 hours</p>
+                <p className="text-slate-500 dark:text-slate-400">Fast response within 24 hours</p>
               </div>
             </div>
             {settings?.telegramUrl && (
@@ -145,13 +152,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* Inquiry Form */}
-        <div className="bg-white rounded-2xl border-2 border-slate-200 p-6 sm:p-8 shadow-sm">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-200 dark:border-slate-700 p-6 sm:p-8 shadow-sm">
           <div className="max-w-2xl mx-auto space-y-6">
             <div className="text-center space-y-1">
               <h2 className="text-xl font-black text-[#0B2545] uppercase">
                 Send an Online Inquiry
               </h2>
-              <p className="text-xs text-slate-600">
+              <p className="text-xs text-slate-600 dark:text-slate-300">
                 Fill the form below and we will get back to you immediately on WhatsApp or Phone
               </p>
             </div>
@@ -166,35 +173,35 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             <form onSubmit={handleSubmit} className="space-y-4 text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Your Full Name *</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Your Full Name *</label>
                   <input
                     type="text"
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Rahul Sharma"
-                    className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
                   />
                 </div>
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Mobile / WhatsApp No. *</label>
+                  <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Mobile / WhatsApp No. *</label>
                   <input
                     type="tel"
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="e.g. 9956078419"
-                    className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Service or Inquiry Subject</label>
+                <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Service or Inquiry Subject</label>
                 <select
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                  className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
                 >
                   <option value="Online Form Assistance">Online Form Assistance (SSC, Police, Railway)</option>
                   <option value="Admit Card / Result Query">Admit Card / Result Query</option>
@@ -207,13 +214,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Your Message / Query</label>
+                <label className="block font-bold text-slate-700 dark:text-slate-200 mb-1">Your Message / Query</label>
                 <textarea
                   rows={3}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Provide exam name, registration number or any specific requirement..."
-                  className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                  className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
                 />
               </div>
 

@@ -12,6 +12,7 @@ import {
   PostType,
   PostComment,
   CommentReply,
+  Promotion,
 } from '../src/types';
 import {
   INITIAL_POSTS,
@@ -21,6 +22,8 @@ import {
   INITIAL_SETTINGS,
   INITIAL_ADS,
   INITIAL_COMMENTS,
+  INITIAL_PROMOTIONS,
+
 } from './seedData';
 import { VERIFIED_GOVERNMENT_DATABASE, BulkGovRecord } from './verifiedGovData';
 import { hashPassword } from './auth';
@@ -61,6 +64,7 @@ interface DatabaseSchema {
   comments: PostComment[];
   clickLogs: ClickLog[];
   viewLogs: ViewLog[];
+  promotions: Promotion[];
 }
 
 const DATA_DIR = path.join(process.cwd(), 'data');
@@ -125,6 +129,8 @@ export async function initDatabase(): Promise<DatabaseSchema> {
     ads: INITIAL_ADS,
     settings: INITIAL_SETTINGS,
     comments: INITIAL_COMMENTS,
+    promotions: INITIAL_PROMOTIONS,
+
     clickLogs: [],
     viewLogs: [],
   };
@@ -1206,3 +1212,42 @@ export function deleteComment(commentId: string): boolean {
   saveDbToDisk(db);
   return true;
 }
+
+export function getPromotions(): Promotion[] {
+  return dbMemoryCache?.promotions || [];
+}
+
+export function getAllPromotionsAdmin(): Promotion[] {
+  return getPromotions().sort((a, b) => a.order - b.order);
+}
+
+export function createPromotion(promo: Partial<Promotion>): Promotion {
+  if (!dbMemoryCache) throw new Error('DB not initialized');
+  if (!dbMemoryCache.promotions) dbMemoryCache.promotions = [];
+  
+  const newPromo: Promotion = {
+    ...promo,
+    id: `promo-${Date.now()}`,
+  } as Promotion;
+  
+  dbMemoryCache.promotions.push(newPromo);
+  saveDbToDisk(dbMemoryCache);
+  return newPromo;
+}
+
+export function updatePromotion(id: string, updates: Partial<Promotion>): Promotion {
+  if (!dbMemoryCache) throw new Error('DB not initialized');
+  const index = dbMemoryCache.promotions.findIndex((p) => p.id === id);
+  if (index === -1) throw new Error('Promotion not found');
+  
+  dbMemoryCache.promotions[index] = { ...dbMemoryCache.promotions[index], ...updates };
+  saveDbToDisk(dbMemoryCache);
+  return dbMemoryCache.promotions[index];
+}
+
+export function deletePromotion(id: string): void {
+  if (!dbMemoryCache) throw new Error('DB not initialized');
+  dbMemoryCache.promotions = dbMemoryCache.promotions.filter((p) => p.id !== id);
+  saveDbToDisk(dbMemoryCache);
+}
+

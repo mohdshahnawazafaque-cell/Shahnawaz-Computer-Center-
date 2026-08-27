@@ -41,7 +41,7 @@ export const AdPlacement: React.FC<AdPlacementProps> = ({
     return (
       <div
         id={`ad-container-${placement}`}
-        className={`my-4 p-2 bg-slate-50 rounded-xl border border-slate-200 text-center overflow-hidden ${className}`}
+        className={`my-4 p-2 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-700 text-center overflow-hidden ${className}`}
         dangerouslySetInnerHTML={{ __html: ad.codeHtml }}
       />
     );

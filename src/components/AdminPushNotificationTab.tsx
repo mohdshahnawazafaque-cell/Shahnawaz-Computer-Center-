@@ -110,43 +110,43 @@ export const AdminPushNotificationTab: React.FC = () => {
     <div className="space-y-6">
       {/* Top Banner & KPI Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-4">
+        <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-red-50 text-[#990000] flex items-center justify-center font-black">
             <Users className="w-6 h-6" />
           </div>
           <div>
-            <div className="text-2xl font-black text-slate-900">
+            <div className="text-2xl font-black text-slate-900 dark:text-white">
               {stats ? stats.totalSubscribers : '...'}
             </div>
-            <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+            <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Active Push Subscribers
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-4">
+        <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-black">
             <Radio className="w-6 h-6" />
           </div>
           <div>
-            <div className="text-2xl font-black text-slate-900">
+            <div className="text-2xl font-black text-slate-900 dark:text-white">
               {stats?.recentLogs ? stats.recentLogs.length : 0}
             </div>
-            <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+            <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Total Broadcasts Sent
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-4">
+        <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-black">
             <Key className="w-6 h-6" />
           </div>
           <div className="overflow-hidden">
-            <div className="text-xs font-mono font-bold text-slate-800 truncate max-w-[200px]">
+            <div className="text-xs font-mono font-bold text-slate-800 dark:text-slate-100 truncate max-w-[200px]">
               {stats?.vapidPublicKey ? 'VAPID Connected' : 'Auto Generated'}
             </div>
-            <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+            <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Web Push Key Status
             </div>
           </div>
@@ -156,9 +156,9 @@ export const AdminPushNotificationTab: React.FC = () => {
       {/* Broadcast Composer & Templates */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left 7 Cols: Broadcast Composer */}
-        <div className="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-            <div className="flex items-center gap-2 text-base font-black text-slate-900 uppercase tracking-tight">
+        <div className="lg:col-span-7 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+            <div className="flex items-center gap-2 text-base font-black text-slate-900 dark:text-white uppercase tracking-tight">
               <BellRing className="w-5 h-5 text-[#990000]" />
               <span>Broadcast Instant Push Alert</span>
             </div>
@@ -166,7 +166,7 @@ export const AdminPushNotificationTab: React.FC = () => {
               type="button"
               onClick={loadStats}
               disabled={isLoading}
-              className="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg cursor-pointer"
+              className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:bg-slate-800/50 rounded-lg cursor-pointer"
               title="Refresh Stats"
             >
               <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
@@ -192,7 +192,7 @@ export const AdminPushNotificationTab: React.FC = () => {
 
           <form onSubmit={handleBroadcast} className="space-y-4">
             <div>
-              <label className="block text-xs font-black text-slate-800 uppercase tracking-tight mb-1">
+              <label className="block text-xs font-black text-slate-800 dark:text-slate-100 uppercase tracking-tight mb-1">
                 Notification Title *
               </label>
               <input
@@ -200,13 +200,13 @@ export const AdminPushNotificationTab: React.FC = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="e.g., 🔥 SSC CGL 2026 Tier 1 Result Released!"
-                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold focus:outline-hidden focus:ring-2 focus:ring-[#990000]"
+                className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-xl text-sm font-semibold focus:outline-hidden focus:ring-2 focus:ring-[#990000]"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-black text-slate-800 uppercase tracking-tight mb-1">
+              <label className="block text-xs font-black text-slate-800 dark:text-slate-100 uppercase tracking-tight mb-1">
                 Message Body *
               </label>
               <textarea
@@ -214,14 +214,14 @@ export const AdminPushNotificationTab: React.FC = () => {
                 onChange={(e) => setBody(e.target.value)}
                 rows={3}
                 placeholder="e.g., Staff Selection Commission has published the CGL 2026 Tier 1 cut-off and shortlisted candidates list. Check direct link now."
-                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-normal focus:outline-hidden focus:ring-2 focus:ring-[#990000]"
+                className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-xl text-sm font-normal focus:outline-hidden focus:ring-2 focus:ring-[#990000]"
                 required
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-black text-slate-800 uppercase tracking-tight mb-1">
+                <label className="block text-xs font-black text-slate-800 dark:text-slate-100 uppercase tracking-tight mb-1">
                   Destination URL Path
                 </label>
                 <input
@@ -229,18 +229,18 @@ export const AdminPushNotificationTab: React.FC = () => {
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder="/post/ssc-cgl-tier-1-result or /"
-                  className="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:outline-hidden focus:ring-2 focus:ring-[#990000]"
+                  className="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-xl text-xs font-medium focus:outline-hidden focus:ring-2 focus:ring-[#990000]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-black text-slate-800 uppercase tracking-tight mb-1">
+                <label className="block text-xs font-black text-slate-800 dark:text-slate-100 uppercase tracking-tight mb-1">
                   Target Category
                 </label>
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:outline-hidden focus:ring-2 focus:ring-[#990000]"
+                  className="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-xl text-xs font-bold focus:outline-hidden focus:ring-2 focus:ring-[#990000]"
                 >
                   <option value="all">⭐ All Subscribers (Full Broadcast)</option>
                   <option value="job">💼 Latest Jobs & Vacancies</option>
@@ -273,11 +273,11 @@ export const AdminPushNotificationTab: React.FC = () => {
 
         {/* Right 5 Cols: Fast Templates & Automation Notes */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-            <div className="text-xs font-black text-slate-900 uppercase tracking-tight flex items-center gap-1.5">
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-3">
+            <div className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-tight flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-amber-500" /> One-Click Alert Presets
             </div>
-            <p className="text-[11px] text-slate-500">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">
               Click any quick preset below to auto-fill the notification broadcast composer:
             </p>
 
@@ -312,12 +312,12 @@ export const AdminPushNotificationTab: React.FC = () => {
                   key={i}
                   type="button"
                   onClick={() => applyTemplate(tpl.title, tpl.body, tpl.cat)}
-                  className="w-full text-left p-2.5 rounded-xl border border-slate-200 hover:border-[#990000] bg-slate-50 hover:bg-red-50/50 transition-all text-xs cursor-pointer group"
+                  className="w-full text-left p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-[#990000] bg-slate-50 dark:bg-slate-700 hover:bg-red-50/50 transition-all text-xs cursor-pointer group"
                 >
-                  <div className="font-bold text-slate-800 group-hover:text-[#990000]">
+                  <div className="font-bold text-slate-800 dark:text-slate-100 group-hover:text-[#990000]">
                     {tpl.label}
                   </div>
-                  <div className="text-[11px] text-slate-500 truncate mt-0.5">{tpl.title}</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">{tpl.title}</div>
                 </button>
               ))}
             </div>
@@ -336,12 +336,12 @@ export const AdminPushNotificationTab: React.FC = () => {
       </div>
 
       {/* Broadcast History Logs Table */}
-      <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-          <div className="text-sm font-black text-slate-900 uppercase tracking-tight flex items-center gap-2">
-            <Clock className="w-4 h-4 text-slate-500" /> Recent Push Broadcast History
+      <div className="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-3">
+        <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+          <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight flex items-center gap-2">
+            <Clock className="w-4 h-4 text-slate-500 dark:text-slate-400" /> Recent Push Broadcast History
           </div>
-          <span className="text-xs text-slate-500 font-semibold">
+          <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold">
             {stats?.recentLogs ? stats.recentLogs.length : 0} recorded alerts
           </span>
         </div>
@@ -350,7 +350,7 @@ export const AdminPushNotificationTab: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="bg-slate-50 text-slate-700 font-bold uppercase tracking-wider text-[10px] border-b border-slate-200">
+                <tr className="bg-slate-50 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold uppercase tracking-wider text-[10px] border-b border-slate-200 dark:border-slate-700">
                   <th className="p-3">Time</th>
                   <th className="p-3">Title & Message</th>
                   <th className="p-3">Category</th>
@@ -360,16 +360,16 @@ export const AdminPushNotificationTab: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {stats.recentLogs.slice(0, 15).map((log, idx) => (
-                  <tr key={log.id || idx} className="hover:bg-slate-50/70">
-                    <td className="p-3 text-slate-500 whitespace-nowrap font-mono text-[11px]">
+                  <tr key={log.id || idx} className="hover:bg-slate-50 dark:bg-slate-700/70">
+                    <td className="p-3 text-slate-500 dark:text-slate-400 whitespace-nowrap font-mono text-[11px]">
                       {new Date(log.timestamp).toLocaleString()}
                     </td>
                     <td className="p-3">
-                      <strong className="block text-slate-900 font-bold">{log.title}</strong>
-                      <span className="text-slate-500 text-[11px] line-clamp-1">{log.body}</span>
+                      <strong className="block text-slate-900 dark:text-white font-bold">{log.title}</strong>
+                      <span className="text-slate-500 dark:text-slate-400 text-[11px] line-clamp-1">{log.body}</span>
                     </td>
                     <td className="p-3 whitespace-nowrap">
-                      <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-800 text-[10px] font-bold uppercase">
+                      <span className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800/50 text-slate-800 dark:text-slate-100 text-[10px] font-bold uppercase">
                         {log.category || 'all'}
                       </span>
                     </td>
@@ -379,7 +379,7 @@ export const AdminPushNotificationTab: React.FC = () => {
                       </span>{' '}
                       <span className="text-[10px] text-slate-400">delivered</span>
                     </td>
-                    <td className="p-3 text-slate-600 font-mono text-[11px] truncate max-w-[150px]">
+                    <td className="p-3 text-slate-600 dark:text-slate-300 font-mono text-[11px] truncate max-w-[150px]">
                       {log.url}
                     </td>
                   </tr>

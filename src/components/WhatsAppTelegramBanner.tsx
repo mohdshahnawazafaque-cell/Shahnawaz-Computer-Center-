@@ -5,7 +5,7 @@ import { useSettings } from '../context/SettingsContext';
 export const WhatsAppTelegramBanner: React.FC = () => {
   const { settings } = useSettings();
 
-  const whatsAppUrl = settings?.whatsAppUrl || 'https://whatsapp.com';
+  const whatsAppUrl = settings?.whatsAppUrl || 'https://whatsapp.com/channel/0029VbDh3ZP3QxRsUixBEU1P';
   const telegramUrl = settings?.telegramUrl || 'https://telegram.org';
 
   return (
