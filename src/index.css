@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------
+   PRINT MEDIA STYLES & PRINT-FRIENDLY CONFIGURATION
+   Optimized for Government Job Notifications & Admit Cards
+   ---------------------------------------------------- */
+
+@media print {
+  /* Hide all non-essential UI elements when printing */
+  header,
+  footer,
+  nav,
+  aside,
+  #main-header,
+  #global-footer,
+  #announcement-bar,
+  #floating-whatsapp-widget,
+  #copy-toast-notification,
+  #search-modal-backdrop,
+  .no-print,
+  .print\\:hidden,
+  [id^="ad-"],
+  [class*="ad-placement"],
+  .social-share-bar,
+  #share-whatsapp-btn,
+  #share-facebook-btn,
+  #share-twitter-btn,
+  #share-telegram-btn,
+  #copy-link-btn,
+  #native-share-btn,
+  #print-post-btn,
+  .recent-posts-widget,
+  #recent-posts-showcase-widget,
+  #recent-posts-sidebar-widget,
+  button:not(.print-allow) {
+    display: none !important;
+  }
+
+  /* Page layout resets for printing */
+  @page {
+    size: A4 portrait;
+    margin: 12mm 14mm 14mm 14mm;
+  }
+
+  html,
+  body {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #shahnawaz-computer-center-app {
+    background-color: #ffffff !important;
+    min-height: auto !important;
+    display: block !important;
+  }
+
+  /* Remove max-widths, shadows and backgrounds on main containers */
+  article,
+  main,
+  #post-detail-container,
+  .max-w-5xl,
+  .max-w-7xl {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Clean up card containers */
+  .bg-white,
+  .rounded-2xl,
+  .rounded-xl,
+  .border,
+  .border-2 {
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border-color: #cbd5e1 !important;
+    border-radius: 4px !important;
+  }
+
+  /* Print-only Header & Footer Banners */
+  .print-only {
+    display: block !important;
+  }
+
+  /* High contrast typography for print */
+  h1, h2, h3, h4, h5, h6 {
+    color: #0B2545 !important;
+    font-weight: 800 !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Table styling for print clarity */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 12px !important;
+  }
+
+  th,
+  td {
+    border: 1px solid #94a3b8 !important;
+    padding: 6px 8px !important;
+    font-size: 9.5pt !important;
+    color: #0f172a !important;
+  }
+
+  th {
+    background-color: #f1f5f9 !important;
+    font-weight: 700 !important;
+  }
+
+  /* Avoid awkward page breaks in the middle of sections */
+  .break-inside-avoid,
+  .card,
+  section,
+  .grid > div,
+  .space-y-6 > div {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Ensure text colors stay legible */
+  .text-slate-500,
+  .text-slate-600,
+  .text-slate-700 {
+    color: #334155 !important;
+  }
+
+  .text-red-700,
+  .text-red-600 {
+    color: #b91c1c !important;
+    font-weight: 700 !important;
+  }
+
+  .text-emerald-800,
+  .text-emerald-700 {
+    color: #047857 !important;
+    font-weight: 700 !important;
+  }
+
+  .bg-red-50,
+  .bg-blue-50,
+  .bg-emerald-50,
+  .bg-amber-50 {
+    background-color: #f8fafc !important;
+  }
+
+  /* Links styling in print */
+  a {
+    color: #0B2545 !important;
+    text-decoration: none !important;
+  }
+}
+
+/* Hide print-only elements on normal screen */
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}

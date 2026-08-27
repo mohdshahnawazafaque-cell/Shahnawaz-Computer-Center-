@@ -1,0 +1,8 @@
+{
+  "name": "Remix Shahnawaz Computer Center Portal",
+  "description": "Mobile-first information portal for latest government jobs, exam results, admit cards, scholarship schemes, and sarkari yojana updates.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

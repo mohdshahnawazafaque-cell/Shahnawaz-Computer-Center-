@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline - Shahnawaz Computer Center</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: #f1f5f9; color: #1e293b; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; text-align: center; }
+    .card { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 16px; padding: 32px 24px; max-width: 440px; width: 100%; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); }
+    .badge { display: inline-flex; align-items: center; gap: 6px; background: #fee2e2; color: #dc2626; padding: 6px 14px; border-radius: 9999px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px; }
+    .icon-box { width: 64px; height: 64px; background: #0B2545; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px; }
+    h1 { font-size: 20px; font-weight: 900; color: #0f172a; margin-bottom: 8px; text-transform: uppercase; }
+    p { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 24px; }
+    .btn { display: inline-block; width: 100%; padding: 12px 20px; background: #dc2626; color: #ffffff; text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; border: none; cursor: pointer; transition: background 0.2s; }
+    .btn:hover { background: #b91c1c; }
+    .tip { margin-top: 16px; font-size: 12px; color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">
+      <span>● No Internet Connection</span>
+    </div>
+    <div class="icon-box">📡</div>
+    <h1>You are Offline</h1>
+    <p>It looks like your internet connection is unavailable or unstable. Any previously visited Sarkari Naukri jobs, admit cards, and portal pages remain accessible from your local cache.</p>
+    <button class="btn" onclick="window.location.reload()">Retry Connection</button>
+    <p class="tip">Shahnawaz Computer Center • Offline Caching Enabled</p>
+  </div>
+</body>
+</html>
