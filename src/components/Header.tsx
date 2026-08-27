@@ -54,20 +54,16 @@ export const Header: React.FC<HeaderProps> = ({
 
   const mainNavLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Latest Job', path: '/category/latest-jobs' },
-    { name: 'Admit Card', path: '/category/admit-card' },
-    { name: 'Result', path: '/category/result' },
-    { name: 'Admission', path: '/category/admission' },
-    { name: 'Syllabus', path: '/category/syllabus' },
-    { name: 'Answer Key', path: '/category/answer-key' },
+    { name: 'Print Services', path: '/print-services' },
+    { name: 'Sarkari Yojana', path: '/category/sarkari-yojana' },
+    { name: 'Documents / Certificate', path: '/category/documents' },
+    { name: 'Services (Cyber Cafe)', path: '/services' },
   ];
 
   const moreNavLinks = [
-    { name: 'Sarkari Yojana', path: '/category/sarkari-yojana' },
     { name: 'Cyber Cafe Workspace', path: '/workspace' },
-    { name: 'Documents / Certificate', path: '/category/documents' },
     { name: 'Scholarship', path: '/category/scholarship' },
-    { name: 'Services (Cyber Cafe)', path: '/services' },
+    { name: 'Dashboard & Wallet', path: '/wallet' },
     { name: 'Contact Us', path: '/contact' },
   ];
 
@@ -86,7 +82,7 @@ export const Header: React.FC<HeaderProps> = ({
             {settings?.websiteName || 'SHAHNAWAZ COMPUTER CENTER'}
           </h1>
           <div className="text-xs sm:text-sm md:text-base font-bold text-amber-200 tracking-wide mt-1">
-            {settings?.tagline || 'Latest Jobs, Results, Admit Card, Sarkari Yojana & Online Form Updates'}
+            {settings?.tagline || 'Print Services, Cyber Cafe Work, Sarkari Yojana & Document Assistance'}
           </div>
         </div>
       </div>

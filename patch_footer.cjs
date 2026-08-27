@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+const fs = require('fs');
+
+let code = `import React, { useState } from 'react';
 import { RssFeedModal } from './RssFeedModal';
 import { useSettings } from '../context/SettingsContext';
 import {
@@ -155,3 +157,6 @@ export const Footer: React.FC<{ onNavigate: (path: string) => void }> = ({ onNav
     </footer>
   );
 };
+`;
+
+fs.writeFileSync('src/components/Footer.tsx', code);

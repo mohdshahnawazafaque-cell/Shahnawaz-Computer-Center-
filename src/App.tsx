@@ -74,9 +74,6 @@ export default function App() {
 
     if (
       currentPath.startsWith('/post/') ||
-      currentPath.startsWith('/jobs/') ||
-      currentPath.startsWith('/admit-card/') ||
-      currentPath.startsWith('/result/') ||
       currentPath.startsWith('/sarkari-yojana/')
     ) {
       const parts = currentPath.split('/');

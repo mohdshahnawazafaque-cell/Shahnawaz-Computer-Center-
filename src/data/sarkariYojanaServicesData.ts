@@ -1986,166 +1986,22 @@ export const SARKARI_YOJANA_SERVICES_DATA: GovernmentSchemeService[] = [
     tags: ['degree'],
     isCentral: true
   },
-  {
-    id: 'service-182',
-    name: 'UPPSC',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access UPPSC official online service portal.',
-    officialUrl: 'https://uppsc.up.nic.in/',
-    tags: ['uppsc'],
-    isCentral: true
-  },
-  {
-    id: 'service-183',
-    name: 'UPSSSC',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access UPSSSC official online service portal.',
-    officialUrl: 'https://upsssc.gov.in/',
-    tags: ['upsssc'],
-    isCentral: true
-  },
-  {
-    id: 'service-184',
-    name: 'SSC',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access SSC official online service portal.',
-    officialUrl: 'https://ssc.nic.in/',
-    tags: ['ssc'],
-    isCentral: true
-  },
-  {
-    id: 'service-185',
-    name: 'Railway Recruitment',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Railway Recruitment official online service portal.',
-    officialUrl: 'https://indianrailways.gov.in/',
-    tags: ['railway recruitment'],
-    isCentral: true
-  },
-  {
-    id: 'service-186',
-    name: 'Bank Recruitment',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Bank Recruitment official online service portal.',
-    officialUrl: 'https://ibps.in/',
-    tags: ['bank recruitment'],
-    isCentral: true
-  },
-  {
-    id: 'service-187',
-    name: 'Police Recruitment',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Police Recruitment official online service portal.',
-    officialUrl: 'https://uppbpb.gov.in/',
-    tags: ['police recruitment'],
-    isCentral: true
-  },
-  {
-    id: 'service-188',
-    name: 'Army Recruitment',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Army Recruitment official online service portal.',
-    officialUrl: 'https://joinindianarmy.nic.in/',
-    tags: ['army recruitment'],
-    isCentral: true
-  },
-  {
-    id: 'service-189',
-    name: 'Navy Recruitment',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Navy Recruitment official online service portal.',
-    officialUrl: 'https://joinindiannavy.gov.in/',
-    tags: ['navy recruitment'],
-    isCentral: true
-  },
-  {
-    id: 'service-190',
-    name: 'Air Force Recruitment',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Air Force Recruitment official online service portal.',
-    officialUrl: 'https://afcat.cdac.in/',
-    tags: ['air force recruitment'],
-    isCentral: true
-  },
-  {
-    id: 'service-191',
-    name: 'India Post Recruitment',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access India Post Recruitment official online service portal.',
-    officialUrl: 'https://indiapostgdsonline.gov.in/',
-    tags: ['india post recruitment'],
-    isCentral: true
-  },
-  {
-    id: 'service-192',
-    name: 'Teacher Recruitment',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Teacher Recruitment official online service portal.',
-    officialUrl: 'https://updeled.gov.in/',
-    tags: ['teacher recruitment'],
-    isCentral: true
-  },
-  {
-    id: 'service-193',
-    name: 'Employment Registration',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Employment Registration official online service portal.',
-    officialUrl: 'https://sewayojan.up.nic.in/',
-    tags: ['employment registration'],
-    isCentral: true
-  },
-  {
-    id: 'service-194',
-    name: 'Employment Fair',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Employment Fair official online service portal.',
-    officialUrl: 'https://sewayojan.up.nic.in/',
-    tags: ['employment fair'],
-    isCentral: true
-  },
-  {
-    id: 'service-195',
-    name: 'Job Application',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Job Application official online service portal.',
-    officialUrl: 'https://www.ncs.gov.in/',
-    tags: ['job application'],
-    isCentral: true
-  },
-  {
-    id: 'service-196',
-    name: 'Admit Card',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Admit Card official online service portal.',
-    officialUrl: 'https://ssc.nic.in/',
-    tags: ['admit card'],
-    isCentral: true
-  },
-  {
-    id: 'service-197',
-    name: 'Result',
-    category: '16. Sarkari Naukri',
-    department: 'Government Portal / Online Tool',
-    description: 'Access Result official online service portal.',
-    officialUrl: 'https://ssc.nic.in/',
-    tags: ['result'],
-    isCentral: true
-  },
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   {
     id: 'service-198',
     name: 'EPFO',

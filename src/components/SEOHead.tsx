@@ -40,7 +40,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     if (keywords) {
       tags.push(setMeta('name', 'keywords', keywords));
     } else {
-      tags.push(setMeta('name', 'keywords', 'Sarkari Naukri, Sarkari Result, Admit Card, Latest Jobs, Answer Key, Syllabus, Shahnawaz Computer Center'));
+      tags.push(setMeta('name', 'keywords', 'Cyber Cafe Services, Online Forms, Document Printing, Sarkari Yojana, PVC Aadhaar, Shahnawaz Computer Center'));
     }
 
     tags.push(setMeta('property', 'og:title', title));

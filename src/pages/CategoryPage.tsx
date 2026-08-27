@@ -29,7 +29,7 @@ import { Post, PostType } from '../types';
 import { JobCard } from '../components/JobCard';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { AdPlacement } from '../components/AdPlacement';
-import { RecentPostsWidget } from '../components/RecentPostsWidget';
+
 import { SarkariYojanaSection } from '../components/SarkariYojanaSection';
 import { SEOHead } from '../components/SEOHead';
 import { useSettings } from '../context/SettingsContext';
@@ -610,14 +610,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
 
           {/* Sidebar Column: Recent Job Openings & Discovery Widget */}
           <div className="lg:col-span-4 xl:col-span-3 space-y-4 lg:sticky lg:top-24">
-            <RecentPostsWidget
-              variant="sidebar"
-              title="🔥 Latest Jobs"
-              limit={7}
-              filterType="jobs"
-              onSelectPost={onSelectPost}
-              onNavigate={onNavigate}
-            />
+            
 
             {/* Quick Cyber Cafe Services Card */}
             <div className="bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-2xl p-4 shadow-sm border border-slate-800 space-y-3">

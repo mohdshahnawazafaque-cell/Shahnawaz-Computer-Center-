@@ -27,7 +27,7 @@ export const WhatsAppTelegramBanner: React.FC = () => {
               JOIN OUR WHATSAPP CHANNEL
             </h3>
             <p className="text-xs text-emerald-100 mt-1 line-clamp-2">
-              Get instant notifications for Sarkari Naukri, UP Police, SSC, Admit Card & Sarkari Yojana on WhatsApp.
+              Get instant notifications for Cyber Cafe Services, Documents, and Sarkari Yojana on WhatsApp.
             </p>
           </div>
 
