@@ -66,43 +66,39 @@ export const CyberCafeHubPage: React.FC<CyberCafeHubPageProps> = ({ onNavigate }
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
-        
-        {/* Categories Sidebar */}
-        <div className="lg:w-64 shrink-0">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-2 shadow-sm sticky top-24">
-            <h3 className="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider px-3 py-2 mb-1">
-              Categories
-            </h3>
-            <div className="flex flex-col gap-1">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Categories Grid - High Contrast for Mobile & Desktop */}
+        <div className="mb-8 overflow-hidden relative">
+          <div className="flex overflow-x-auto pb-4 gap-4 scrollbar-hide snap-x">
+            <button
+              onClick={() => setSelectedCategory('ALL')}
+              className={`shrink-0 snap-start flex flex-col items-center justify-center gap-3 p-4 rounded-2xl border-2 transition-all w-32 h-32 ${
+                selectedCategory === 'ALL'
+                  ? 'bg-[#0B2545] border-[#0B2545] text-white shadow-xl scale-105'
+                  : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-[#990000] hover:shadow-md'
+              }`}
+            >
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center ${selectedCategory === 'ALL' ? 'bg-white/20' : 'bg-slate-100 dark:bg-slate-700'}`}>
+                <LayoutGrid className={`w-6 h-6 ${selectedCategory === 'ALL' ? 'text-amber-400' : 'text-slate-500 dark:text-slate-400'}`} />
+              </div>
+              <span className="text-xs font-black uppercase text-center leading-tight">All Tools</span>
+            </button>
+            {CYBER_CAFE_CATEGORIES.map(cat => (
               <button
-                onClick={() => setSelectedCategory('ALL')}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold transition-colors ${
-                  selectedCategory === 'ALL' 
-                    ? 'bg-[#990000] text-white shadow-sm' 
-                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`shrink-0 snap-start flex flex-col items-center justify-center gap-3 p-4 rounded-2xl border-2 transition-all w-32 h-32 ${
+                  selectedCategory === cat.id
+                    ? 'bg-[#0B2545] border-[#0B2545] text-white shadow-xl scale-105'
+                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-[#990000] hover:shadow-md'
                 }`}
               >
-                <LayoutGrid className="w-4 h-4" />
-                <span>All Tools</span>
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${selectedCategory === cat.id ? 'bg-white/20' : 'bg-slate-100 dark:bg-slate-700'}`}>
+                  <cat.icon className={`w-6 h-6 ${selectedCategory === cat.id ? 'text-amber-400' : 'text-slate-500 dark:text-slate-400'}`} />
+                </div>
+                <span className="text-xs font-black uppercase text-center leading-tight">{cat.name.replace(' TOOLS', '')}</span>
               </button>
-              {CYBER_CAFE_CATEGORIES.map(cat => (
-                <button
-                  key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
-                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-bold transition-colors ${
-                    selectedCategory === cat.id 
-                      ? 'bg-[#990000] text-white shadow-sm' 
-                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <cat.icon className="w-4 h-4" />
-                    <span>{cat.name}</span>
-                  </div>
-                </button>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
 

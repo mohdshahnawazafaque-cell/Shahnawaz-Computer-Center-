@@ -54,7 +54,6 @@ export const Header: React.FC<HeaderProps> = ({
 
   const mainNavLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Print Services', path: '/print-services' },
     { name: 'Sarkari Yojana', path: '/category/sarkari-yojana' },
     { name: 'Documents / Certificate', path: '/category/documents' },
     { name: 'Services (Cyber Cafe)', path: '/services' },
@@ -248,14 +247,6 @@ export const Header: React.FC<HeaderProps> = ({
               title="Search Vacancy, Result, Admit Card"
             >
               <Search className="w-4 h-4" />
-            </button>
-
-            <button
-              onClick={() => handleNavClick('/print-services')}
-              className="text-[11px] font-bold text-amber-300 bg-[#990000] border border-amber-300 px-2 py-1 rounded hover:bg-amber-400 hover:text-[#990000] transition-colors cursor-pointer flex items-center gap-1"
-            >
-              <Printer className="w-3 h-3" />
-              <span>Print Services</span>
             </button>
             
 

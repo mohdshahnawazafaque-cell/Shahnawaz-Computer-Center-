@@ -11,6 +11,7 @@ import { PushNotificationPrompt } from './components/PushNotificationPrompt';
 import { AIChatWidget } from './components/AIChatWidget';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { PrintServicesPage } from './pages/PrintServicesPage';
 import { HomePage } from './pages/HomePage';
 import { PostDetailPage } from './pages/PostDetailPage';
 import { CategoryPage } from './pages/CategoryPage';
@@ -21,7 +22,6 @@ import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { CyberCafeHubPage } from './pages/CyberCafeHubPage';
 import { CyberCafeAppBuilderPage } from './pages/CyberCafeAppBuilderPage';
 import { CyberCafeToolViewerPage } from './pages/CyberCafeToolViewerPage';
-import { PrintServicesPage } from './pages/PrintServicesPage';
 import { PostType } from './types';
 
 export default function App() {
@@ -107,6 +107,9 @@ export default function App() {
       );
     }
 
+    if (currentPath === '/print-services') {
+      return <PrintServicesPage onNavigate={navigate} />;
+    }
     if (currentPath === '/services') {
       return <ServicesPage onNavigate={navigate} />;
     }
@@ -114,11 +117,8 @@ export default function App() {
     if (currentPath === '/contact') {
       return <ContactPage onNavigate={navigate} />;
     }
-    if (currentPath === '/wallet') {
-    }
-    if (currentPath === '/print-services') {
-      return <PrintServicesPage onNavigate={navigate} />;
-    }
+    
+    
 
     if (currentPath === '/admin/login') {
       return <AdminLoginPage onNavigate={navigate} />;
